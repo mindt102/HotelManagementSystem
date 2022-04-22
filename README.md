@@ -1,0 +1,5 @@
+- Booking
+- Quản lí phòng (tạo hạng phòng,...)
+- Quản lí staff
+- Quản lí services (Services list, order)
+- Auth
