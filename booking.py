@@ -43,9 +43,6 @@ class Booking(QtWidgets.QWidget, Ui_Form):
 
     def getInput(self):
         self.nameLine.setPlaceholderText("Client name")
-        
-        nameLine = QtWidgets.QLineEdit()
-        dateEdit = QtWidgets.QDateEdit()
 
         name = self.nameLine.text()
         phoneNumber = self.phoneLine.text()
@@ -64,15 +61,6 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         print(result)
 
     def getRoomType(self):
-        # roomOrders = []
-        # for i, spinBox in enumerate((self.roomSpinBoxes)):
-        #     text = spinBox.text()
-        #     if text == "" or text == "0":
-        #         continue
-        #     roomOrders.append({
-        #         "typeId": i + 1,
-        #         "amount": int(text)
-        #     })
         return self.roomTypeTabWidget.currentIndex() + 1
 
     def clearTabWidget(self):
@@ -112,6 +100,7 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         # Create grid layout from the frame
         gridLayout = QtWidgets.QGridLayout(roomTypeFrame)
         gridLayout.setVerticalSpacing(30)
+        gridLayout.setContentsMargins(50, 11, 50, 11)
         
         # Add text labels
         for i, s in enumerate(["Available room:", "Area:", "Price", "Free Services:", "Description:"]):
