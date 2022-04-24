@@ -9,7 +9,7 @@
         "checkoutTime":"14:28:24",
         "createdAt": "",
         "status": 1, // 1 Created, 2: Checkin, 3: Checkout,
-        "rooms": [201, 202]
+        "roomNumber": 201
     }
 ]
 

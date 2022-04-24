@@ -1,16 +1,7 @@
 {
     "clientName": "Nguyen Tien Cong",
-    "clientNumber": "0902131342",
+    "clientamount": "0902131342",
     "checkInDate": "2022-04-22",
     "checkOutDate": "2022-04-25",
-    "roomOrders": [
-        {
-            "typeId": 1,
-            "number": 1
-        },
-        {
-            "typeId": 2,
-            "number": 1
-        }
-    ]
+    "roomType": 0
 }
