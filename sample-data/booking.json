@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "clientName": "Nguyễn Tiến Công",
+        "clientNumber": "0901234567",
+        "checkinDate": "2022-04-22", 
+        "checkinTime":"14:28:24",
+        "checkoutDate": "2022-04-23",
+        "checkoutTime":"14:28:24",
+        "createdAt": "",
+        "status": 1, // 1 Created, 2: Checkin, 3: Checkout,
+        "rooms": [201, 202]
+    }
+]
+
+// ServiceBook
+// - id
+// - status
+// -serviceId
+// - bookingId
+
+Create booking -> Range(cIn, cOut) -> Tạo x Cancel req
