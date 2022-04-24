@@ -80,38 +80,38 @@ class Ui_Form(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 2, 0, 1, 1)
-        self.dateEdit = QtWidgets.QDateEdit(self.frame)
+        self.inDateLine = QtWidgets.QDateEdit(self.frame)
         font = QtGui.QFont()
         font.setPointSize(12)
-        self.dateEdit.setFont(font)
-        self.dateEdit.setStyleSheet("background-color: #dddddd; padding: 3px;")
-        self.dateEdit.setCalendarPopup(True)
-        self.dateEdit.setTimeSpec(QtCore.Qt.UTC)
-        self.dateEdit.setObjectName("dateEdit")
-        self.gridLayout.addWidget(self.dateEdit, 4, 1, 1, 1)
-        self.lineEdit = QtWidgets.QLineEdit(self.frame)
+        self.inDateLine.setFont(font)
+        self.inDateLine.setStyleSheet("background-color: #dddddd; padding: 3px;")
+        self.inDateLine.setCalendarPopup(True)
+        self.inDateLine.setTimeSpec(QtCore.Qt.UTC)
+        self.inDateLine.setObjectName("inDateLine")
+        self.gridLayout.addWidget(self.inDateLine, 4, 1, 1, 1)
+        self.nameLine = QtWidgets.QLineEdit(self.frame)
         font = QtGui.QFont()
         font.setPointSize(12)
-        self.lineEdit.setFont(font)
-        self.lineEdit.setStyleSheet("background-color: #dddddd; padding: 3px;")
-        self.lineEdit.setObjectName("lineEdit")
-        self.gridLayout.addWidget(self.lineEdit, 2, 1, 1, 1)
-        self.lineEdit_2 = QtWidgets.QLineEdit(self.frame)
+        self.nameLine.setFont(font)
+        self.nameLine.setStyleSheet("background-color: #dddddd; padding: 3px;")
+        self.nameLine.setObjectName("nameLine")
+        self.gridLayout.addWidget(self.nameLine, 2, 1, 1, 1)
+        self.phoneLine = QtWidgets.QLineEdit(self.frame)
         font = QtGui.QFont()
         font.setPointSize(12)
-        self.lineEdit_2.setFont(font)
-        self.lineEdit_2.setStyleSheet("background-color: #dddddd; padding: 3px;")
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.gridLayout.addWidget(self.lineEdit_2, 3, 1, 1, 1)
-        self.dateEdit_2 = QtWidgets.QDateEdit(self.frame)
+        self.phoneLine.setFont(font)
+        self.phoneLine.setStyleSheet("background-color: #dddddd; padding: 3px;")
+        self.phoneLine.setObjectName("phoneLine")
+        self.gridLayout.addWidget(self.phoneLine, 3, 1, 1, 1)
+        self.outDateLine = QtWidgets.QDateEdit(self.frame)
         font = QtGui.QFont()
         font.setPointSize(12)
-        self.dateEdit_2.setFont(font)
-        self.dateEdit_2.setStyleSheet("background-color: #dddddd; padding: 3px;")
-        self.dateEdit_2.setCalendarPopup(True)
-        self.dateEdit_2.setTimeSpec(QtCore.Qt.UTC)
-        self.dateEdit_2.setObjectName("dateEdit_2")
-        self.gridLayout.addWidget(self.dateEdit_2, 5, 1, 1, 1)
+        self.outDateLine.setFont(font)
+        self.outDateLine.setStyleSheet("background-color: #dddddd; padding: 3px;")
+        self.outDateLine.setCalendarPopup(True)
+        self.outDateLine.setTimeSpec(QtCore.Qt.UTC)
+        self.outDateLine.setObjectName("outDateLine")
+        self.gridLayout.addWidget(self.outDateLine, 5, 1, 1, 1)
         self.label_3 = QtWidgets.QLabel(self.frame)
         font = QtGui.QFont()
         font.setPointSize(12)
@@ -302,8 +302,8 @@ class Ui_Form(object):
         self.gridLayout_3 = QtWidgets.QGridLayout(self.frame_2)
         self.gridLayout_3.setContentsMargins(1100, -1, -1, -1)
         self.gridLayout_3.setObjectName("gridLayout_3")
-        self.pushButton = QtWidgets.QPushButton(self.frame_2)
-        self.pushButton.setStyleSheet("QPushButton\n"
+        self.cancelBtn = QtWidgets.QPushButton(self.frame_2)
+        self.cancelBtn.setStyleSheet("QPushButton\n"
 "{\n"
 "      border-style: none;\n"
 "    color: white;\n"
@@ -317,10 +317,10 @@ class Ui_Form(object):
 "{\n"
 "      background-color:#485187;\n"
 "}")
-        self.pushButton.setObjectName("pushButton")
-        self.gridLayout_3.addWidget(self.pushButton, 0, 0, 1, 1)
-        self.pushButton_2 = QtWidgets.QPushButton(self.frame_2)
-        self.pushButton_2.setStyleSheet("QPushButton\n"
+        self.cancelBtn.setObjectName("cancelBtn")
+        self.gridLayout_3.addWidget(self.cancelBtn, 0, 0, 1, 1)
+        self.bookBtn = QtWidgets.QPushButton(self.frame_2)
+        self.bookBtn.setStyleSheet("QPushButton\n"
 "{\n"
 "      border-style: none;\n"
 "    color: white;\n"
@@ -334,9 +334,9 @@ class Ui_Form(object):
 "{\n"
 "      background-color:#485187;\n"
 "}")
-        self.pushButton_2.setFlat(False)
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.gridLayout_3.addWidget(self.pushButton_2, 0, 1, 1, 1)
+        self.bookBtn.setFlat(False)
+        self.bookBtn.setObjectName("bookBtn")
+        self.gridLayout_3.addWidget(self.bookBtn, 0, 1, 1, 1)
         self.verticalLayout_3.addWidget(self.frame_2)
 
         self.retranslateUi(Form)
@@ -349,8 +349,8 @@ class Ui_Form(object):
         self.label_18.setText(_translate("Form", "Booking"))
         self.label_16.setText(_translate("Form", "Information"))
         self.label.setText(_translate("Form", "Name"))
-        self.dateEdit.setDisplayFormat(_translate("Form", "yyyy/MM/dd"))
-        self.dateEdit_2.setDisplayFormat(_translate("Form", "yyyy/MM/dd"))
+        self.inDateLine.setDisplayFormat(_translate("Form", "yyyy/MM/dd"))
+        self.outDateLine.setDisplayFormat(_translate("Form", "yyyy/MM/dd"))
         self.label_3.setText(_translate("Form", "Phone Number"))
         self.label_4.setText(_translate("Form", "Checkin Date"))
         self.label_5.setText(_translate("Form", "Checkout Date"))
@@ -368,8 +368,8 @@ class Ui_Form(object):
         self.availroom.setText(_translate("Form", "10 rooms"))
         self.roomTypeTabWidget.setTabText(self.roomTypeTabWidget.indexOf(self.singleRoom), _translate("Form", "Single Room"))
         self.roomTypeTabWidget.setTabText(self.roomTypeTabWidget.indexOf(self.doubleRoom), _translate("Form", "Tab 2"))
-        self.pushButton.setText(_translate("Form", "Cancel"))
-        self.pushButton_2.setText(_translate("Form", "Book"))
+        self.cancelBtn.setText(_translate("Form", "Cancel"))
+        self.bookBtn.setText(_translate("Form", "Book"))
 
 
 if __name__ == "__main__":

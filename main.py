@@ -60,6 +60,8 @@ class MainWindow(QtWidgets.QWidget):
         self.booking = Booking()
         self.booking.setObjectName("booking")
 
+        self.booking.cancelBtn.clicked.connect(lambda t: self.loadPage(0))
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     widget = MainWindow()

@@ -1,5 +1,6 @@
 import json
 import random
+from tabnanny import check
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.uic import loadUi
 from const import *
@@ -8,14 +9,75 @@ class Booking(QtWidgets.QWidget, Ui_Form):
     def __init__(self, *args, **kwargs):
         super(Booking, self).__init__(*args, **kwargs)
         loadUi("booking.ui", self)
+        # self.roomSpinBoxes = []
+        self.initTabWidget()
+        self.initButtons()
+        self.initInputs()
+
+    def initInputs(self):
+        self.nameLine.setFocus()
+        
+        self.nameLine.setText("")
+        self.phoneLine.setText("")
+        # for spinBox in self.roomSpinBoxes:
+        #     spinBox.clear()
+
+        self.inDateLine.setDate(QtCore.QDate.currentDate())
+        self.outDateLine.setDate(QtCore.QDate.currentDate())
+
+    def initTabWidget(self):
         for data in self.getAllRoomType():
             self.addRoom(data)
         self.clearTabWidget()
 
+    def initButtons(self):
+        self.cancelBtn.clicked.connect(self.cancelHandler)
+        self.bookBtn.clicked.connect(self.bookHandler)
+    
+    def cancelHandler(self):
+        self.initInputs()
+
+    def bookHandler(self):
+        self.getInput()
+        self.initInputs()
+
+    def getInput(self):
+        self.nameLine.setPlaceholderText("Client name")
+        
+        nameLine = QtWidgets.QLineEdit()
+        dateEdit = QtWidgets.QDateEdit()
+
+        name = self.nameLine.text()
+        phoneNumber = self.phoneLine.text()
+
+        checkInDate = self.inDateLine.date().toString("yyyy-MM-dd")
+        checkOutDate = self.outDateLine.date().toString("yyyy-MM-dd")
+
+        result = {
+            "clientName": name,
+            "clientNumber": phoneNumber,
+            "checkInDate": checkInDate,
+            "checkOutDate": checkOutDate,
+            "roomType": self.getRoomType()
+        }
+        
+        print(result)
+
+    def getRoomType(self):
+        # roomOrders = []
+        # for i, spinBox in enumerate((self.roomSpinBoxes)):
+        #     text = spinBox.text()
+        #     if text == "" or text == "0":
+        #         continue
+        #     roomOrders.append({
+        #         "typeId": i + 1,
+        #         "amount": int(text)
+        #     })
+        return self.roomTypeTabWidget.currentIndex() + 1
+
     def clearTabWidget(self):
         for _ in range(2):
             self.roomTypeTabWidget.removeTab(0)
-        # self.roomTypeTabWidget.removeTab(1)
     
     def addRoom(self, roomData: dict):
         roomName = roomData["type"] + " Room"
@@ -52,7 +114,7 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         gridLayout.setVerticalSpacing(30)
         
         # Add text labels
-        for i, s in enumerate(["Available room:", "Area:", "Price", "Free Services:", "Description:", "Number of room:"]):
+        for i, s in enumerate(["Available room:", "Area:", "Price", "Free Services:", "Description:"]):
             label = QtWidgets.QLabel(roomTypeFrame)
             label.setFont(font)
             gridLayout.addWidget(label, i, 0, 1, 1)
@@ -68,12 +130,13 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         price.setObjectName("price")
         gridLayout.addWidget(price, 2, 1, 1, 1)
         
-        bookAmount = QtWidgets.QSpinBox(roomTypeFrame)
-        bookAmount.setFont(font)
-        bookAmount.setStyleSheet("background-color: #dddddd; padding: 5px;")
-        bookAmount.setObjectName("bookAmount")
-        gridLayout.addWidget(bookAmount, 5, 1, 1, 1)
-        
+        # bookAmount = QtWidgets.QSpinBox(roomTypeFrame)
+        # bookAmount.setFont(font)
+        # bookAmount.setStyleSheet("background-color: #dddddd; padding: 5px;")
+        # bookAmount.setObjectName("bookAmount")
+        # gridLayout.addWidget(bookAmount, 5, 1, 1, 1)
+        # self.roomSpinBoxes.append(bookAmount)
+
         area = QtWidgets.QLabel(roomTypeFrame)
         area.setFont(font)
         area.setObjectName("area")
@@ -133,6 +196,7 @@ class Booking(QtWidgets.QWidget, Ui_Form):
                     return service
             else:
                 return None
+    
     def getAllRoomType(self):
         with open("./sample-data/roomType.json", "r", encoding="utf8") as f:
             return json.load(f)
