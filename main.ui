@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NavBar</class>
+ <widget class="QWidget" name="NavBar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>260</width>
+    <height>930</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>260</width>
+     <height>930</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #303657;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <property name="spacing">
+     <number>30</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame_2">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>images/user64.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Minh Duong&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+color: white;
+font-size: 20px;
+font-weight: bold;
+background-color: #3f4773;
+border-radius: 10;
+text-align: left;
+padding-left: 10;</string>
+      </property>
+      <property name="text">
+       <string>    Dashboard</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/home-2-32.png</normaloff>images/home-2-32.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+color: white;
+font-size: 20px;
+font-weight: bold;
+background-color: #3f4773;
+border-radius: 10;
+text-align: left;
+padding-left: 10;</string>
+      </property>
+      <property name="text">
+       <string>    Booking</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/bed-64.png</normaloff>images/bed-64.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+color: white;
+font-size: 20px;
+font-weight: bold;
+background-color: #3f4773;
+border-radius: 10;
+text-align: left;
+padding-left: 10;</string>
+      </property>
+      <property name="text">
+       <string>    Checkin</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/in-32.png</normaloff>images/in-32.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+color: white;
+font-size: 20px;
+font-weight: bold;
+background-color: #3f4773;
+border-radius: 10;
+text-align: left;
+padding-left: 10;</string>
+      </property>
+      <property name="text">
+       <string>    Checkout</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/out-32.png</normaloff>images/out-32.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_7">
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+color: white;
+font-size: 20px;
+font-weight: bold;
+background-color: #3f4773;
+border-radius: 10;
+text-align: left;
+padding-left: 10;</string>
+      </property>
+      <property name="text">
+       <string>    Rooms</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/room-32.png</normaloff>images/room-32.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+color: white;
+font-size: 20px;
+font-weight: bold;
+background-color: #3f4773;
+border-radius: 10;
+text-align: left;
+padding-left: 10;</string>
+      </property>
+      <property name="text">
+       <string>    Services</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/service-32.png</normaloff>images/service-32.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_8">
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+color: white;
+font-size: 20px;
+font-weight: bold;
+background-color: #3f4773;
+border-radius: 10;
+text-align: left;
+padding-left: 10;</string>
+      </property>
+      <property name="text">
+       <string>    Sign out</string>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>images/account-logout-32.png</normaloff>images/account-logout-32.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+      <property name="flat">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
