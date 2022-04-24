@@ -1,19 +1,15 @@
 [
     {
         "id": 1,
-        "roomNumber": 201,
         "clientName": "Nguyễn Tiến Công",
         "clientNumber": "0901234567",
-        "checkinTime": "2022-04-22T14:28:24.020Z",
-        "checkoutTime": "2022-04-23T14:28:24.020Z",
+        "checkinDate": "2022-04-22", 
+        "checkinTime":"14:28:24",
+        "checkoutDate": "2022-04-23",
+        "checkoutTime":"14:28:24",
         "createdAt": "",
         "status": 1, // 1 Created, 2: Checkin, 3: Checkout,
-        "services": [
-            {
-                "status": 1, // 1: pending, 2 done,
-                "serviceId": 1
-            }
-        ]
+        "rooms": [201, 202]
     }
 ]
 
