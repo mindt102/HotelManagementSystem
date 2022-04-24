@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.uic import loadUi
 from dashboard import Dashboard 
+from booking import Booking
 from navbar import NavBar
 from const import *
 import sys
@@ -36,9 +36,9 @@ class MainWindow(QtWidgets.QWidget):
         for i, btn in enumerate(self.navbar.findChildren(QtWidgets.QPushButton)):
             btn.clicked.connect(lambda t, i=i: self.loadPage(i))
 
-    def loadPage(self, pageName):
-        # targetPage = self.stackedWidget.findChild(QtWidgets.QWidget,pageName)
-        self.stackedWidget.setCurrentIndex(pageName)
+    def loadPage(self, pageIndex):
+        # targetPage = self.stackedWidget.findChild(QtWidgets.QWidget,pageIndex)
+        self.stackedWidget.setCurrentIndex(pageIndex)
 
     def initStackedWidget(self):
         self.stackedWidget = QtWidgets.QStackedWidget(self)
@@ -48,13 +48,17 @@ class MainWindow(QtWidgets.QWidget):
 
         self.initDashboard()
         self.stackedWidget.addWidget(self.dashboard)
-
-
-
+        
+        self.initBooking()
+        self.stackedWidget.addWidget(self.booking)
 
     def initDashboard(self):
         self.dashboard = Dashboard()
         self.dashboard.setObjectName("dashboard")
+
+    def initBooking(self): 
+        self.booking = Booking()
+        self.booking.setObjectName("booking")
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

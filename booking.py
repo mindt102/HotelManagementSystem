@@ -1,14 +1,25 @@
+import json
+import random
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.uic import loadUi
 from const import *
-
-class Booking(QtWidgets.QWidget):
+from ui_references.ui_booking import Ui_Form
+class Booking(QtWidgets.QWidget, Ui_Form):
     def __init__(self, *args, **kwargs):
         super(Booking, self).__init__(*args, **kwargs)
         loadUi("booking.ui", self)
-        self.addRoom("Single Room")
-        self.addRoom("Double Room")
-    def addRoom(self, roomName):
+        for data in self.getAllRoomType():
+            self.addRoom(data)
+        self.clearTabWidget()
+
+    def clearTabWidget(self):
+        for _ in range(2):
+            self.roomTypeTabWidget.removeTab(0)
+        # self.roomTypeTabWidget.removeTab(1)
+    
+    def addRoom(self, roomData: dict):
+        roomName = roomData["type"] + " Room"
+
         _translate = QtCore.QCoreApplication.translate
 
         # Create new room widget
@@ -76,6 +87,7 @@ class Booking(QtWidgets.QWidget):
         
         services = QtWidgets.QLabel(roomTypeFrame)
         services.setFont(font)
+        services.setWordWrap(True)
         services.setObjectName("services")
         gridLayout.addWidget(services, 3, 1, 1, 1)
         
@@ -92,15 +104,38 @@ class Booking(QtWidgets.QWidget):
         # Add widget to tab widget
         self.roomTypeTabWidget.addTab(roomWidget, "")
         
-        price.setText(_translate("Form", "$50 per night"))
-        area.setText(_translate("Form", "37 square meters"))
-        description.setText(_translate("Form", "A room assigned to one person. May have one or more beds."))
-        services.setText(_translate("Form", "None"))
-        availroom.setText(_translate("Form", "10 rooms"))
-        
+        price.setText(_translate("Form", f"${roomData['price']} per night"))
+        area.setText(_translate("Form", f"{roomData['area']} square meters"))
+        description.setText(_translate("Form", roomData["description"]))
+
+        serviceInfo = ""
+        if len(roomData["promoServices"]) == 0:
+            serviceInfo = "None"
+        else:
+            for serviceId in roomData["promoServices"]:
+                sv = self.getServiceById(serviceId)
+                serviceInfo += sv["title"] + ", "   
+            serviceInfo = serviceInfo[:-2]
+        services.setText(_translate("Form", serviceInfo))
+
+        availroom.setText(_translate("Form", f"{self.getAvailableRoom()} rooms"))
+
         self.roomTypeTabWidget.setTabText(self.roomTypeTabWidget.indexOf(roomWidget), _translate("Form", roomName))
+    
+    def getAvailableRoom(self):
+        return random.randint(10, 29)
 
-
+    def getServiceById(self, serviceId):
+        with open("./sample-data/services.json", "r", encoding="utf8") as f:
+            services = json.load(f)
+            for service in services:
+                if service["id"] == serviceId:
+                    return service
+            else:
+                return None
+    def getAllRoomType(self):
+        with open("./sample-data/roomType.json", "r", encoding="utf8") as f:
+            return json.load(f)
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

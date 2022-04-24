@@ -67,7 +67,7 @@
         "id": 9,
         "type": "President Suite",
         "area": 300,
-        "description": "The most expensive room provided by a hotel. Usually, only one president suite is available in one single hotel property. Similar to the normal suites, a president suite always has one or more bedrooms and a living space with a strong emphasis on grand in-room decoration, high-quality amenities and supplies, and tailor-made services (e.g. personal butler during the stay).",
+        "description": "A president suite always has one or more bedrooms and a living space with a strong emphasis on grand in-room decoration, high-quality amenities and supplies, and tailor-made services.",
         "price": 500,
         "promoServices": [1, 2, 3, 4, 5]
     }
