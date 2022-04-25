@@ -178,7 +178,7 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         return random.randint(10, 29)
 
     def getServiceById(self, serviceId):
-        with open("./sample-data/services.json", "r", encoding="utf8") as f:
+        with open(DATAPATH + "services.json", "r", encoding="utf8") as f:
             services = json.load(f)
             for service in services:
                 if service["id"] == serviceId:

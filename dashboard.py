@@ -35,7 +35,7 @@ class Dashboard(QtWidgets.QWidget):
                         background-color: #eeeeee
                     }""")
     def updateUpcomingFrame(self, frame: QtWidgets.QFrame, prefix: str):
-        with open("upcoming.json", "r", encoding="utf8") as f:
+        with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
             data = json.load(f) 
 
         _translate = QtCore.QCoreApplication.translate
