@@ -1,3 +1,4 @@
+from RequestData import RequestData
 from const import CONTENT_WIDTH, WINDOW_HEIGHT
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.uic import loadUi
@@ -15,9 +16,22 @@ class Dashboard(QtWidgets.QWidget):
         
         self.setWindowTitle("Dashboard")
         self.initStatsFrame()
-        self.updateUpcomingFrame(self.arrivalsListFrame, "a")
-        self.updateUpcomingFrame(self.departuresListFrame, "d")
+        
+        self.reload()
     
+    def reload(self):
+        self.updateUpcomingFrame(RequestData.getUpcomingArrivals(), self.arrivalsListFrame, "a")
+        self.updateUpcomingFrame(RequestData.getUpcomingDeparture(), self.departuresListFrame, "d")
+        self.updateStats()
+    
+    def updateStats(self):
+        _translate = QtCore.QCoreApplication.translate
+        dateString = datetime.datetime.today().strftime("%Y-%m-%d")
+        self.totalArrivalLabel.setText(_translate("Dashboard", str(RequestData.getTotalCheckinByDate(dateString))))
+        self.totalDepartureLabel.setText(_translate("Dashboard", str(RequestData.getTotalCheckoutByDate(dateString))))
+        self.totalBookingLabel.setText(_translate("Dashboard", str(RequestData.getTotalBookingByDate(dateString))))
+        self.totalRevenueLabel.setText(_translate("Dashboard", str(RequestData.getTotalRevenueByDate(dateString))))
+
     def initStatsFrame(self):
         for child in self.statsFrame.children():
             if isinstance(child, QtWidgets.QFrame):
@@ -34,10 +48,8 @@ class Dashboard(QtWidgets.QWidget):
                     QPushButton:hover{
                         background-color: #eeeeee
                     }""")
-    def updateUpcomingFrame(self, frame: QtWidgets.QFrame, prefix: str):
-        with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
-            data = json.load(f) 
-
+    
+    def updateUpcomingFrame(self, data: list, frame: QtWidgets.QFrame, prefix: str):
         _translate = QtCore.QCoreApplication.translate
         for i in range(1, 6):
             infos = data[i - 1]
@@ -63,63 +75,6 @@ class Dashboard(QtWidgets.QWidget):
     
     def loadBookingInfo(self, bookingId):
         print(bookingId)
-
-    # def initTables(self):
-    #     for table in (self.checkinTable, self.checkoutTable):
-    #         header = table.horizontalHeader()       
-    #         header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
-    #         header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
-    #         header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
-    #         header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
-
-    #         table.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-
-    #     self.loadCheckinTable()
-    #     self.loadCheckoutTable()
-
-    # def loadTable(self, table, data: dict, columns: list[str]):
-    #     table.setRowCount(len(data))
-        
-    #     row = 0
-    #     for _ in range(5):
-    #         for item in data:
-    #             for i in range(len(columns)):
-    #                 table.setItem(row, i, QtWidgets.QTableWidgetItem(str(item[columns[i]])))
-    #             row += 1
-
-    # def loadCheckinTable(self):
-    #     data = [
-    #         {
-    #         "checkinTime": "2022-04-23T07:23:54.638Z",
-    #         "roomNumber": 201,
-    #         "clientName": "Nguyễn Tiến Công",
-    #         "clientNumber": "0901234567",
-    #         },
-    #         {
-    #         "checkinTime": "2022-04-23T07:23:54.638Z",
-    #         "roomNumber": 202,
-    #         "clientName": "Nguyễn Việt Hưng",
-    #         "clientNumber": "0901234567",
-    #         },
-    #     ]
-    #     self.loadTable(self.checkinTable, data, ["checkinTime", "roomNumber", "clientName", "clientNumber"])
-        
-    # def loadCheckoutTable(self):
-        # data = [
-        #     {
-        #     "checkinTime": "2022-04-23T07:23:54.638Z",
-        #     "roomNumber": 201,
-        #     "clientName": "Nguyễn Tiến Công",
-        #     "clientNumber": "0901234567",
-        #     },
-        #     {
-        #     "checkinTime": "2022-04-23T07:23:54.638Z",
-        #     "roomNumber": 202,
-        #     "clientName": "Nguyễn Việt Hưng",
-        #     "clientNumber": "0901234567",
-        #     },
-        # ]
-        # self.loadTable(self.checkoutTable, data, ["checkinTime", "roomNumber", "clientName", "clientNumber"])
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

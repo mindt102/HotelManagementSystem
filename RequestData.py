@@ -43,20 +43,23 @@ class RequestData:
         return data
     
     def getTotalCheckinByDate(date: str) -> int:
-        pass
+        return random.randint(8, 15)
 
     def getTotalCheckoutByDate(date: str) -> int:
-        pass
+        return random.randint(8, 15)
 
     def getTotalBookingByDate(date: str) -> int:
-        pass
+        return random.randint(8, 15)
 
     def getTotalRevenueByDate(date: str) -> int:
-        pass
+        return random.randint(800, 1500)
 
     def getUpcomingArrivals() -> list:
-        pass
+        with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
+            data = json.load(f) 
+        return data
 
     def getUpcomingDeparture() -> list:
-        pass
-    
+        with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
+            data = json.load(f) 
+        return data
