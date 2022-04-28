@@ -31,6 +31,10 @@
      <height>121</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 30px;
+color: #3f4773</string>
+   </property>
    <property name="text">
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;h1 align=&quot;center&quot; style=&quot; margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:xx-large; font-weight:700;&quot;&gt;BOOKING DETAIL&lt;/span&gt;&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
@@ -167,34 +171,26 @@ background-color: white;
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>110</x>
         <y>10</y>
-        <width>351</width>
+        <width>341</width>
         <height>61</height>
        </rect>
       </property>
-      <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;hola&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
       <property name="styleSheet">
-       <string notr="true">background-color:rgba(0,0,0,0);
-border: none;
-color:rgba(255,255,255);
+       <string notr="true">border-width: 1;
+border-style: none;
 font-size: 20px;
-padding-bottom:7px;
+border-bottom: 2px solid rgba(105,118,132,255);
+border-radius: 10;
+background-color: white;
 </string>
       </property>
       <property name="text">
        <string/>
-      </property>
-      <property name="echoMode">
-       <enum>QLineEdit::NoEcho</enum>
-      </property>
-      <property name="placeholderText">
-       <string>Full name</string>
       </property>
      </widget>
     </widget>
@@ -228,37 +224,13 @@ background-color: white;
      <property name="midLineWidth">
       <number>0</number>
      </property>
-     <widget class="QLineEdit" name="lineEdit_4">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>10</y>
-        <width>351</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgba(0,0,0,0);
-border: none;
-font-size: 20px;
-color:rgba(255,255,255);
-padding-bottom:7px;
-</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>Phone number</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>51</width>
-        <height>51</height>
+        <width>61</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="text">
@@ -271,13 +243,35 @@ padding-bottom:7px;
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>0</y>
+        <width>351</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-width: 1;
+border-style: none;
+font-size: 20px;
+border-bottom: 2px solid rgba(105,118,132,255);
+border-radius: 10;
+background-color: white;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QFrame" name="checkinFrame_3">
      <property name="geometry">
       <rect>
        <x>590</x>
        <y>100</y>
-       <width>561</width>
+       <width>601</width>
        <height>81</height>
       </rect>
      </property>
@@ -307,8 +301,8 @@ background-color: white;
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>51</width>
-        <height>51</height>
+        <width>61</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="text">
@@ -327,14 +321,14 @@ background-color: white;
         <x>110</x>
         <y>10</y>
         <width>341</width>
-        <height>51</height>
+        <height>61</height>
        </rect>
       </property>
       <property name="styleSheet">
        <string notr="true">border-width: 1;
 border-style: none;
 border-radius: 10;
-background-color: white;
+background-color: #F2F3F4;
 font-size: 20px;
 </string>
       </property>
@@ -342,17 +336,27 @@ font-size: 20px;
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox_12">
+     <widget class="QCheckBox" name="checkBox_14">
       <property name="geometry">
        <rect>
         <x>460</x>
         <y>30</y>
-        <width>91</width>
-        <height>24</height>
+        <width>131</width>
+        <height>31</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+color: white;
+font-size: 20px;
+font-weight: bold;
+background-color: #3f4773;
+border-radius: 10;
+text-align: left;
+padding-left: 10;</string>
+      </property>
       <property name="text">
-       <string>CheckBox</string>
+       <string>Checkin</string>
       </property>
      </widget>
     </widget>
@@ -361,7 +365,7 @@ font-size: 20px;
       <rect>
        <x>590</x>
        <y>240</y>
-       <width>561</width>
+       <width>601</width>
        <height>81</height>
       </rect>
      </property>
@@ -391,8 +395,8 @@ background-color: white;
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>51</width>
-        <height>51</height>
+        <width>61</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="text">
@@ -418,7 +422,7 @@ background-color: white;
        <string notr="true">border-width: 1;
 border-style: none;
 border-radius: 10;
-background-color: white;
+background-color: #F2F3F4;
 font-size: 20px;</string>
       </property>
       <property name="calendarPopup">
@@ -430,12 +434,22 @@ font-size: 20px;</string>
        <rect>
         <x>460</x>
         <y>30</y>
-        <width>91</width>
-        <height>24</height>
+        <width>131</width>
+        <height>31</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+color: white;
+font-size: 20px;
+font-weight: bold;
+background-color: #3f4773;
+border-radius: 10;
+text-align: left;
+padding-left: 10;</string>
+      </property>
       <property name="text">
-       <string>CheckBox</string>
+       <string>Checkout</string>
       </property>
      </widget>
     </widget>
@@ -474,8 +488,8 @@ background-color: white;
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>61</width>
-        <height>61</height>
+        <width>71</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="text">
@@ -617,7 +631,7 @@ background-color: white;
 </string>
       </property>
       <property name="text">
-       <string>Toy</string>
+       <string>Swimming</string>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_7">
@@ -647,7 +661,7 @@ background-color: white;
        <rect>
         <x>240</x>
         <y>120</y>
-        <width>151</width>
+        <width>131</width>
         <height>31</height>
        </rect>
       </property>
@@ -661,14 +675,14 @@ background-color: white;
 </string>
       </property>
       <property name="text">
-       <string>Oyster 45 kilo</string>
+       <string>Seafood</string>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_9">
       <property name="geometry">
        <rect>
         <x>390</x>
-        <y>160</y>
+        <y>120</y>
         <width>131</width>
         <height>31</height>
        </rect>
@@ -705,7 +719,7 @@ background-color: white;
 </string>
       </property>
       <property name="text">
-       <string>Oil</string>
+       <string>Silent space</string>
       </property>
      </widget>
      <widget class="QCheckBox" name="checkBox_11">
@@ -713,7 +727,7 @@ background-color: white;
        <rect>
         <x>240</x>
         <y>160</y>
-        <width>131</width>
+        <width>161</width>
         <height>31</height>
        </rect>
       </property>
@@ -727,7 +741,7 @@ background-color: white;
 </string>
       </property>
       <property name="text">
-       <string>Anal plug</string>
+       <string>Chilling service</string>
       </property>
      </widget>
     </widget>
@@ -824,84 +838,6 @@ background-color: white;
        </property>
       </item>
      </widget>
-    </widget>
-    <widget class="QPushButton" name="pushButton_4">
-     <property name="geometry">
-      <rect>
-       <x>1190</x>
-       <y>120</y>
-       <width>201</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="acceptDrops">
-      <bool>false</bool>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-style: none;
-color: white;
-font-size: 25px;
-font-weight: bold;
-background-color: #3f4773;
-border-radius: 10;
-text-align: left;
-padding-left: 10;</string>
-     </property>
-     <property name="text">
-      <string>    Checkin</string>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>../../Downloads/dtm/HotelManagementSystem-dashboard/images/in-32.png</normaloff>../../Downloads/dtm/HotelManagementSystem-dashboard/images/in-32.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>32</width>
-       <height>32</height>
-      </size>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_5">
-     <property name="geometry">
-      <rect>
-       <x>1190</x>
-       <y>260</y>
-       <width>201</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="acceptDrops">
-      <bool>false</bool>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">border-style: none;
-color: white;
-font-size: 25px;
-font-weight: bold;
-background-color: #3f4773;
-border-radius: 10;
-text-align: left;
-padding-left: 10;</string>
-     </property>
-     <property name="text">
-      <string>    Checkout</string>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normaloff>../../Downloads/dtm/HotelManagementSystem-dashboard/images/out-32.png</normaloff>../../Downloads/dtm/HotelManagementSystem-dashboard/images/out-32.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>32</width>
-       <height>32</height>
-      </size>
-     </property>
-     <property name="flat">
-      <bool>false</bool>
-     </property>
     </widget>
     <widget class="QFrame" name="checkinFrame_7">
      <property name="geometry">
