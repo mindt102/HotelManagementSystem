@@ -119,13 +119,6 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         price.setObjectName("price")
         gridLayout.addWidget(price, 2, 1, 1, 1)
         
-        # bookAmount = QtWidgets.QSpinBox(roomTypeFrame)
-        # bookAmount.setFont(font)
-        # bookAmount.setStyleSheet("background-color: #dddddd; padding: 5px;")
-        # bookAmount.setObjectName("bookAmount")
-        # gridLayout.addWidget(bookAmount, 5, 1, 1, 1)
-        # self.roomSpinBoxes.append(bookAmount)
-
         area = QtWidgets.QLabel(roomTypeFrame)
         area.setFont(font)
         area.setObjectName("area")
