@@ -41,22 +41,35 @@ class RequestData:
             "roomNumber": 200
         }
         return data
+    def getBookingServiceByOrderID(orderId: int) -> dict:
+        order = {
+            "orderId": 1,
+            "bookingId": 7,
+            "serviceId": 4,
+            "createdAt": "2022-04-16T10:47:14Z",
+            "updatedAt": "2022-04-16T12:27:11Z"
+        }
+        return order
     
     def getTotalCheckinByDate(date: str) -> int:
-        pass
+        return random.randint(8, 15)
 
     def getTotalCheckoutByDate(date: str) -> int:
-        pass
+        return random.randint(8, 15)
 
     def getTotalBookingByDate(date: str) -> int:
-        pass
+        return random.randint(8, 15)
 
     def getTotalRevenueByDate(date: str) -> int:
-        pass
+        return random.randint(800, 1500)
 
     def getUpcomingArrivals() -> list:
-        pass
+        with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
+            data = json.load(f) 
+        return data
 
     def getUpcomingDeparture() -> list:
-        pass
+        with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
+            data = json.load(f) 
+        return data
     
