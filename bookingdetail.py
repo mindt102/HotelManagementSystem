@@ -1,6 +1,4 @@
 # This Python file uses the following encoding: utf-8
-from imp import load_dynamic
-import os
 from pathlib import Path
 import sys
 
@@ -36,12 +34,12 @@ class BookingDetails(QtWidgets.QWidget):
         self.clientCheckOutLabel.setText(_translate("BookingDetails", f"{data['checkoutDate']}"))
 
     def loadService(self):
-        orde = RequestData.getBookingServiceByOrderID(self.order)
+        order = RequestData.getBookingServiceByOrderID(self.order)
         _translate = QtCore.QCoreApplication.translate
         
         row = 0
         rowPosition = self.clientTableService.setRowCount(self.order)
-        self.clientTableService.setItem(row, 0, QtWidgets.QTableWidgetItem(int(self.order[0]["orderId"])))
+        self.clientTableService.setItem(row, 0, QtWidgets.QTableWidgetItem(str(order["orderId"])))
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
