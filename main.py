@@ -2,7 +2,6 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from dashboard import Dashboard 
 from booking import Booking
 from navbar import NavBar
-from login import Login
 from const import *
 import sys
 
@@ -64,6 +63,8 @@ class MainWindow(QtWidgets.QWidget):
         self.booking.cancelBtn.clicked.connect(lambda t: self.loadPage(0))
 
 if __name__ == "__main__":
+    from login import Login
+
     app = QtWidgets.QApplication(sys.argv)
     loginWidget = Login()
     loginWidget.show()

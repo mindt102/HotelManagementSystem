@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 from const import *
+from main import MainWindow
 import login_qrc
 
 class Login(QtWidgets.QWidget):
@@ -26,9 +27,16 @@ class Login(QtWidgets.QWidget):
         print(self.username.text())
         print(self.password.text())
         if ( username == user["username"] and password == user["password"]):
-            print("Correct")
+            self.close()
+            widget = MainWindow()
+            widget.show()
         else:
-            print("Wrong")
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Critical)
+            msg.setText("Invalid username or password")
+            # msg.setInformativeText('More information')
+            msg.setWindowTitle("Wrong Credentials")
+            msg.exec_()
 
 if __name__ == "__main__":
     import sys

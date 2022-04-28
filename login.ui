@@ -60,10 +60,10 @@ border-radius: 15px;</string>
    <widget class="QLabel" name="LogIn_label">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>130</y>
-      <width>201</width>
-      <height>91</height>
+      <x>310</x>
+      <y>120</y>
+      <width>281</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="font">
