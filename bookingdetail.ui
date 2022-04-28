@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1480</width>
-    <height>930</height>
+    <width>1476</width>
+    <height>920</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -55,7 +55,7 @@ color: #3f4773</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>0</y>
+      <y>10</y>
       <width>1461</width>
       <height>781</height>
      </rect>
@@ -125,8 +125,8 @@ padding-bottom:7px;
     <widget class="QFrame" name="checkinFrame">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>100</y>
+       <x>30</x>
+       <y>90</y>
        <width>461</width>
        <height>81</height>
       </rect>
@@ -197,8 +197,8 @@ background-color: white;
     <widget class="QFrame" name="checkinFrame_2">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>240</y>
+       <x>30</x>
+       <y>200</y>
        <width>461</width>
        <height>81</height>
       </rect>
@@ -243,13 +243,13 @@ background-color: white;
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QLabel" name="label_10">
+     <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>0</y>
-        <width>351</width>
-        <height>71</height>
+        <x>110</x>
+        <y>10</y>
+        <width>341</width>
+        <height>61</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -269,8 +269,8 @@ background-color: white;
     <widget class="QFrame" name="checkinFrame_3">
      <property name="geometry">
       <rect>
-       <x>590</x>
-       <y>100</y>
+       <x>660</x>
+       <y>90</y>
        <width>601</width>
        <height>81</height>
       </rect>
@@ -315,27 +315,6 @@ background-color: white;
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QDateTimeEdit" name="dateTimeEdit">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>10</y>
-        <width>341</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-border-radius: 10;
-background-color: #F2F3F4;
-font-size: 20px;
-</string>
-      </property>
-      <property name="calendarPopup">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QCheckBox" name="checkBox_14">
       <property name="geometry">
        <rect>
@@ -359,12 +338,34 @@ padding-left: 10;</string>
        <string>Checkin</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>0</y>
+        <width>351</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-width: 1;
+border-style: none;
+font-size: 20px;
+border-bottom: 2px solid rgba(105,118,132,255);
+border-radius: 10;
+background-color: white;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QFrame" name="checkinFrame_4">
      <property name="geometry">
       <rect>
-       <x>590</x>
-       <y>240</y>
+       <x>660</x>
+       <y>200</y>
        <width>601</width>
        <height>81</height>
       </rect>
@@ -409,26 +410,6 @@ background-color: white;
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QDateTimeEdit" name="dateTimeEdit_2">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>10</y>
-        <width>341</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-border-radius: 10;
-background-color: #F2F3F4;
-font-size: 20px;</string>
-      </property>
-      <property name="calendarPopup">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QCheckBox" name="checkBox_13">
       <property name="geometry">
        <rect>
@@ -452,14 +433,36 @@ padding-left: 10;</string>
        <string>Checkout</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>0</y>
+        <width>351</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-width: 1;
+border-style: none;
+font-size: 20px;
+border-bottom: 2px solid rgba(105,118,132,255);
+border-radius: 10;
+background-color: white;
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QFrame" name="checkinFrame_5">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>370</y>
-       <width>541</width>
-       <height>221</height>
+       <x>30</x>
+       <y>300</y>
+       <width>621</width>
+       <height>231</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -502,256 +505,54 @@ background-color: white;
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox">
+     <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
         <x>100</x>
-        <y>20</y>
-        <width>131</width>
-        <height>31</height>
+        <y>10</y>
+        <width>511</width>
+        <height>211</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-font-size: 20px;
-border-bottom: 2px solid rgba(105,118,132,255);
-border-radius: 10;
+       <string notr="true">font-size: 15px;
 background-color: white;
 </string>
       </property>
-      <property name="text">
-       <string>Massage</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_2">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>20</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-font-size: 20px;
-border-bottom: 2px solid rgba(105,118,132,255);
-border-radius: 10;
-background-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>Hot pot</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_3">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>20</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-border-bottom: 2px solid rgba(105,118,132,255);
-font-size: 20px;
-border-radius: 10;
-background-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>Spa</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_4">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>70</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-font-size: 20px;
-border-bottom: 2px solid rgba(105,118,132,255);
-border-radius: 10;
-background-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>Dinner</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_5">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>70</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-font-size: 20px;
-border-bottom: 2px solid rgba(105,118,132,255);
-border-radius: 10;
-background-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>Lunch</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_6">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>70</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-font-size: 20px;
-border-bottom: 2px solid rgba(105,118,132,255);
-border-radius: 10;
-background-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>Swimming</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_7">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>120</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-border-bottom: 2px solid rgba(105,118,132,255);
-font-size: 20px;
-border-radius: 10;
-background-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>Cupping</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_8">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>120</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-border-bottom: 2px solid rgba(105,118,132,255);
-font-size: 20px;
-border-radius: 10;
-background-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>Seafood</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_9">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>120</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-border-bottom: 2px solid rgba(105,118,132,255);
-font-size: 20px;
-border-radius: 10;
-background-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>Condom</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_10">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>160</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-border-bottom: 2px solid rgba(105,118,132,255);
-font-size: 20px;
-border-radius: 10;
-background-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>Silent space</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="checkBox_11">
-      <property name="geometry">
-       <rect>
-        <x>240</x>
-        <y>160</y>
-        <width>161</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-width: 1;
-border-style: none;
-border-bottom: 2px solid rgba(105,118,132,255);
-border-radius: 10;
-font-size: 20px;
-background-color: white;
-</string>
-      </property>
-      <property name="text">
-       <string>Chilling service</string>
-      </property>
+      <column>
+       <property name="text">
+        <string>SERVICE</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>NUMBER</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>ORDER TIME</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>TIME</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>STATUS</string>
+       </property>
+      </column>
      </widget>
     </widget>
     <widget class="QFrame" name="checkinFrame_6">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>630</y>
-       <width>461</width>
-       <height>81</height>
+       <x>660</x>
+       <y>300</y>
+       <width>471</width>
+       <height>91</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -794,13 +595,13 @@ background-color: white;
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QLabel" name="label_13">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>20</y>
-        <width>351</width>
-        <height>51</height>
+        <x>80</x>
+        <y>10</y>
+        <width>381</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -812,39 +613,17 @@ border-radius: 10;
 background-color: white;
 </string>
       </property>
-      <item>
-       <property name="text">
-        <string>1 single bed</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>2 single bed</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>1 twins bed</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>VIP</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>President room</string>
-       </property>
-      </item>
+      <property name="text">
+       <string/>
+      </property>
      </widget>
     </widget>
     <widget class="QFrame" name="checkinFrame_7">
      <property name="geometry">
       <rect>
-       <x>590</x>
-       <y>450</y>
-       <width>561</width>
+       <x>670</x>
+       <y>580</y>
+       <width>511</width>
        <height>81</height>
       </rect>
      </property>
@@ -938,9 +717,9 @@ padding-bottom:7px;
     <widget class="QPushButton" name="pushButton_2">
      <property name="geometry">
       <rect>
-       <x>1190</x>
-       <y>470</y>
-       <width>191</width>
+       <x>1200</x>
+       <y>600</y>
+       <width>171</width>
        <height>41</height>
       </rect>
      </property>
