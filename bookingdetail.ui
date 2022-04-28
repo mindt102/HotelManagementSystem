@@ -110,13 +110,14 @@ background-color: white;
      <property name="styleSheet">
       <string notr="true">background-color:rgba(0,0,0,0);
 border: none;
+font-size: 20px;
 border-bottom: 2px solid rgba(105,118,132,255);
 color:rgba(255,255,255);
 padding-bottom:7px;
 </string>
      </property>
      <property name="text">
-      <string/>
+      <string>103</string>
      </property>
      <property name="placeholderText">
       <string>Booking ID</string>
@@ -190,7 +191,7 @@ background-color: white;
 </string>
       </property>
       <property name="text">
-       <string/>
+       <string>Nguyễn Việt Hưng</string>
       </property>
      </widget>
     </widget>
@@ -262,7 +263,7 @@ background-color: white;
 </string>
       </property>
       <property name="text">
-       <string/>
+       <string>0987654312</string>
       </property>
      </widget>
     </widget>
@@ -357,7 +358,7 @@ background-color: white;
 </string>
       </property>
       <property name="text">
-       <string/>
+       <string>28/04/2022</string>
       </property>
      </widget>
     </widget>
@@ -452,7 +453,7 @@ background-color: white;
 </string>
       </property>
       <property name="text">
-       <string/>
+       <string>01/05/2022</string>
       </property>
      </widget>
     </widget>
@@ -614,7 +615,7 @@ background-color: white;
 </string>
       </property>
       <property name="text">
-       <string/>
+       <string>1 twins bed</string>
       </property>
      </widget>
     </widget>
@@ -711,6 +712,9 @@ font-size: 25px;
 color:rgba(255,255,255);
 padding-bottom:7px;
 </string>
+      </property>
+      <property name="text">
+       <string>$2000</string>
       </property>
      </widget>
     </widget>
