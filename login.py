@@ -8,7 +8,7 @@ class Login(QtWidgets.QWidget):
         super(Login, self).__init__(*args, **kwargs)
         loadUi("login.ui", self)
         
-        # self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
+        self.setFixedSize(935, 806)
 
 if __name__ == "__main__":
     import sys
