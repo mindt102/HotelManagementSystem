@@ -1,10 +1,8 @@
-import json
-import random
 from const import *
-from RequestData import RequestData
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets, QtCore, QtGui
 from ui_references.ui_booking import Ui_Form
+from RequestData import RequestData
 class Booking(QtWidgets.QWidget, Ui_Form):
     def __init__(self, *args, **kwargs):
         super(Booking, self).__init__(*args, **kwargs)
@@ -36,7 +34,7 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         self.initInputs()
 
     def bookHandler(self):
-        self.getInput()
+        RequestData.createBooking(self.getInput())
         self.initInputs()
 
     def getInput(self) -> dict:
@@ -156,27 +154,15 @@ class Booking(QtWidgets.QWidget, Ui_Form):
             serviceInfo = "None"
         else:
             for serviceId in roomData["promoServices"]:
-                sv = self.getServiceById(serviceId)
+                sv = RequestData.getServiceById(serviceId)
                 serviceInfo += sv["title"] + ", "   
             serviceInfo = serviceInfo[:-2]
         services.setText(_translate("Form", serviceInfo))
 
-        availroom.setText(_translate("Form", f"{self.getAvailableRoom()} rooms"))
+        availroom.setText(_translate("Form", f"{RequestData.getAvailableRoomByTypeId(roomData['id'])} rooms"))
 
         self.roomTypeTabWidget.setTabText(self.roomTypeTabWidget.indexOf(roomWidget), _translate("Form", roomName))
-    
-    def getAvailableRoom(self):
-        return random.randint(10, 29)
-
-    def getServiceById(self, serviceId):
-        with open(DATAPATH + "services.json", "r", encoding="utf8") as f:
-            services = json.load(f)
-            for service in services:
-                if service["id"] == serviceId:
-                    return service
-            else:
-                return None
-    
+      
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
