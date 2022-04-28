@@ -1,10 +1,12 @@
 import json
+import sys
 import random
 from tabnanny import check
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.uic import loadUi
 from const import *
 from ui_references.ui_booking import Ui_Form
+from bookingdetail import BookingDetails
 class Booking(QtWidgets.QWidget, Ui_Form):
     def __init__(self, *args, **kwargs):
         super(Booking, self).__init__(*args, **kwargs)
@@ -40,6 +42,10 @@ class Booking(QtWidgets.QWidget, Ui_Form):
     def bookHandler(self):
         self.getInput()
         self.initInputs()
+        bookingId = 1
+
+        self.bookingDetails = BookingDetails(bookingId)
+        self.bookingDetails.show()
 
     def getInput(self):
         self.nameLine.setPlaceholderText("Client name")
@@ -190,7 +196,6 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         with open("./sample-data/roomType.json", "r", encoding="utf8") as f:
             return json.load(f)
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     widget = Booking()
     widget.show()
