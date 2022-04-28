@@ -1,9 +1,9 @@
 import json
 import random
-from tabnanny import check
-from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.uic import loadUi
 from const import *
+from RequestData import RequestData
+from PyQt5.uic import loadUi
+from PyQt5 import QtWidgets, QtCore, QtGui
 from ui_references.ui_booking import Ui_Form
 class Booking(QtWidgets.QWidget, Ui_Form):
     def __init__(self, *args, **kwargs):
@@ -19,15 +19,13 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         
         self.nameLine.setText("")
         self.phoneLine.setText("")
-        # for spinBox in self.roomSpinBoxes:
-        #     spinBox.clear()
 
         self.inDateLine.setDate(QtCore.QDate.currentDate())
         self.outDateLine.setDate(QtCore.QDate.currentDate())
 
     def initTabWidget(self):
-        for data in self.getAllRoomType():
-            self.addRoom(data)
+        for data in RequestData.getAllRoomType():
+            self.addRoomTypeDetails(data)
         self.clearTabWidget()
 
     def initButtons(self):
@@ -41,7 +39,7 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         self.getInput()
         self.initInputs()
 
-    def getInput(self):
+    def getInput(self) -> dict:
         self.nameLine.setPlaceholderText("Client name")
 
         name = self.nameLine.text()
@@ -55,19 +53,19 @@ class Booking(QtWidgets.QWidget, Ui_Form):
             "clientNumber": phoneNumber,
             "checkInDate": checkInDate,
             "checkOutDate": checkOutDate,
-            "roomType": self.getRoomType()
+            "roomType": self.getSelectedRoomType()
         }
         
-        print(result)
+        return result
 
-    def getRoomType(self):
+    def getSelectedRoomType(self) -> int:
         return self.roomTypeTabWidget.currentIndex() + 1
 
     def clearTabWidget(self):
         for _ in range(2):
             self.roomTypeTabWidget.removeTab(0)
     
-    def addRoom(self, roomData: dict):
+    def addRoomTypeDetails(self, roomData: dict):
         roomName = roomData["type"] + " Room"
 
         _translate = QtCore.QCoreApplication.translate
@@ -119,13 +117,6 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         price.setObjectName("price")
         gridLayout.addWidget(price, 2, 1, 1, 1)
         
-        # bookAmount = QtWidgets.QSpinBox(roomTypeFrame)
-        # bookAmount.setFont(font)
-        # bookAmount.setStyleSheet("background-color: #dddddd; padding: 5px;")
-        # bookAmount.setObjectName("bookAmount")
-        # gridLayout.addWidget(bookAmount, 5, 1, 1, 1)
-        # self.roomSpinBoxes.append(bookAmount)
-
         area = QtWidgets.QLabel(roomTypeFrame)
         area.setFont(font)
         area.setObjectName("area")
@@ -186,9 +177,6 @@ class Booking(QtWidgets.QWidget, Ui_Form):
             else:
                 return None
     
-    def getAllRoomType(self):
-        with open("./sample-data/roomType.json", "r", encoding="utf8") as f:
-            return json.load(f)
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
