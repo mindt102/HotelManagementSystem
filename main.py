@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from dashboard import Dashboard 
 from booking import Booking
-from Example import Example
+from example import Example
 from navbar import NavBar
 from revenue import Revenue
 from example import Example
@@ -55,12 +55,6 @@ class MainWindow(QtWidgets.QWidget):
         
         self.initBooking()
         self.stackedWidget.addWidget(self.booking)
-    
-        self.stackedWidget.currentChanged.connect(self.changeWidget)
-
-    def changeWidget(self):
-        if self.stackedWidget.currentIndex() == 0:
-            self.dashboard.reload()
 
         self.initCheckin()
         self.stackedWidget.addWidget(self.checkin)
@@ -73,6 +67,12 @@ class MainWindow(QtWidgets.QWidget):
 
         self.initServices()
         self.stackedWidget.addWidget(self.services)
+    
+        self.stackedWidget.currentChanged.connect(self.changeWidget)
+
+    def changeWidget(self):
+        if self.stackedWidget.currentIndex() == 0:
+            self.dashboard.reload()
 
     def initDashboard(self):
         self.dashboard = Dashboard()
