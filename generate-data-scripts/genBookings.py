@@ -1,23 +1,9 @@
 from tqdm import trange
+from path import *
 import random
 import json
 
-
-orders = []
-orderId = 1
-booked = [0]*9
-
-with open("rooms.json", "r") as f:
-    rooms = json.load(f)
-
-with open("first50bookings.json", "r") as f:
-    bookings = json.load(f)
-    bookingId = len(bookings) + 1
-
-with open("names.txt", "r") as f:
-    names = list(map(str.strip,f.readlines()))
-
-def getTypeIdFromRoomNumber(roomNumber: int):
+def getTypeIdFromRoomNumber(roomNumber: int) -> int:
     for room in rooms:
         if room["roomNumber"] == roomNumber:
             return room["typeId"]
@@ -48,13 +34,13 @@ def getAvailableRoom(roomTypeId: int, checkinDate, checkoutDate) -> int:
             if avail:
                 return room["roomNumber"]
 
-def randomCheckinTime():
+def randomCheckinTime() -> str:
     hh = random.randint(10, 12)
     mm = random.randint(10, 59)
     ss = random.randint(10, 59)
     return f"{hh}:{mm}:{ss}"
 
-def randomCheckoutTime():
+def randomCheckoutTime() -> str:
     hh = random.randint(12, 14)
     mm = random.randint(10, 59)
     ss = random.randint(10, 59)
@@ -90,10 +76,6 @@ def genPhoneNumber() -> str:
     return "09" + "".join([str(random.randint(0,9)) for _ in range (8)])
         
 def genFirst50Bookings():
-    global bookings
-    global bookingId
-    bookingId = 1
-    bookings = []
     for _ in range(50):
         bookDate = f"2022-03-0{random.randint(0, 9)}T{randomCheckinTime()}Z"
         checkinDate = "2022-04-" + str(random.randint(12, 15))
@@ -184,11 +166,28 @@ def simulate(firstDay: int, firstMonth: int, duration: int):
 
         simulateOneDay(day, month)
 
-genFirst50Bookings()
-simulate(15, 4, 18)
+if __name__ == "__main__":
+    
+    orders = []
+    orderId = 1
 
-with open("bookings.json", "w") as f:
-    json.dump(bookings, f)
+    bookings = []
+    bookingId = 1
 
-with open("serviceOrders.json", "w") as f:
-    json.dump(orders, f)
+    booked = [0]*9
+
+
+    with open(DATAPATH + "rooms.json", "r") as f:
+        rooms = json.load(f)
+
+    with open("names.txt", "r") as f:
+        names = list(map(str.strip,f.readlines()))
+    
+    genFirst50Bookings()
+    simulate(15, 4, 18)
+
+    with open(DATAPATH + "bookings.json", "w") as f:
+        json.dump(bookings, f)
+
+    with open(DATAPATH + "serviceOrders.json", "w") as f:
+        json.dump(orders, f)

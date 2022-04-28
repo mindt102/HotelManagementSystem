@@ -131,7 +131,7 @@ background-color: white;
                <string notr="true">border-style: none;</string>
               </property>
               <property name="text">
-               <string>340</string>
+               <string>15</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -228,7 +228,7 @@ background-color: white;
                <string notr="true">border-style: none;</string>
               </property>
               <property name="text">
-               <string>340</string>
+               <string>13</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -345,7 +345,7 @@ background-color: white;
                <string notr="true">border-style: none;</string>
               </property>
               <property name="text">
-               <string>340</string>
+               <string>20</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -385,7 +385,7 @@ background-color: white;
                <string notr="true">border-style: none;</string>
               </property>
               <property name="text">
-               <string>Total Booked</string>
+               <string>Today Booked</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -461,7 +461,7 @@ background-color: white;</string>
                <string notr="true">border-style: none;</string>
               </property>
               <property name="text">
-               <string>$50,000</string>
+               <string>$1000</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -501,7 +501,7 @@ background-color: white;</string>
                <string notr="true">border-style: none;</string>
               </property>
               <property name="text">
-               <string>Total Revenue</string>
+               <string>Today Revenue</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>

@@ -12,7 +12,7 @@ def requestNames():
         res = requests.get("https://api.namefake.com/us")
         resDict = json.loads(res.text)
         names += resDict["name"] + "\n"
-    with open("names.json", "a") as f:
+    with open("names.txt", "a") as f:
         f.write(names)
 
 for _ in range(8):

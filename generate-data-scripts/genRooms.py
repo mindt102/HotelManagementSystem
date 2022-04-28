@@ -1,3 +1,4 @@
+from path import DATAPATH
 import json
 rooms = []
 for f in range(2,7):
@@ -25,5 +26,5 @@ for f in range(7, 10):
         if roomNo % 5 == 4:
             typeId += 1
 
-with open("rooms.json", "w") as f:
+with open(DATAPATH + "rooms.json", "w") as f:
     json.dump(rooms, f)
