@@ -249,11 +249,11 @@ text-align: left;
 padding-left: 10;</string>
       </property>
       <property name="text">
-       <string>    Rooms</string>
+       <string>    Revenue</string>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>images/room-32.png</normaloff>images/room-32.png</iconset>
+        <normaloff>images/money-32.png</normaloff>images/money-32.png</iconset>
       </property>
       <property name="iconSize">
        <size>

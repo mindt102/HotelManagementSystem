@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QDialog, QApplication, QPushButton, QWidget, QCalend
 class Revenue(QtWidgets.QWidget):
     def __init__(self, *args, **kwargs):
         super(Revenue, self).__init__(*args, **kwargs)
-        loadUi("Manage_Revenue.ui", self)
+        loadUi("revenue.ui", self)
         self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
         #set length of columns in table
         self.table_Revenue.setColumnWidth(0,225)
