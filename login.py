@@ -8,6 +8,7 @@ class Login(QtWidgets.QWidget):
     def __init__(self, *args, **kwargs):
         super(Login, self).__init__(*args, **kwargs)
         loadUi("login.ui", self)
+        self.setWindowTitle("Hotel Management System")
         self.loginBtn.clicked.connect(self.authenticate)
         self.setFixedSize(935, 806)
         # self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
@@ -34,7 +35,6 @@ class Login(QtWidgets.QWidget):
             msg = QtWidgets.QMessageBox()
             msg.setIcon(QtWidgets.QMessageBox.Critical)
             msg.setText("Invalid username or password")
-            # msg.setInformativeText('More information')
             msg.setWindowTitle("Wrong Credentials")
             msg.exec_()
 

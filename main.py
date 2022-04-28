@@ -69,6 +69,4 @@ if __name__ == "__main__":
     loginWidget = Login()
     loginWidget.show()
 
-    # widget = MainWindow()
-    # widget.show()
     sys.exit(app.exec_())
