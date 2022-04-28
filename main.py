@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from dashboard import Dashboard 
 from booking import Booking
 from navbar import NavBar
+from login import Login
 from const import *
 import sys
 
@@ -64,6 +65,9 @@ class MainWindow(QtWidgets.QWidget):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    widget = MainWindow()
-    widget.show()
+    loginWidget = Login()
+    loginWidget.show()
+
+    # widget = MainWindow()
+    # widget.show()
     sys.exit(app.exec_())
