@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>980</width>
-    <height>833</height>
+    <width>935</width>
+    <height>806</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -131,6 +131,9 @@ border: none;
 border-bottom: 2px solid rgba(105,118,132,155);
 color: rgba(255,255,255,230);
 padding-bottom: 7px;</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
     </property>
     <property name="placeholderText">
      <string>Password</string>

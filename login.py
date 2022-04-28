@@ -8,7 +8,7 @@ class Login(QtWidgets.QWidget):
         super(Login, self).__init__(*args, **kwargs)
         loadUi("login.ui", self)
         self.loginBtn.clicked.connect(self.authenticate)
-        
+        self.setFixedSize(935, 806)
         # self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
     
     def authenticate(self):
