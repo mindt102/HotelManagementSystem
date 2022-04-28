@@ -69,82 +69,30 @@
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <property name="spacing">
-       <number>30</number>
-      </property>
-      <property name="leftMargin">
-       <number>50</number>
-      </property>
-      <property name="topMargin">
-       <number>100</number>
-      </property>
-      <property name="rightMargin">
-       <number>50</number>
-      </property>
-      <property name="bottomMargin">
-       <number>100</number>
-      </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
-       <widget class="QFrame" name="frame_3">
+       <widget class="QFrame" name="frame_6">
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QFrame" name="frame_2">
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_3">
-              <property name="font">
-               <font>
-                <pointsize>14</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: white</string>
-              </property>
-              <property name="text">
-               <string>Show Revenue on:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="Calendar_label">
-              <property name="font">
-               <font>
-                <pointsize>14</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">color: white;</string>
-              </property>
-              <property name="text">
-               <string>April 28, 2022</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item alignment="Qt::AlignHCenter">
-          <widget class="QCalendarWidget" name="calendarWidget">
+          <widget class="QLabel" name="calendarLabel">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="styleSheet">
-            <string notr="true">background-color: none;
-</string>
+            <string notr="true">color: white;</string>
+           </property>
+           <property name="text">
+            <string>April 28, 2022</string>
            </property>
           </widget>
          </item>
@@ -152,48 +100,145 @@
        </widget>
       </item>
       <item>
-       <widget class="QTableWidget" name="table_Revenue">
-        <property name="maximumSize">
-         <size>
-          <width>1061</width>
-          <height>341</height>
-         </size>
+       <widget class="QFrame" name="frame_7">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
         </property>
-        <property name="font">
-         <font>
-          <pointsize>14</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: none;</string>
-        </property>
-        <column>
-         <property name="text">
-          <string>Client Name</string>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="rightMargin">
+          <number>30</number>
          </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Room Number</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Total Room Fee</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Total Services Fee</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Total Bill</string>
-         </property>
-        </column>
+         <item>
+          <widget class="QFrame" name="frame_3">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <property name="leftMargin">
+             <number>30</number>
+            </property>
+            <property name="rightMargin">
+             <number>50</number>
+            </property>
+            <property name="bottomMargin">
+             <number>50</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="frame_2">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item alignment="Qt::AlignHCenter">
+                <widget class="QLabel" name="label_3">
+                 <property name="font">
+                  <font>
+                   <pointsize>14</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color: white</string>
+                 </property>
+                 <property name="text">
+                  <string>Select a date</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignHCenter">
+             <widget class="QCalendarWidget" name="calendarWidget">
+              <property name="styleSheet">
+               <string notr="true">background-color: none;
+</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame_8">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QTableWidget" name="table_Revenue">
+              <property name="maximumSize">
+               <size>
+                <width>1061</width>
+                <height>341</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>14</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: none;</string>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::SingleSelection</enum>
+              </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>160</number>
+              </attribute>
+              <column>
+               <property name="text">
+                <string>Client Name</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Room Number</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Total Room Fee</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Total Services Fee</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Total Bill</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -222,7 +267,7 @@
        </spacer>
       </item>
       <item row="1" column="1">
-       <widget class="QPushButton" name="Btn_booking">
+       <widget class="QPushButton" name="detailsBtn">
         <property name="font">
          <font>
           <pointsize>-1</pointsize>
