@@ -14,15 +14,24 @@ class RequestData:
 
     # Service
     def getServiceById(serviceId: int) -> dict:
-        # with open(DATAPATH + "services.json", "r", encoding="utf8") as f:
-        #     services = json.load(f)
-        #     for service in services:
-        #         if service["id"] == serviceId:
-        #             return service
-        #     else:
-        #         return None
-        res = requests.get(f"{URL}/services/{serviceId}")
-        return res.json()
+        with open(DATAPATH + "services.json", "r", encoding="utf8") as f:
+            services = json.load(f)
+            for service in services:
+                if service["id"] == serviceId:
+                    return service
+            else:
+                return None
+        # res = requests.get(f"{URL}/services/{serviceId}")
+        # return res.json()
+
+    def getServicesByBookingId(bookingId: int) -> list:
+        results = []
+        with open(DATAPATH + "serviceOrders.json", "r", encoding="utf8") as f:
+            services = json.load(f)
+            for service in services:
+                if service["bookingId"] == bookingId:
+                    results.append(service)
+        return results
 
     # Booking
     def createBooking(bookingData: dict) -> int:
@@ -31,18 +40,13 @@ class RequestData:
         return bookingId
 
     def getBookingById(bookingId: int) -> dict:
-        data = {
-            "id": bookingId,
-            "clientName": "Shayne Feest",
-            "clientNumber": "0933505646",
-            "checkinDate": "2022-04-12",
-            "checkoutDate": "2022-04-18",
-            "checkinTime": "12:24:45",
-            "checkoutTime": "14:42:18",
-            "createdAt": "2022-03-01T11:16:34Z",
-            "status": 3,
-            "roomNumber": 200
-        }
+        data = None
+        with open(DATAPATH + "bookings.json", "r") as f:
+            bookings = json.load(f)
+            for booking in bookings:
+                if booking["id"] == bookingId:
+                    data = booking
+                    break
         return data
     
     def getTotalCheckinByDate(date: str) -> int:
@@ -66,6 +70,28 @@ class RequestData:
         with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
             data = json.load(f) 
         return data
-    
+
+    # Return a list of revenues from each booking that check out in a specific day
+    def getRevenueByDate(date: str) -> list:
+        bookingsByDate = []
+        with open(DATAPATH + "bookings.json", "r") as f:
+            bookings = json.load(f)
+            for booking in bookings:
+                if booking["checkoutDate"] == date and booking["status"] == 3:
+                    bookingsByDate.append(booking)
+        revenuesByDate = []
+
+        for booking in bookingsByDate:
+            revenue = {
+                "bookingId": booking["id"],
+                "clientName": booking["clientName"],
+                "roomNumber": booking["roomNumber"],
+                "roomFee": random.randint(300, 500),
+                "serviceFee": random.randint(100, 300),
+            }
+            revenue["totalBill"] = revenue["roomFee"] + revenue["serviceFee"]
+            revenuesByDate.append(revenue)
+        return revenuesByDate
+
 if __name__ == "__main__":
     print(RequestData.getServiceById(1))

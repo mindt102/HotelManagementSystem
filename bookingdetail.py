@@ -21,6 +21,8 @@ class BookingDetails(QtWidgets.QWidget):
 
     def loadData(self):
         data = RequestData.getBookingById(self.bookingId)
+        data["services"] = RequestData.getServicesByBookingId(self.bookingId)
+        
         _translate = QtCore.QCoreApplication.translate
 
         self.clientNameLabel.setText(_translate("BookingDetails", f"{data['clientName']}"))
