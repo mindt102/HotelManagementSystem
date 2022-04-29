@@ -1,7 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from dashboard import Dashboard 
 from booking import Booking
-from Example import Example
 from navbar import NavBar
 from revenue import Revenue
 from example import Example
