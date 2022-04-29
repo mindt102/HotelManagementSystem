@@ -34,8 +34,15 @@ color: white;
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
+      <item alignment="Qt::AlignHCenter">
        <widget class="QLabel" name="label">
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">color: white</string>
         </property>
@@ -56,6 +63,12 @@ color: white;
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="leftMargin">
+       <number>200</number>
+      </property>
+      <property name="rightMargin">
+       <number>200</number>
+      </property>
       <item>
        <widget class="QPushButton" name="pushButton">
         <property name="styleSheet">
@@ -84,6 +97,11 @@ padding: 5;</string>
       </item>
       <item>
        <widget class="QLineEdit" name="lineEdit">
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">border-width: 1;
 border-style: none;
@@ -104,6 +122,9 @@ padding: 12 10</string>
    </item>
    <item>
     <widget class="QTableWidget" name="tableWidget">
+     <property name="styleSheet">
+      <string notr="true">border-radius: 10px;</string>
+     </property>
      <column>
       <property name="text">
        <string>Check In Time</string>

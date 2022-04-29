@@ -8,20 +8,20 @@ class Checking(QtWidgets.QWidget):
         loadUi("checking.ui", self)
         
         self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
-        self.tableWidget.setColumnWidth(0,250)
-        self.tableWidget.setColumnWidth(1,400)
-        self.tableWidget.setColumnWidth(2,250)
-        self.tableWidget.setColumnWidth(3,211)
+        # self.tableWidget.setColumnWidth(0,250)
+        # self.tableWidget.setColumnWidth(1,400)
+        # self.tableWidget.setColumnWidth(2,250)
+        # self.tableWidget.setColumnWidth(3,211)
 
         self.initTables()
     def initTables(self):
         # for table in (self.tableWidget):
         table = self.tableWidget
         header = table.horizontalHeader()       
-        # header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
-        # header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
-        # header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
-        # header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+        header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
 
         table.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
 
