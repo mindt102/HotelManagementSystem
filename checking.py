@@ -1,27 +1,28 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 from PyQt5.uic import loadUi
 from const import *
 
 class Checking(QtWidgets.QWidget):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, status: int, *args, **kwargs):
         super(Checking, self).__init__(*args, **kwargs)
         loadUi("checking.ui", self)
         
         self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
-        # self.tableWidget.setColumnWidth(0,250)
-        # self.tableWidget.setColumnWidth(1,400)
-        # self.tableWidget.setColumnWidth(2,250)
-        # self.tableWidget.setColumnWidth(3,211)
-
+        self.status = status
+        self.initTitle()
         self.initTables()
+
+    def initTitle(self):
+        _translate = QtCore.QCoreApplication.translate
+        statusStr = "Reservation" if self.status == 0 else "Guests"
+        self.pageTitleLabel.setText(_translate("Form", statusStr))
+    
+    
+
     def initTables(self):
-        # for table in (self.tableWidget):
         table = self.tableWidget
         header = table.horizontalHeader()       
-        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
-        header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
+        header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
         table.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
 
@@ -57,6 +58,6 @@ class Checking(QtWidgets.QWidget):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    widget = Checking()
+    widget = Checking(1)
     widget.show()
     sys.exit(app.exec_())

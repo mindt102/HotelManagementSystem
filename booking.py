@@ -1,9 +1,8 @@
 import json
 import random
-from tabnanny import check
+from const import *
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.uic import loadUi
-from const import *
 from ui_references.ui_booking import Ui_Form
 class Booking(QtWidgets.QWidget, Ui_Form):
     def __init__(self, *args, **kwargs):
