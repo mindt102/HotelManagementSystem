@@ -1,6 +1,7 @@
 from const import *
 import random
 import json
+import requests
 
 class RequestData:
     # Room Type
@@ -13,13 +14,15 @@ class RequestData:
 
     # Service
     def getServiceById(serviceId: int) -> dict:
-        with open(DATAPATH + "services.json", "r", encoding="utf8") as f:
-            services = json.load(f)
-            for service in services:
-                if service["id"] == serviceId:
-                    return service
-            else:
-                return None
+        # with open(DATAPATH + "services.json", "r", encoding="utf8") as f:
+        #     services = json.load(f)
+        #     for service in services:
+        #         if service["id"] == serviceId:
+        #             return service
+        #     else:
+        #         return None
+        res = requests.get(f"{URL}/services/{serviceId}")
+        return res.json()
 
     # Booking
     def createBooking(bookingData: dict) -> int:
@@ -63,3 +66,6 @@ class RequestData:
         with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
             data = json.load(f) 
         return data
+    
+if __name__ == "__main__":
+    print(RequestData.getServiceById(1))
