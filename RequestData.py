@@ -93,5 +93,29 @@ class RequestData:
             revenuesByDate.append(revenue)
         return revenuesByDate
 
+    # Return a list of booking based on status and date, sort by checkinTime or checkoutTime
+    def getBookings(clientName: str = None, checkoutDate: str = None, checkinDate: str = None, status: int = None, sortBy: str = None) -> list:
+        with open(DATAPATH + "bookings.json", "r") as f:
+            bookings = json.load(f)
+        result = []
+        for booking in bookings:
+            if clientName:
+                if booking["clientName"] != clientName:
+                    continue
+            if checkinDate:
+                if booking["checkinDate"] != checkinDate:
+                    continue
+            if checkoutDate:
+                if booking["checkoutDate"] != checkoutDate:
+                    continue
+            if status:
+                if booking["status"] != status:
+                    continue
+            result.append(booking)
+        
+        # Sort results by checkinTime or checkoutTime
+
+        return result
+
 if __name__ == "__main__":
     print(RequestData.getServiceById(1))

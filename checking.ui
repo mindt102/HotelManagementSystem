@@ -152,6 +152,9 @@ padding: 12 10</string>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
         <column>
          <property name="text">
           <string>Client Name</string>
@@ -169,12 +172,7 @@ padding: 12 10</string>
         </column>
         <column>
          <property name="text">
-          <string>Check In Time</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Check Out Time</string>
+          <string>Time</string>
          </property>
         </column>
        </widget>
@@ -183,7 +181,7 @@ padding: 12 10</string>
     </widget>
    </item>
    <item alignment="Qt::AlignHCenter">
-    <widget class="QPushButton" name="pushButton_5">
+    <widget class="QPushButton" name="checkBtn">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
