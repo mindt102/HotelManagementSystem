@@ -11,9 +11,9 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         # self.roomSpinBoxes = []
         self.initTabWidget()
         self.initButtons()
-        self.initInputs()
+        self.resetInputs()
 
-    def initInputs(self):
+    def resetInputs(self):
         self.nameLine.setFocus()
         
         self.nameLine.setText("")
@@ -32,12 +32,11 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         self.bookBtn.clicked.connect(self.bookHandler)
     
     def cancelHandler(self):
-        self.initInputs()
+        self.resetInputs()
 
     def bookHandler(self):
-        RequestData.createBooking(self.getInput())
-        self.initInputs()
-        bookingId = 1
+        bookingId = RequestData.createBooking(self.getInput())
+        self.resetInputs()
 
         self.bookingDetails = BookingDetails(bookingId)
         self.bookingDetails.show()

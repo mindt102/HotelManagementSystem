@@ -54,12 +54,6 @@ class MainWindow(QtWidgets.QWidget):
         
         self.initBooking()
         self.stackedWidget.addWidget(self.booking)
-    
-        self.stackedWidget.currentChanged.connect(self.changeWidget)
-
-    def changeWidget(self):
-        if self.stackedWidget.currentIndex() == 0:
-            self.dashboard.reload()
 
         self.initCheckin()
         self.stackedWidget.addWidget(self.checkin)
@@ -72,6 +66,12 @@ class MainWindow(QtWidgets.QWidget):
 
         self.initServices()
         self.stackedWidget.addWidget(self.services)
+    
+        self.stackedWidget.currentChanged.connect(self.changeWidget)
+
+    def changeWidget(self):
+        if self.stackedWidget.currentIndex() == 0:
+            self.dashboard.reload()
 
     def initDashboard(self):
         self.dashboard = Dashboard()
