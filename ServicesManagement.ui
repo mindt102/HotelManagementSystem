@@ -107,7 +107,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -121,7 +121,7 @@
     <property name="tabsClosable">
      <bool>false</bool>
     </property>
-    <widget class="QWidget" name="ServiceBooking" native="true">
+    <widget class="QWidget" name="ServiceBooking">
      <attribute name="title">
       <string>Service Booking</string>
      </attribute>
@@ -194,6 +194,9 @@
       <property name="font">
        <font>
         <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
        </font>
       </property>
       <property name="text">
@@ -209,17 +212,26 @@
         <x>10</x>
         <y>60</y>
         <width>701</width>
-        <height>691</height>
+        <height>1057</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
        <property name="sizeConstraint">
         <enum>QLayout::SetMinimumSize</enum>
        </property>
+       <property name="rightMargin">
+        <number>20</number>
+       </property>
+       <property name="bottomMargin">
+        <number>300</number>
+       </property>
+       <property name="horizontalSpacing">
+        <number>100</number>
+       </property>
        <item row="2" column="0">
         <widget class="QLabel" name="label_4">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -249,16 +261,6 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QTextEdit" name="textEdit">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label_3">
          <property name="sizePolicy">
@@ -275,7 +277,7 @@
        <item row="0" column="0">
         <widget class="QLabel" name="label_2">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -292,6 +294,9 @@
          </property>
         </widget>
        </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit"/>
+       </item>
       </layout>
      </widget>
      <widget class="QLabel" name="label_11">
@@ -306,6 +311,9 @@
       <property name="font">
        <font>
         <pointsize>16</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>false</underline>
        </font>
       </property>
       <property name="text">
@@ -316,7 +324,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="PendingServices" native="true">
+    <widget class="QWidget" name="PendingServices">
      <attribute name="title">
       <string> Pending Services</string>
      </attribute>
@@ -334,7 +342,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="ServiceHistory" native="true">
+    <widget class="QWidget" name="ServiceHistory">
      <attribute name="title">
       <string>Service History</string>
      </attribute>
