@@ -15,10 +15,11 @@ class Checking(QtWidgets.QWidget):
         self.initTitle()
         self.initTables()
         self.initCheckButton()
+        self.initSearchBtn()
 
     def initTitle(self):
         _translate = QtCore.QCoreApplication.translate
-        statusStr = "Reservation" if self.status == 1 else "Guests"
+        statusStr = "CHECK IN TODAY" if self.status == 1 else "CHECK OUT TODAY"
         self.pageTitleLabel.setText(_translate("Form", statusStr))
     
     def initCheckButton(self):
@@ -39,13 +40,20 @@ class Checking(QtWidgets.QWidget):
     def updateStatus(self):
         bookingId = self.getSelectedBookingId()
         if self.status == 1:
-            RequestData.checkin()
+            RequestData.checkin(bookingId)
         elif self.status == 2:
-            RequestData.checkout()
-        self.loadTable()
+            RequestData.checkout(bookingId)
+        self.reloadTable()
         self.showBookingDetails(bookingId)
 
-    #Event of button
+    def initSearchBtn(self):
+        self.searchBtn.clicked.connect(self.loadSearchResult)
+    
+    def loadSearchResult(self):
+        self.clientName = self.searchInput.text()
+        self.reloadTable()
+        self.searchInput.setText("")
+
     def showBookingDetails(self, bookingId):
         if not bookingId:
             msg = QtWidgets.QMessageBox()
@@ -53,37 +61,38 @@ class Checking(QtWidgets.QWidget):
             msg.setText("You have to choose a row first")
             msg.setWindowTitle("Error")
             msg.exec_()
+            return
         self.bookingDetails = BookingDetails(bookingId)
         self.bookingDetails.show()
 
     def initTables(self):
-        table = self.tableWidget
-        header = table.horizontalHeader()       
+        self.dateStr = "2022-05-04"
+        self.clientName = ""
+
+        header = self.tableWidget.horizontalHeader()       
         header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
-        table.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
 
-        self.loadTable()
+        self.reloadTable()
 
-    def addDataToTable(self, table, columns: list[str]):
-        table.setRowCount(len(self.data))
+    def addDataToTable(self):
+        columns = ["clientName", "clientNumber", "roomNumber", "checkinDate", "checkoutDate"]
+        self.tableWidget.setRowCount(len(self.data))
         
         row = 0
         for _ in range(len(self.data)):
             for item in self.data:
                 for i in range(len(columns)):
-                    table.setItem(row, i, QtWidgets.QTableWidgetItem(str(item[columns[i]])))
+                    self.tableWidget.setItem(row, i, QtWidgets.QTableWidgetItem(str(item[columns[i]])))
                 row += 1
 
-    def loadTable(self):
-        dateStr = datetime.datetime.today().strftime("%Y-%m-%d")
+    def reloadTable(self):
         if self.status == 1:
-            self.data = RequestData.getBookings(checkinDate=dateStr, status=self.status, sortBy="checkinTime")
-            self.addDataToTable(self.tableWidget, ["clientName", "clientNumber", "roomNumber", "checkinTime"])
+            self.data = RequestData.getBookings(clientName=self.clientName, checkinDate=self.dateStr, status=self.status)
         elif self.status == 2:
-            self.data = RequestData.getBookings(checkoutDate=dateStr, status=self.status, sortBy="checkoutTime")
-            self.addDataToTable(self.tableWidget, ["clientName", "clientNumber", "roomNumber", "checkoutTime"])
-            
+            self.data = RequestData.getBookings(clentName=self.clientName, checkoutDate=self.dateStr, status=self.status)
+        self.addDataToTable()
 
 if __name__ == "__main__":
     import sys

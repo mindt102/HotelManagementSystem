@@ -82,7 +82,7 @@ color: white;
        <number>200</number>
       </property>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="searchBtn">
         <property name="styleSheet">
          <string notr="true">background-color: white;
 border-style: solid;
@@ -108,7 +108,7 @@ padding: 5;</string>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit">
+       <widget class="QLineEdit" name="searchInput">
         <property name="font">
          <font>
           <pointsize>10</pointsize>
@@ -172,7 +172,12 @@ padding: 12 10</string>
         </column>
         <column>
          <property name="text">
-          <string>Time</string>
+          <string>Checkin Date</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Checkout Date</string>
          </property>
         </column>
        </widget>

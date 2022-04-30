@@ -94,13 +94,13 @@ class RequestData:
         return revenuesByDate
 
     # Return a list of booking based on status and date, sort by checkinTime or checkoutTime
-    def getBookings(clientName: str = None, checkoutDate: str = None, checkinDate: str = None, status: int = None, sortBy: str = None) -> list:
+    def getBookings(clientName: str = None, checkoutDate: str = None, checkinDate: str = None, status: int = None) -> list:
         with open(DATAPATH + "bookings.json", "r") as f:
             bookings = json.load(f)
         result = []
         for booking in bookings:
             if clientName:
-                if booking["clientName"] != clientName:
+                if clientName not in booking["clientName"]:
                     continue
             if checkinDate:
                 if booking["checkinDate"] != checkinDate:
@@ -124,6 +124,7 @@ class RequestData:
             if booking["id"] == id:
                 booking["status"] = 2
                 return
+    
     def checkout(bookingId: int):
         with open(DATAPATH + "bookings.json", "r") as f:
             bookings = json.load(f)

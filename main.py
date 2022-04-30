@@ -4,6 +4,7 @@ from booking import Booking
 from navbar import NavBar
 from revenue import Revenue
 from example import Example
+from checking import Checking
 from const import *
 import sys
 
@@ -89,11 +90,11 @@ class MainWindow(QtWidgets.QWidget):
         self.booking.cancelBtn.clicked.connect(lambda t: self.loadPage(0))
 
     def initCheckin(self):
-        self.checkin = Example()
+        self.checkin = Checking(1)
         self.checkin.setObjectName("checkin")
 
     def initCheckout(self):
-        self.checkout = Example()
+        self.checkout = Checking(2)
         self.checkout.setObjectName("checkout")
     
     def initRevenue(self):
