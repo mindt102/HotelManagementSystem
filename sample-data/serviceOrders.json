@@ -1232,13 +1232,6 @@
         "updatedAt": "2022-05-03T13:24:45Z"
     },
     {
-<<<<<<< HEAD
-        "orderId": 146,
-        "bookingId": 260,
-        "serviceId": 5,
-        "createdAt": "2022-05-03T12:15:24Z",
-        "updatedAt": "2022-05-03T13:15:52Z"
-=======
         "status": 2,
         "orderId": 155,
         "bookingId": 250,
@@ -1269,6 +1262,5 @@
         "serviceId": 2,
         "createdAt": "2022-05-03T12:50:10Z",
         "updatedAt": "2022-05-03T13:53:52Z"
->>>>>>> ServiceManagement
     }
 ]
