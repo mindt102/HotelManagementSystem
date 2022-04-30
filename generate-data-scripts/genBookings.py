@@ -60,8 +60,8 @@ def bookRoom(checkinDate: str, checkoutDate: str, bookDateTime: str, status: int
         "clientNumber": genPhoneNumber(),
         "checkinDate": checkinDate, 
         "checkoutDate": checkoutDate,
-        "checkinTime": randomCheckinTime(),
-        "checkoutTime": randomCheckoutTime(),
+        "checkinTime": randomCheckinTime() if status >= 2 else "",
+        "checkoutTime": randomCheckoutTime() if status >= 3 else "",
         "createdAt": bookDateTime,
         "status": status, # 1 Created, 2: Checkin, 3: Checkout,
         "roomNumber": roomNumber
@@ -77,12 +77,12 @@ def genPhoneNumber() -> str:
         
 def genFirst50Bookings():
     for _ in range(50):
-        bookDate = f"2022-03-0{random.randint(0, 9)}T{randomCheckinTime()}Z"
+        bookDateTime = f"2022-03-0{random.randint(0, 9)}T{randomCheckinTime()}Z"
         checkinDate = "2022-04-" + str(random.randint(12, 15))
         checkoutDate = "2022-04-" + str(random.randint(16, 20))
-        bookRoom(checkinDate, checkoutDate, bookDate, status=2)
-    with open("first50bookings.json", "w") as f:
-        json.dump(bookings, f)
+        bookRoom(checkinDate, checkoutDate, bookDateTime, status=2)
+    # with open("first50bookings.json", "w") as f:
+    #     json.dump(bookings, f)
 
 def orderService(bookingId: int, serviceId: int, date: str):
     global orderId
@@ -103,10 +103,12 @@ def checkDate(date: str):
     for book in bookings:
         if book["checkoutDate"] == date:
             book["status"] = 3
+            book["checkoutTime"] = randomCheckoutTime()
             departure += 1
             booked[getTypeIdFromRoomNumber(book["roomNumber"]) - 1] -= 1
         elif book["checkinDate"] == date:
             book["status"] = 2
+            book["checkinTime"] = randomCheckinTime()
             arrival += 1
 
         if book["status"] == 2:
@@ -133,11 +135,12 @@ def simulateOneDay(day: int, month: int):
 
         bookDay, bookMonth = fixDate(day - random.randint(-5, 5), month - 1)
         bookDate = toDateString(bookDay, bookMonth)
+        bookDateTime = f"{bookDate}T{randomCheckinTime()}Z"
 
         checkoutDay, checkoutMonth = fixDate(day + random.randint(2, 7), month)
         checkoutDate = toDateString(checkoutDay, checkoutMonth)
         
-        bookRoom(checkinDate, checkoutDate, bookDate)
+        bookRoom(checkinDate, checkoutDate, bookDateTime)
 
 def toDateString(day: int, month: int) -> str:
     dayStr = str(day)
