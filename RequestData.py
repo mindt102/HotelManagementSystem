@@ -5,6 +5,20 @@ import requests
 
 class RequestData:
     # Room Type
+    def getRoomTypeById(typeId) -> str:
+        with open(DATAPATH + "roomType.json", "r", encoding="utf8") as f:
+            roomTypes = json.load(f)
+        for roomType in roomTypes:
+            if roomType["id"] == typeId:
+                return roomType
+    
+    def getRoomTypeByRoomNumber(roomNumber: int) -> str:
+        with open(DATAPATH + "rooms.json", "r") as f:
+            rooms = json.load(f)
+        for room in rooms:
+            if room["roomNumber"] == roomNumber:
+                return RequestData.getRoomTypeById(room["typeId"])["type"]
+
     def getAllRoomType() -> list:
         with open(DATAPATH + "roomType.json", "r", encoding="utf8") as f:
             return json.load(f)
@@ -101,6 +115,9 @@ class RequestData:
             revenue["totalBill"] = revenue["roomFee"] + revenue["serviceFee"]
             revenuesByDate.append(revenue)
         return revenuesByDate
+
+    def getRevenueByBookingId(bookingId: int) -> int:
+        return random.randint(400, 800)
 
     # Return a list of booking based on status and date, sort by checkinTime or checkoutTime
     def getBookings(clientName: str = None, checkoutDate: str = None, checkinDate: str = None, status: int = None) -> list:

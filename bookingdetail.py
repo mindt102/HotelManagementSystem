@@ -24,7 +24,7 @@ class BookingDetails(QtWidgets.QWidget):
 
     def loadData(self):
         data = RequestData.getBookingById(self.bookingId)
-        data["services"] = RequestData.getServicesByBookingId(self.bookingId)
+        # data["services"] = RequestData.getServicesByBookingId(self.bookingId)
         
         _translate = QtCore.QCoreApplication.translate
         
@@ -33,17 +33,41 @@ class BookingDetails(QtWidgets.QWidget):
         self.phoneNumberLabel.setText(_translate("BookingDetails", f"{data['clientNumber']}"))
         self.clientCheckInLabel.setText(_translate("BookingDetails", f"{data['checkinDate']}"))
         self.clientCheckOutLabel.setText(_translate("BookingDetails", f"{data['checkoutDate']}"))
+        roomTypeStr = RequestData.getRoomTypeByRoomNumber(data["roomNumber"])
+        self.bedTypeLabel.setText(_translate("BookingDetails", roomTypeStr))
+        self.billLabel.setText(_translate("BookingDetails", f"${RequestData.getRevenueByBookingId(data['id'])}"))
+        print(roomTypeStr)
+        self.loadService()
 
-    # def loadService(self):
-    #     order = RequestData.getBookingServiceByOrderID(self.order)
-    #     _translate = QtCore.QCoreApplication.translate
-        
-    #     row = 0
-    #     rowPosition = self.clientTableService.setRowCount(self.order)
-    #     self.clientTableService.setItem(row, 0, QtWidgets.QTableWidgetItem(str(order["orderId"])))
+    def loadService(self):
+        services = RequestData.getServicesByBookingId(self.bookingId)
+        # print(services)
+        header = self.serviceTable.horizontalHeader()       
+        header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+
+        self.serviceTable.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+
+
+        row = 0
+        self.serviceTable.setRowCount(len(services))
+
+        for service in services:
+            print()
+            print(service["status"])
+            print(service["createdAt"])
+
+        # rowPosition = self.clientTableService.setRowCount(self.order)
+            serviceStr = RequestData.getServiceById(service["serviceId"])["title"]
+            statusStr = "Pending" if service["status"] == 1 else "Done"
+            
+            self.serviceTable.setItem(row, 0, QtWidgets.QTableWidgetItem(serviceStr))
+            self.serviceTable.setItem(row, 1, QtWidgets.QTableWidgetItem(service["createdAt"]))
+            self.serviceTable.setItem(row, 2, QtWidgets.QTableWidgetItem(statusStr))
+            row += 1
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-    widget = BookingDetails(bookingId=1, order=1)
+    widget = BookingDetails(bookingId=3)
     widget.show()
     sys.exit(app.exec_())
