@@ -91,7 +91,7 @@ class Checking(QtWidgets.QWidget):
         if self.status == 1:
             self.data = RequestData.getBookings(clientName=self.clientName, checkinDate=self.dateStr, status=self.status)
         elif self.status == 2:
-            self.data = RequestData.getBookings(clentName=self.clientName, checkoutDate=self.dateStr, status=self.status)
+            self.data = RequestData.getBookings(clientName=self.clientName, checkoutDate=self.dateStr, status=self.status)
         self.addDataToTable()
 
 if __name__ == "__main__":
