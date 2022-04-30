@@ -117,5 +117,19 @@ class RequestData:
 
         return result
 
+    def checkin(bookingId: int):
+        with open(DATAPATH + "bookings.json", "r") as f:
+            bookings = json.load(f)
+        for booking in bookings:
+            if booking["id"] == id:
+                booking["status"] = 2
+                return
+    def checkout(bookingId: int):
+        with open(DATAPATH + "bookings.json", "r") as f:
+            bookings = json.load(f)
+        for booking in bookings:
+            if booking["id"] == id:
+                booking["status"] = 3
+                return
 if __name__ == "__main__":
     print(RequestData.getServiceById(1))

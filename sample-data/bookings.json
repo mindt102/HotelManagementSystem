@@ -2238,7 +2238,7 @@
         "checkinDate": "2022-04-28",
         "checkoutDate": "2022-05-04",
         "checkinTime": "10:35:34",
-        "checkoutTime": "12:38:11",
+        "checkoutTime": "",
         "createdAt": "2022-03-28",
         "status": 2,
         "roomNumber": 204
@@ -2418,7 +2418,7 @@
         "checkinDate": "2022-04-29",
         "checkoutDate": "2022-05-05",
         "checkinTime": "11:14:15",
-        "checkoutTime": "12:37:37",
+        "checkoutTime": "",
         "createdAt": "2022-03-30",
         "status": 2,
         "roomNumber": 806
@@ -2430,7 +2430,7 @@
         "checkinDate": "2022-04-29",
         "checkoutDate": "2022-05-05",
         "checkinTime": "11:27:25",
-        "checkoutTime": "12:58:29",
+        "checkoutTime": "",
         "createdAt": "2022-04-01",
         "status": 2,
         "roomNumber": 903
@@ -2442,7 +2442,7 @@
         "checkinDate": "2022-04-29",
         "checkoutDate": "2022-05-05",
         "checkinTime": "12:22:52",
-        "checkoutTime": "12:32:46",
+        "checkoutTime": "",
         "createdAt": "2022-03-24",
         "status": 2,
         "roomNumber": 201
@@ -2454,7 +2454,7 @@
         "checkinDate": "2022-04-29",
         "checkoutDate": "2022-05-04",
         "checkinTime": "12:12:40",
-        "checkoutTime": "14:49:57",
+        "checkoutTime": "",
         "createdAt": "2022-03-30",
         "status": 2,
         "roomNumber": 701
@@ -2466,7 +2466,7 @@
         "checkinDate": "2022-04-29",
         "checkoutDate": "2022-05-04",
         "checkinTime": "11:57:35",
-        "checkoutTime": "12:42:16",
+        "checkoutTime": "",
         "createdAt": "2022-03-29",
         "status": 2,
         "roomNumber": 205
@@ -2514,7 +2514,7 @@
         "checkinDate": "2022-04-30",
         "checkoutDate": "2022-05-05",
         "checkinTime": "11:45:33",
-        "checkoutTime": "14:44:57",
+        "checkoutTime": "",
         "createdAt": "2022-03-30",
         "status": 2,
         "roomNumber": 900
@@ -2538,7 +2538,7 @@
         "checkinDate": "2022-04-30",
         "checkoutDate": "2022-05-05",
         "checkinTime": "10:15:21",
-        "checkoutTime": "14:52:58",
+        "checkoutTime": "",
         "createdAt": "2022-03-26",
         "status": 2,
         "roomNumber": 409
@@ -2550,7 +2550,7 @@
         "checkinDate": "2022-04-30",
         "checkoutDate": "2022-05-05",
         "checkinTime": "12:57:41",
-        "checkoutTime": "12:54:36",
+        "checkoutTime": "",
         "createdAt": "2022-04-01",
         "status": 2,
         "roomNumber": 904
@@ -2574,7 +2574,7 @@
         "checkinDate": "2022-04-30",
         "checkoutDate": "2022-05-04",
         "checkinTime": "11:20:39",
-        "checkoutTime": "12:25:24",
+        "checkoutTime": "",
         "createdAt": "2022-04-04",
         "status": 2,
         "roomNumber": 203
@@ -2586,7 +2586,7 @@
         "checkinDate": "2022-04-30",
         "checkoutDate": "2022-05-06",
         "checkinTime": "11:29:24",
-        "checkoutTime": "13:40:24",
+        "checkoutTime": "",
         "createdAt": "2022-04-03",
         "status": 2,
         "roomNumber": 404
@@ -2610,7 +2610,7 @@
         "checkinDate": "2022-04-30",
         "checkoutDate": "2022-05-05",
         "checkinTime": "11:28:58",
-        "checkoutTime": "13:38:28",
+        "checkoutTime": "",
         "createdAt": "2022-04-04",
         "status": 2,
         "roomNumber": 905
@@ -2646,7 +2646,7 @@
         "checkinDate": "2022-05-01",
         "checkoutDate": "2022-05-05",
         "checkinTime": "10:37:40",
-        "checkoutTime": "13:32:52",
+        "checkoutTime": "",
         "createdAt": "2022-04-02",
         "status": 2,
         "roomNumber": 207
@@ -2670,7 +2670,7 @@
         "checkinDate": "2022-05-01",
         "checkoutDate": "2022-05-05",
         "checkinTime": "10:10:35",
-        "checkoutTime": "14:11:40",
+        "checkoutTime": "",
         "createdAt": "2022-04-02",
         "status": 2,
         "roomNumber": 209
@@ -2694,7 +2694,7 @@
         "checkinDate": "2022-05-01",
         "checkoutDate": "2022-05-04",
         "checkinTime": "10:53:20",
-        "checkoutTime": "14:46:59",
+        "checkoutTime": "",
         "createdAt": "2022-03-25",
         "status": 2,
         "roomNumber": 405
@@ -2706,7 +2706,7 @@
         "checkinDate": "2022-05-01",
         "checkoutDate": "2022-05-05",
         "checkinTime": "10:12:44",
-        "checkoutTime": "12:58:30",
+        "checkoutTime": "",
         "createdAt": "2022-04-05",
         "status": 2,
         "roomNumber": 706
@@ -2718,7 +2718,7 @@
         "checkinDate": "2022-05-01",
         "checkoutDate": "2022-05-05",
         "checkinTime": "11:59:30",
-        "checkoutTime": "14:16:38",
+        "checkoutTime": "",
         "createdAt": "2022-03-28",
         "status": 2,
         "roomNumber": 303
@@ -2730,7 +2730,7 @@
         "checkinDate": "2022-05-01",
         "checkoutDate": "2022-05-04",
         "checkinTime": "11:31:14",
-        "checkoutTime": "12:31:46",
+        "checkoutTime": "",
         "createdAt": "2022-03-27",
         "status": 2,
         "roomNumber": 400
@@ -2742,7 +2742,7 @@
         "checkinDate": "2022-05-01",
         "checkoutDate": "2022-05-06",
         "checkinTime": "11:15:33",
-        "checkoutTime": "13:42:41",
+        "checkoutTime": "",
         "createdAt": "2022-04-05",
         "status": 2,
         "roomNumber": 708
@@ -2754,7 +2754,7 @@
         "checkinDate": "2022-05-01",
         "checkoutDate": "2022-05-07",
         "checkinTime": "10:40:12",
-        "checkoutTime": "14:29:26",
+        "checkoutTime": "",
         "createdAt": "2022-04-02",
         "status": 2,
         "roomNumber": 401
@@ -2790,7 +2790,7 @@
         "checkinDate": "2022-05-02",
         "checkoutDate": "2022-05-05",
         "checkinTime": "10:43:12",
-        "checkoutTime": "13:32:34",
+        "checkoutTime": "",
         "createdAt": "2022-04-01",
         "status": 2,
         "roomNumber": 305
@@ -2802,7 +2802,7 @@
         "checkinDate": "2022-05-02",
         "checkoutDate": "2022-05-05",
         "checkinTime": "10:47:15",
-        "checkoutTime": "14:40:27",
+        "checkoutTime": "",
         "createdAt": "2022-04-01",
         "status": 2,
         "roomNumber": 506
@@ -2814,7 +2814,7 @@
         "checkinDate": "2022-05-02",
         "checkoutDate": "2022-05-08",
         "checkinTime": "12:33:45",
-        "checkoutTime": "13:37:13",
+        "checkoutTime": "",
         "createdAt": "2022-03-29",
         "status": 2,
         "roomNumber": 507
@@ -2826,7 +2826,7 @@
         "checkinDate": "2022-05-02",
         "checkoutDate": "2022-05-08",
         "checkinTime": "11:38:26",
-        "checkoutTime": "12:37:33",
+        "checkoutTime": "",
         "createdAt": "2022-04-05",
         "status": 2,
         "roomNumber": 604
@@ -2838,7 +2838,7 @@
         "checkinDate": "2022-05-02",
         "checkoutDate": "2022-05-08",
         "checkinTime": "10:23:33",
-        "checkoutTime": "13:20:58",
+        "checkoutTime": "",
         "createdAt": "2022-03-28",
         "status": 2,
         "roomNumber": 805
@@ -2874,7 +2874,7 @@
         "checkinDate": "2022-05-02",
         "checkoutDate": "2022-05-08",
         "checkinTime": "11:59:30",
-        "checkoutTime": "12:11:10",
+        "checkoutTime": "",
         "createdAt": "2022-03-26",
         "status": 2,
         "roomNumber": 606
@@ -2898,7 +2898,7 @@
         "checkinDate": "2022-05-02",
         "checkoutDate": "2022-05-05",
         "checkinTime": "12:22:38",
-        "checkoutTime": "13:15:50",
+        "checkoutTime": "",
         "createdAt": "2022-04-06",
         "status": 2,
         "roomNumber": 607
@@ -2910,7 +2910,7 @@
         "checkinDate": "2022-05-02",
         "checkoutDate": "2022-05-05",
         "checkinTime": "10:43:44",
-        "checkoutTime": "13:37:29",
+        "checkoutTime": "",
         "createdAt": "2022-04-00",
         "status": 2,
         "roomNumber": 700
@@ -2922,7 +2922,7 @@
         "checkinDate": "2022-05-02",
         "checkoutDate": "2022-05-05",
         "checkinTime": "11:14:18",
-        "checkoutTime": "14:13:50",
+        "checkoutTime": "",
         "createdAt": "2022-03-27",
         "status": 2,
         "roomNumber": 906
@@ -2934,7 +2934,7 @@
         "checkinDate": "2022-05-02",
         "checkoutDate": "2022-05-05",
         "checkinTime": "12:44:37",
-        "checkoutTime": "14:31:21",
+        "checkoutTime": "",
         "createdAt": "2022-04-02",
         "status": 2,
         "roomNumber": 901
@@ -2946,7 +2946,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-04",
         "checkinTime": "12:33:22",
-        "checkoutTime": "13:26:12",
+        "checkoutTime": "",
         "createdAt": "2022-04-03",
         "status": 2,
         "roomNumber": 301
@@ -2958,7 +2958,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-09",
         "checkinTime": "12:10:49",
-        "checkoutTime": "12:24:44",
+        "checkoutTime": "",
         "createdAt": "2022-04-01",
         "status": 2,
         "roomNumber": 306
@@ -2970,7 +2970,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-04",
         "checkinTime": "12:27:59",
-        "checkoutTime": "13:58:24",
+        "checkoutTime": "",
         "createdAt": "2022-03-28",
         "status": 2,
         "roomNumber": 406
@@ -2982,7 +2982,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-06",
         "checkinTime": "10:45:36",
-        "checkoutTime": "12:38:17",
+        "checkoutTime": "",
         "createdAt": "2022-04-01",
         "status": 2,
         "roomNumber": 208
@@ -2994,7 +2994,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-04",
         "checkinTime": "10:56:59",
-        "checkoutTime": "12:12:44",
+        "checkoutTime": "",
         "createdAt": "2022-03-29",
         "status": 2,
         "roomNumber": 308
@@ -3006,7 +3006,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-07",
         "checkinTime": "12:32:39",
-        "checkoutTime": "12:45:18",
+        "checkoutTime": "",
         "createdAt": "2022-04-02",
         "status": 2,
         "roomNumber": 309
@@ -3018,7 +3018,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-06",
         "checkinTime": "11:17:32",
-        "checkoutTime": "13:19:31",
+        "checkoutTime": "",
         "createdAt": "2022-04-06",
         "status": 2,
         "roomNumber": 702
@@ -3030,7 +3030,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-07",
         "checkinTime": "12:20:23",
-        "checkoutTime": "12:31:42",
+        "checkoutTime": "",
         "createdAt": "2022-04-07",
         "status": 2,
         "roomNumber": 705
@@ -3042,7 +3042,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-04",
         "checkinTime": "10:35:18",
-        "checkoutTime": "14:53:21",
+        "checkoutTime": "",
         "createdAt": "2022-03-28",
         "status": 2,
         "roomNumber": 407
@@ -3054,7 +3054,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-07",
         "checkinTime": "11:31:23",
-        "checkoutTime": "13:59:45",
+        "checkoutTime": "",
         "createdAt": "2022-03-28",
         "status": 2,
         "roomNumber": 504
@@ -3066,7 +3066,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-04",
         "checkinTime": "11:12:54",
-        "checkoutTime": "13:45:35",
+        "checkoutTime": "",
         "createdAt": "2022-03-29",
         "status": 2,
         "roomNumber": 800
@@ -3078,7 +3078,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-05",
         "checkinTime": "12:13:31",
-        "checkoutTime": "13:27:48",
+        "checkoutTime": "",
         "createdAt": "2022-04-07",
         "status": 2,
         "roomNumber": 402
@@ -3090,7 +3090,7 @@
         "checkinDate": "2022-05-03",
         "checkoutDate": "2022-05-05",
         "checkinTime": "12:57:35",
-        "checkoutTime": "12:14:37",
+        "checkoutTime": "",
         "createdAt": "2022-04-04",
         "status": 2,
         "roomNumber": 408
@@ -3101,8 +3101,8 @@
         "clientNumber": "0903669776",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-05",
-        "checkinTime": "11:17:53",
-        "checkoutTime": "12:18:11",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-04-03",
         "status": 1,
         "roomNumber": 807
@@ -3113,8 +3113,8 @@
         "clientNumber": "0907567823",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-08",
-        "checkinTime": "11:44:10",
-        "checkoutTime": "13:59:17",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-04-07",
         "status": 1,
         "roomNumber": 200
@@ -3125,8 +3125,8 @@
         "clientNumber": "0984751106",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-10",
-        "checkinTime": "12:25:59",
-        "checkoutTime": "14:27:22",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-04-07",
         "status": 1,
         "roomNumber": 202
@@ -3137,8 +3137,8 @@
         "clientNumber": "0956236023",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-09",
-        "checkinTime": "12:47:55",
-        "checkoutTime": "14:30:16",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-03-29",
         "status": 1,
         "roomNumber": 808
@@ -3149,8 +3149,8 @@
         "clientNumber": "0932961843",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-07",
-        "checkinTime": "10:27:54",
-        "checkoutTime": "14:50:33",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-03-28",
         "status": 1,
         "roomNumber": 300
@@ -3161,8 +3161,8 @@
         "clientNumber": "0941202368",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-07",
-        "checkinTime": "12:34:39",
-        "checkoutTime": "12:39:22",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-03-29",
         "status": 1,
         "roomNumber": 809
@@ -3173,8 +3173,8 @@
         "clientNumber": "0969623292",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-07",
-        "checkinTime": "11:37:21",
-        "checkoutTime": "13:34:46",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-04-07",
         "status": 1,
         "roomNumber": 707
@@ -3185,8 +3185,8 @@
         "clientNumber": "0938992290",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-07",
-        "checkinTime": "11:42:16",
-        "checkoutTime": "14:47:51",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-04-08",
         "status": 1,
         "roomNumber": 206
@@ -3197,8 +3197,8 @@
         "clientNumber": "0970114030",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-07",
-        "checkinTime": "11:30:54",
-        "checkoutTime": "12:12:19",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-04-05",
         "status": 1,
         "roomNumber": 302
@@ -3209,8 +3209,8 @@
         "clientNumber": "0914316811",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-09",
-        "checkinTime": "10:56:27",
-        "checkoutTime": "13:25:18",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-04-06",
         "status": 1,
         "roomNumber": 508
@@ -3221,8 +3221,8 @@
         "clientNumber": "0936010047",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-07",
-        "checkinTime": "11:27:46",
-        "checkoutTime": "14:38:59",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-04-07",
         "status": 1,
         "roomNumber": 801
@@ -3233,8 +3233,8 @@
         "clientNumber": "0952967016",
         "checkinDate": "2022-05-04",
         "checkoutDate": "2022-05-08",
-        "checkinTime": "12:11:41",
-        "checkoutTime": "14:14:15",
+        "checkinTime": "",
+        "checkoutTime": "",
         "createdAt": "2022-03-29",
         "status": 1,
         "roomNumber": 802

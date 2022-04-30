@@ -18,25 +18,41 @@ class Checking(QtWidgets.QWidget):
 
     def initTitle(self):
         _translate = QtCore.QCoreApplication.translate
-        statusStr = "Reservation" if self.status == 0 else "Guests"
+        statusStr = "Reservation" if self.status == 1 else "Guests"
         self.pageTitleLabel.setText(_translate("Form", statusStr))
     
     def initCheckButton(self):
         _translate = QtCore.QCoreApplication.translate
 
-        if self.status == 0:
+        if self.status == 1:
             self.checkBtn.setText(_translate("Form", "CHECK IN"))
-        elif self.status == 1:
+            
+        elif self.status == 2:
             self.checkBtn.setText(_translate("Form", "CHECK OUT"))
-        self.checkBtn.clicked.connect(self.showBookingDetails)
+        self.checkBtn.clicked.connect(self.updateStatus)
 
     def getSelectedBookingId(self):
-        print(self.tableWidget.currentRow())
+        if (self.tableWidget.currentRow() == -1):
+            return
         return self.data[self.tableWidget.currentRow()]["id"]
 
-    #Event of button
-    def showBookingDetails(self):
+    def updateStatus(self):
         bookingId = self.getSelectedBookingId()
+        if self.status == 1:
+            RequestData.checkin()
+        elif self.status == 2:
+            RequestData.checkout()
+        self.loadTable()
+        self.showBookingDetails(bookingId)
+
+    #Event of button
+    def showBookingDetails(self, bookingId):
+        if not bookingId:
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Critical)
+            msg.setText("You have to choose a row first")
+            msg.setWindowTitle("Error")
+            msg.exec_()
         self.bookingDetails = BookingDetails(bookingId)
         self.bookingDetails.show()
 
@@ -47,9 +63,9 @@ class Checking(QtWidgets.QWidget):
 
         table.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
 
-        self.loadCheckinTable()
+        self.loadTable()
 
-    def loadTable(self, table, columns: list[str]):
+    def addDataToTable(self, table, columns: list[str]):
         table.setRowCount(len(self.data))
         
         row = 0
@@ -59,14 +75,14 @@ class Checking(QtWidgets.QWidget):
                     table.setItem(row, i, QtWidgets.QTableWidgetItem(str(item[columns[i]])))
                 row += 1
 
-    def loadCheckinTable(self):
+    def loadTable(self):
         dateStr = datetime.datetime.today().strftime("%Y-%m-%d")
-        if self.status == 0:
+        if self.status == 1:
             self.data = RequestData.getBookings(checkinDate=dateStr, status=self.status, sortBy="checkinTime")
-            self.loadTable(self.tableWidget, ["clientName", "clientNumber", "roomNumber", "checkinTime"])
-        elif self.status == 1:
+            self.addDataToTable(self.tableWidget, ["clientName", "clientNumber", "roomNumber", "checkinTime"])
+        elif self.status == 2:
             self.data = RequestData.getBookings(checkoutDate=dateStr, status=self.status, sortBy="checkoutTime")
-            self.loadTable(self.tableWidget, ["clientName", "clientNumber", "roomNumber", "checkoutTime"])
+            self.addDataToTable(self.tableWidget, ["clientName", "clientNumber", "roomNumber", "checkoutTime"])
             
 
 if __name__ == "__main__":
