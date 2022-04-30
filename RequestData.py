@@ -48,6 +48,15 @@ class RequestData:
                     data = booking
                     break
         return data
+    def getBookingServiceByOrderID(orderId: int) -> dict:
+        order = {
+            "orderId": 1,
+            "bookingId": 7,
+            "serviceId": 4,
+            "createdAt": "2022-04-16T10:47:14Z",
+            "updatedAt": "2022-04-16T12:27:11Z"
+        }
+        return order
     
     def getTotalCheckinByDate(date: str) -> int:
         return random.randint(8, 15)
