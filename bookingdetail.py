@@ -17,31 +17,33 @@ from RequestData import RequestData
 class BookingDetails(QtWidgets.QWidget):
     def __init__(self, bookingId, *args, **kwargs):
         super(BookingDetails, self).__init__(*args, **kwargs)
+        self.setWindowTitle("Details")
         self.bookingId = bookingId
         loadUi("bookingdetail.ui", self)
         self.loadData()
+        self.initBtn()
+        
         # self.loadService()
 
     def loadData(self):
-        data = RequestData.getBookingById(self.bookingId)
-        # data["services"] = RequestData.getServicesByBookingId(self.bookingId)
+        self.booking = RequestData.getBookingById(self.bookingId)
+        # self.booking["services"] = RequestData.getServicesByBookingId(self.bookingId)
         
         _translate = QtCore.QCoreApplication.translate
         
-        # self.clientBookingIDLabel.setText(_translate("Booking", f"{data['id']}"))
-        self.clientNameLabel.setText(_translate("BookingDetails", f"{data['clientName']}"))
-        self.phoneNumberLabel.setText(_translate("BookingDetails", f"{data['clientNumber']}"))
-        self.clientCheckInLabel.setText(_translate("BookingDetails", f"{data['checkinDate']}"))
-        self.clientCheckOutLabel.setText(_translate("BookingDetails", f"{data['checkoutDate']}"))
-        roomTypeStr = RequestData.getRoomTypeByRoomNumber(data["roomNumber"])
+        # self.clientBookingIDLabel.setText(_translate("Booking", f"{self.booking['id']}"))
+        self.clientNameLabel.setText(_translate("BookingDetails", f"{self.booking['clientName']}"))
+        self.phoneNumberLabel.setText(_translate("BookingDetails", f"{self.booking['clientNumber']}"))
+        self.clientCheckInLabel.setText(_translate("BookingDetails", f"{self.booking['checkinDate']}"))
+        self.clientCheckOutLabel.setText(_translate("BookingDetails", f"{self.booking['checkoutDate']}"))
+        roomTypeStr = RequestData.getRoomTypeByRoomNumber(self.booking["roomNumber"])
         self.bedTypeLabel.setText(_translate("BookingDetails", roomTypeStr))
-        self.billLabel.setText(_translate("BookingDetails", f"${RequestData.getRevenueByBookingId(data['id'])}"))
-        print(roomTypeStr)
+        self.billLabel.setText(_translate("BookingDetails", f"${RequestData.getRevenueByBookingId(self.booking['id'])}"))
         self.loadService()
 
     def loadService(self):
-        services = RequestData.getServicesByBookingId(self.bookingId)
-        # print(services)
+        self.services = RequestData.getServicesByBookingId(self.bookingId)
+
         header = self.serviceTable.horizontalHeader()       
         header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
@@ -49,14 +51,9 @@ class BookingDetails(QtWidgets.QWidget):
 
 
         row = 0
-        self.serviceTable.setRowCount(len(services))
+        self.serviceTable.setRowCount(len(self.services))
 
-        for service in services:
-            print()
-            print(service["status"])
-            print(service["createdAt"])
-
-        # rowPosition = self.clientTableService.setRowCount(self.order)
+        for service in self.services:
             serviceStr = RequestData.getServiceById(service["serviceId"])["title"]
             statusStr = "Pending" if service["status"] == 1 else "Done"
             
@@ -65,6 +62,20 @@ class BookingDetails(QtWidgets.QWidget):
             self.serviceTable.setItem(row, 2, QtWidgets.QTableWidgetItem(statusStr))
             row += 1
 
+    def initBtn(self):
+        status = self.booking["status"]
+        _translate = QtCore.QCoreApplication.translate
+        if status == 1:
+            btnText = "CHECK IN"
+            btnFunc = lambda: RequestData.checkin(self.bookingId) 
+        elif status == 2:
+            btnText = "CHECK OUT"
+            btnFunc = lambda: RequestData.checkout(self.bookingId) 
+        else:
+            btnText = "DONE"
+            btnFunc = lambda: self.close()
+        self.btn.setText(btnText)
+        self.btn.clicked.connect(btnFunc)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

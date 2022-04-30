@@ -149,6 +149,7 @@ class RequestData:
         for booking in bookings:
             if booking["id"] == id:
                 booking["status"] = 2
+                print(booking)
                 return
     
     def checkout(bookingId: int):
@@ -157,6 +158,7 @@ class RequestData:
         for booking in bookings:
             if booking["id"] == id:
                 booking["status"] = 3
+                print(booking)
                 return
 if __name__ == "__main__":
     print(RequestData.getServiceById(1))

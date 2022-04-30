@@ -24,10 +24,10 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_5">
    <property name="spacing">
-    <number>50</number>
+    <number>30</number>
    </property>
    <property name="bottomMargin">
-    <number>100</number>
+    <number>70</number>
    </property>
    <item>
     <widget class="QFrame" name="frame">
@@ -40,9 +40,13 @@
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <widget class="QLabel" name="label_21">
+        <property name="font">
+         <font>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
-         <string notr="true">font-size: 30px;
-color: #3f4773</string>
+         <string notr="true">color: #3f4773</string>
         </property>
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;h1 align=&quot;center&quot; style=&quot; margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:xx-large; font-weight:700;&quot;&gt;BOOKING DETAIL&lt;/span&gt;&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -76,6 +80,9 @@ color: #3f4773</string>
       <number>0</number>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
+      <property name="spacing">
+       <number>40</number>
+      </property>
       <item>
        <widget class="QFrame" name="frame_5">
         <property name="frameShape">
@@ -626,7 +633,7 @@ background-color: white;
        <widget class="QPushButton" name="btn">
         <property name="font">
          <font>
-          <pointsize>-1</pointsize>
+          <pointsize>15</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -639,7 +646,6 @@ background-color: white;
 {
   	border-style: none;
 	color: white;
-	font-size: 20px;
 	font-weight: bold;
 	background-color: #3f4773;
 	border-radius: 25;
