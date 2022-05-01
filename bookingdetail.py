@@ -1,14 +1,7 @@
 # This Python file uses the following encoding: utf-8
 from pathlib import Path
 import sys
-
-#PySide2.QtWidgets   QApplication,QWidget,
-#PySide2.QtCore
-#PySide2.QtUiTools
-        
 from PyQt5 import QtWidgets, QtCore
-#from PyQt5 import QFile
-#from PyQt5 import QUiLoader
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.uic import loadUi
 
@@ -27,11 +20,9 @@ class BookingDetails(QtWidgets.QWidget):
 
     def loadData(self):
         self.booking = RequestData.getBookingById(self.bookingId)
-        # self.booking["services"] = RequestData.getServicesByBookingId(self.bookingId)
         
         _translate = QtCore.QCoreApplication.translate
         
-        # self.clientBookingIDLabel.setText(_translate("Booking", f"{self.booking['id']}"))
         self.clientNameLabel.setText(_translate("BookingDetails", f"{self.booking['clientName']}"))
         self.phoneNumberLabel.setText(_translate("BookingDetails", f"{self.booking['clientNumber']}"))
         self.clientCheckInLabel.setText(_translate("BookingDetails", f"{self.booking['checkinDate']}"))
@@ -42,7 +33,7 @@ class BookingDetails(QtWidgets.QWidget):
         self.loadService()
 
     def loadService(self):
-        self.services = RequestData.getServicesByBookingId(self.bookingId)
+        self.services = RequestData.getServiceOrdersByBookingId(self.bookingId)
 
         header = self.serviceTable.horizontalHeader()       
         header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)

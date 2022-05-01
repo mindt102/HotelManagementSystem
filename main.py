@@ -8,6 +8,8 @@ from checking import Checking
 from const import *
 import sys
 
+from service import Services
+
 class MainWindow(QtWidgets.QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -102,7 +104,7 @@ class MainWindow(QtWidgets.QWidget):
         self.revenue.setObjectName("revenue")
     
     def initServices(self):
-        self.services = Example()
+        self.services = Services()
         self.services.setObjectName("services")
         
     

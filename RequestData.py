@@ -2,6 +2,7 @@ from const import *
 import random
 import json
 import requests
+import datetime
 
 class RequestData:
     # Room Type
@@ -38,15 +39,41 @@ class RequestData:
         # res = requests.get(f"{URL}/services/{serviceId}")
         # return res.json()
 
-    def getServicesByBookingId(bookingId: int) -> list:
+    def getServiceOrdersByBookingId(bookingId: int) -> list:
         results = []
         with open(DATAPATH + "serviceOrders.json", "r", encoding="utf8") as f:
-            services = json.load(f)
-            for service in services:
-                if service["bookingId"] == bookingId:
-                    results.append(service)
+            orders = json.load(f)
+            for order in orders:
+                if order["bookingId"] == bookingId:
+                    results.append(order)
         return results
 
+    def getServiceOrdersByDate(date: str) -> list:
+        results = []
+        with open(DATAPATH + "serviceOrders.json", "r", encoding="utf8") as f:
+            orders = json.load(f)
+            for order in orders:
+                if date in order["createdAt"]:
+                    results.append(order)
+        return results       
+
+    def createServiceOrder(orderData: dict):
+        print(orderData)
+        return
+
+    def finishServiceOrder(orderId: int):
+        return
+
+    def getTodayOrdersByStatus(status: int) -> list:
+        todayDateString = datetime.datetime.today().strftime("%Y-%m-%d")
+        with open(DATAPATH + "serviceOrders.json", "r", encoding="utf8") as f:
+            orders = json.load(f)
+        result = []
+        for order in orders:
+            if todayDateString in order["createdAt"] and order["status"] == status:
+                result.append(order)
+        return result
+        
     # Booking
     def createBooking(bookingData: dict) -> int:
         print(bookingData)
@@ -62,15 +89,6 @@ class RequestData:
                     data = booking
                     break
         return data
-    def getBookingServiceByOrderID(orderId: int) -> dict:
-        order = {
-            "orderId": 1,
-            "bookingId": 7,
-            "serviceId": 4,
-            "createdAt": "2022-04-16T10:47:14Z",
-            "updatedAt": "2022-04-16T12:27:11Z"
-        }
-        return order
     
     def getTotalCheckinByDate(date: str) -> int:
         return random.randint(8, 15)

@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.uic import loadUi
 from bookingdetail import BookingDetails
 from RequestData import RequestData
@@ -27,9 +27,11 @@ class Checking(QtWidgets.QWidget):
 
         if self.status == 1:
             self.checkBtn.setText(_translate("Form", "CHECK IN"))
+            self.checkBtn.setIcon(QtGui.QIcon('.\images\in-32.png'))
             
         elif self.status == 2:
             self.checkBtn.setText(_translate("Form", "CHECK OUT"))
+            self.checkBtn.setIcon(QtGui.QIcon('.\images\out-32.png'))
         self.checkBtn.clicked.connect(self.updateStatus)
 
     def getSelectedBookingId(self):

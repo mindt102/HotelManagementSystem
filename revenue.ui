@@ -205,6 +205,9 @@
               <property name="selectionBehavior">
                <enum>QAbstractItemView::SelectRows</enum>
               </property>
+              <property name="sortingEnabled">
+               <bool>true</bool>
+              </property>
               <attribute name="horizontalHeaderDefaultSectionSize">
                <number>160</number>
               </attribute>
@@ -270,7 +273,7 @@
        <widget class="QPushButton" name="detailsBtn">
         <property name="font">
          <font>
-          <pointsize>-1</pointsize>
+          <pointsize>12</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -280,10 +283,9 @@
 {
   	border-style: none;
 	color: white;
-	font-size: 20px;
 	font-weight: bold;
 	background-color: #3f4773;
-	border-radius: 10;
+	border-radius: 15;
 	padding: 15;
 }
 QPushButton:hover

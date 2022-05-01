@@ -306,6 +306,13 @@
          </item>
          <item>
           <widget class="QTabWidget" name="roomTypeTabWidget">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: #f0f0f0;</string>
            </property>
