@@ -66,7 +66,7 @@ class Checking(QtWidgets.QWidget):
             return
         self.bookingDetails = BookingDetails(bookingId)
         self.bookingDetails.show()
-
+        self.bookingDetails.btn.clicked.connect(self.reloadTable)
     def initTables(self):
         self.dateStr = "2022-05-04"
         self.clientName = ""

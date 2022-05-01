@@ -175,7 +175,7 @@ class RequestData:
         with open(DATAPATH + "bookings.json", "r") as f:
             bookings = json.load(f)
         for booking in bookings:
-            if booking["id"] == id:
+            if booking["id"] == bookingId:
                 booking["status"] = 2
                 print(booking)
                 return
@@ -184,7 +184,7 @@ class RequestData:
         with open(DATAPATH + "bookings.json", "r") as f:
             bookings = json.load(f)
         for booking in bookings:
-            if booking["id"] == id:
+            if booking["id"] == bookingId:
                 booking["status"] = 3
                 print(booking)
                 return

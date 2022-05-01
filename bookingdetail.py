@@ -58,18 +58,35 @@ class BookingDetails(QtWidgets.QWidget):
 
     def initBtn(self):
         status = self.booking["status"]
-        _translate = QtCore.QCoreApplication.translate
         if status == 1:
             btnText = "CHECK IN"
-            btnFunc = lambda: RequestData.checkin(self.bookingId) 
+            btnFunc = self.checkinHandler
         elif status == 2:
             btnText = "CHECK OUT"
-            btnFunc = lambda: RequestData.checkout(self.bookingId) 
+            btnFunc = lambda:  self.checkoutHandler
         else:
             btnText = "DONE"
-            btnFunc = lambda: self.close()
+            btnFunc = lambda: self.close
         self.btn.setText(btnText)
         self.btn.clicked.connect(btnFunc)
+    
+    def checkinHandler(self):
+        RequestData.checkin(self.bookingId)
+        msg = QtWidgets.QMessageBox()
+        msg.setIcon(QtWidgets.QMessageBox.Information)
+        msg.setText("Check in successfully")
+        msg.setWindowTitle("Success")
+        msg.exec_()
+        self.close()
+
+    def checkoutHandler(self):
+        RequestData.checkout(self.bookingId)
+        msg = QtWidgets.QMessageBox()
+        msg.setIcon(QtWidgets.QMessageBox.Information)
+        msg.setText("Check out successfully")
+        msg.setWindowTitle("Success")
+        msg.exec_()
+        self.close()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
