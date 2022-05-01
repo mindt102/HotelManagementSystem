@@ -154,10 +154,10 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         description.setText(_translate("Form", roomData["description"]))
 
         serviceInfo = ""
-        if len(roomData["promoServices"]) == 0:
+        if len(roomData["promo"]) == 0:
             serviceInfo = "None"
         else:
-            for serviceId in roomData["promoServices"]:
+            for serviceId in roomData["promo"]:
                 sv = RequestData.getServiceById(serviceId)
                 serviceInfo += sv["title"] + ", "   
             serviceInfo = serviceInfo[:-2]

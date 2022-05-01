@@ -5,7 +5,7 @@
         "area": 37,
         "description": "A room assigned to one person. May have one or more beds.",
         "price": 50,
-        "promoServices": []
+        "promo": []
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
         "area": 45,
         "description": "A room assigned to two person. May have one or more beds.",
         "price": 80,
-        "promoServices": []
+        "promo": []
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@
         "area": 65,
         "description": "A room that can accommodate three persons and has been fitted with three twin beds, one double bed and one twin bed or two double beds.",
         "price": 120,
-        "promoServices": []
+        "promo": []
     },
     {
         "id": 4,
@@ -29,7 +29,7 @@
         "area": 50,
         "description": "A room with a queen-sized bed. May be occupied by one or more people.",
         "price": 150,
-        "promoServices": [1, 2]
+        "promo": [1, 2]
     },
     {
         "id": 5,
@@ -37,7 +37,7 @@
         "area": 50,
         "description": "A room with a king-sized bed. May be occupied by one or more people.",
         "price": 150,
-        "promoServices": [1, 2]
+        "promo": [1, 2]
     },
     {
         "id": 6,
@@ -45,7 +45,7 @@
         "area": 40,
         "description": "A room with two twin beds. May be occupied by one or more people.",
         "price": 200,
-        "promoServices": [1, 2]
+        "promo": [1, 2]
     },
     {
         "id": 7,
@@ -53,7 +53,7 @@
         "area": 70,
         "description": "A Room with two double ( or perhaps queen) beds. And can accommodate two to four persons with two twin, double or queen-size beds.",
         "price": 230,
-        "promoServices": [1, 2]
+        "promo": [1, 2]
     },
     {
         "id": 8,
@@ -61,7 +61,7 @@
         "area": 80,
         "description": "A single room with a bed and sitting area. Sometimes the sleeping area is in a bedroom separate from the parlour or living room.",
         "price": 300,
-        "promoServices": [1, 2, 3, 4, 5]
+        "promo": [1, 2, 3, 4, 5]
     },
     {
         "id": 9,
@@ -69,6 +69,6 @@
         "area": 300,
         "description": "A president suite always has one or more bedrooms and a living space with a strong emphasis on grand in-room decoration, high-quality amenities and supplies, and tailor-made services.",
         "price": 500,
-        "promoServices": [1, 2, 3, 4, 5]
+        "promo": [1, 2, 3, 4, 5]
     }
 ]
