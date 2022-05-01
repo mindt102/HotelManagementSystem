@@ -3,7 +3,6 @@ from dashboard import Dashboard
 from booking import Booking
 from navbar import NavBar
 from revenue import Revenue
-from example import Example
 from checking import Checking
 from const import *
 import sys
@@ -109,7 +108,10 @@ class MainWindow(QtWidgets.QWidget):
         
     
 if __name__ == "__main__":
+    from login import Login
+
     app = QtWidgets.QApplication(sys.argv)
-    widget = MainWindow()
-    widget.show()
+    loginWidget = Login()
+    loginWidget.show()
+
     sys.exit(app.exec_())

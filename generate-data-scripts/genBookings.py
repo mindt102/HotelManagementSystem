@@ -187,10 +187,10 @@ if __name__ == "__main__":
         names = list(map(str.strip,f.readlines()))
     
     genFirst50Bookings()
-    simulate(15, 4, 18)
+    simulate(15, 4, 16)
 
-    with open(DATAPATH + "bookings.json", "w") as f:
+    with open(DATAPATH + "02-05-test-bookings.json", "w") as f:
         json.dump(bookings, f)
 
-    with open(DATAPATH + "serviceOrders.json", "w") as f:
+    with open(DATAPATH + "02-05-test-serviceOrders.json", "w") as f:
         json.dump(orders, f)
