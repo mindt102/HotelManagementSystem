@@ -109,7 +109,10 @@ class MainWindow(QtWidgets.QWidget):
         
     
 if __name__ == "__main__":
+    from login import Login
+
     app = QtWidgets.QApplication(sys.argv)
-    widget = MainWindow()
-    widget.show()
+    loginWidget = Login()
+    loginWidget.show()
+
     sys.exit(app.exec_())
