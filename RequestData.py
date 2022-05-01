@@ -4,6 +4,7 @@ import json
 import requests
 import datetime
 
+
 class RequestData:
     # Room Type
     def getRoomTypeById(typeId) -> str:
@@ -12,10 +13,10 @@ class RequestData:
             data = r.json()
             if data['isError'] is False:
                 return data['data']
-            return {"type":""}
+            return {"type": ""}
         except:
-            return {"type":""}
-    
+            return {"type": ""}
+
     def getRoomTypeByRoomNumber(roomNumber: int) -> str:
         roomRes = requests.get(f"{URL}/rooms/{str(roomNumber)}")
         roomData = roomRes.json()
@@ -33,7 +34,8 @@ class RequestData:
 
     def getAvailableRoomByTypeId(roomTypeId: int) -> int:
         try:
-            r = requests.get(f"{URL}/roomTypes/getAvailable?typeId={str(roomTypeId)}")
+            r = requests.get(
+                f"{URL}/roomTypes/getAvailable?typeId={str(roomTypeId)}")
             data = r.json()
             if data['isError'] is False:
                 return data['data']
@@ -41,8 +43,8 @@ class RequestData:
         except:
             return 0
 
-
     # Service
+
     def getServiceById(serviceId: int) -> dict:
         res = requests.get(f"{URL}/services/{serviceId}")
         return res.json()
@@ -57,14 +59,8 @@ class RequestData:
         return results
 
     def getServiceOrdersByDate(date: str) -> list:
-        results = []
-        with open(DATAPATH + "serviceOrders.json", "r", encoding="utf8") as f:
-            orders = json.load(f)
-            for order in orders:
-                if date in order["createdAt"]:
-                    results.append(order)
-        print(results)
-        return results       
+        r = requests.get(f"{URL}/services/getByDate?date=2022-05-01")
+        return r.json()
 
     def createServiceOrder(orderData: dict):
         print(orderData)
@@ -82,7 +78,7 @@ class RequestData:
             if todayDateString in order["createdAt"] and order["status"] == status:
                 result.append(order)
         return result
-        
+
     # Booking
     def createBooking(bookingData: dict) -> int:
         newBooking = {
@@ -90,18 +86,18 @@ class RequestData:
             "clientNumber": bookingData["clientNumber"],
             "checkInDate": bookingData["checkinDate"],
             "checkOutDate": bookingData["checkoutDate"],
-            "roomType":bookingData['roomType']
+            "roomType": bookingData['roomType']
         }
-        r = requests.post(f"{URL}/bookings/create",json=newBooking)
+        r = requests.post(f"{URL}/bookings/create", json=newBooking)
         if r.status_code == 200:
             bookingList = requests.get(f"{URL}/bookings").json()['data']
-            bookingId = max(list(map(lambda x:x["id"], bookingList)))
+            bookingId = max(list(map(lambda x: x["id"], bookingList)))
             return bookingId
 
     def getBookingById(bookingId: int) -> dict:
         r = requests.get(f"{URL}/bookings/{str(bookingId)}")
         return r.json()['data']
-    
+
     def getTotalCheckinByDate(date: str) -> int:
         return random.randint(8, 15)
 
@@ -116,12 +112,12 @@ class RequestData:
 
     def getUpcomingArrivals() -> list:
         with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
-            data = json.load(f) 
+            data = json.load(f)
         return data
 
     def getUpcomingDeparture() -> list:
         with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
-            data = json.load(f) 
+            data = json.load(f)
         return data
 
     # Return a list of revenues from each booking that check out in a specific day
@@ -171,17 +167,16 @@ class RequestData:
                     result.append(booking)
         except:
             pass
-        
+
         return result
 
     def checkin(bookingId: int):
         requests.put(f"{URL}/bookings/{str(bookingId)}/checkin")
-        return 
+        return
 
-    
     def checkout(bookingId: int):
         requests.put(f"{URL}/bookings/{str(bookingId)}/checkout")
-        return 
+        return
 
     def login(username: str, password: str) -> dict:
         user = {
@@ -200,6 +195,7 @@ class RequestData:
         return {
             "isError": True
         }
+
 
 if __name__ == "__main__":
     print(RequestData.getServiceById(1))
