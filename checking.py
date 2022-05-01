@@ -68,7 +68,7 @@ class Checking(QtWidgets.QWidget):
         self.bookingDetails.show()
         self.bookingDetails.btn.clicked.connect(self.reloadTable)
     def initTables(self):
-        self.dateStr = "2022-05-04"
+        self.dateStr = datetime.datetime.today().strftime("%Y-%m-%d")
         self.clientName = ""
 
         header = self.tableWidget.horizontalHeader()       

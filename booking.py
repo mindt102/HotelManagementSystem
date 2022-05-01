@@ -25,8 +25,13 @@ class Booking(QtWidgets.QWidget, Ui_Form):
     def initTabWidget(self):
         for data in RequestData.getAllRoomType():
             self.addRoomTypeDetails(data)
-        self.clearTabWidget()
+        self.clearTabWidget(2)
 
+    def reloadTabWidget(self):
+        for data in RequestData.getAllRoomType():
+            self.addRoomTypeDetails(data)
+        self.clearTabWidget(10)
+    
     def initButtons(self):
         self.cancelBtn.clicked.connect(self.cancelHandler)
         self.bookBtn.clicked.connect(self.bookHandler)
@@ -36,8 +41,8 @@ class Booking(QtWidgets.QWidget, Ui_Form):
 
     def bookHandler(self):
         bookingId = RequestData.createBooking(self.getInput())
+        self.reloadTabWidget()
         self.resetInputs()
-
         self.bookingDetails = BookingDetails(bookingId)
         self.bookingDetails.show()
 
@@ -63,8 +68,8 @@ class Booking(QtWidgets.QWidget, Ui_Form):
     def getSelectedRoomType(self) -> int:
         return self.roomTypeTabWidget.currentIndex() + 1
 
-    def clearTabWidget(self):
-        for _ in range(2):
+    def clearTabWidget(self, numWidgets):
+        for _ in range(numWidgets):
             self.roomTypeTabWidget.removeTab(0)
     
     def addRoomTypeDetails(self, roomData: dict):

@@ -2,4 +2,4 @@ CONTENT_WIDTH=1480
 WINDOW_HEIGHT=930
 NAVBAR_WIDTH=260
 DATAPATH = "./sample-data/"
-URL="http://localhost:3000"
+URL="http://1.53.21.154:3000"
