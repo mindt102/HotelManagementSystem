@@ -29,7 +29,10 @@ class BookingDetails(QtWidgets.QWidget):
         self.clientCheckOutLabel.setText(_translate("BookingDetails", f"{self.booking['checkoutDate']}"))
         roomTypeStr = RequestData.getRoomTypeByRoomNumber(self.booking["roomNumber"])
         self.bedTypeLabel.setText(_translate("BookingDetails", roomTypeStr))
-        self.billLabel.setText(_translate("BookingDetails", f"${RequestData.getRevenueByBookingId(self.booking['id'])}"))
+        if self.booking["status"] == 3:
+            self.billLabel.setText(_translate("BookingDetails", f"${RequestData.getRevenueByBookingId(self.booking['id'])}"))
+        else:
+            self.billLabel.setText(_translate("BookingDetails", ""))
         self.loadService()
 
     def loadService(self):

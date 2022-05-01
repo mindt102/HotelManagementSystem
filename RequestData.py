@@ -76,7 +76,17 @@ class RequestData:
         
     # Booking
     def createBooking(bookingData: dict) -> int:
-        print(bookingData)
+        # with open(DATAPATH + "bookings.json", "r+") as f:
+        #     bookings = json.load(f)
+        # bookingId = len(bookings) + 1
+        # newBooking = {
+        #     "id": bookingId,
+        #     "clientName": bookingData["clientName"],
+        #     "clientNumber": bookingData["clientNumber"],
+        #     "checkinDate": bookingData["checkinDate"],
+        #     "checkoutDate": bô
+        # }
+        # print(bookingData)
         bookingId = random.randint(1, 200)
         return bookingId
 

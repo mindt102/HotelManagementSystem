@@ -53,8 +53,8 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         result = {
             "clientName": name,
             "clientNumber": phoneNumber,
-            "checkInDate": checkInDate,
-            "checkOutDate": checkOutDate,
+            "checkinDate": checkInDate,
+            "checkoutDate": checkOutDate,
             "roomType": self.getSelectedRoomType()
         }
         
