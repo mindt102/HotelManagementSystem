@@ -63,10 +63,10 @@ class BookingDetails(QtWidgets.QWidget):
             btnFunc = self.checkinHandler
         elif status == 2:
             btnText = "CHECK OUT"
-            btnFunc = lambda:  self.checkoutHandler
+            btnFunc = self.checkoutHandler
         else:
             btnText = "DONE"
-            btnFunc = lambda: self.close
+            btnFunc = lambda: self.close()
         self.btn.setText(btnText)
         self.btn.clicked.connect(btnFunc)
     
