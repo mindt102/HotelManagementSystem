@@ -51,7 +51,7 @@ def bookRoom(checkinDate: str, checkoutDate: str, bookDateTime: str, status: int
     roomType = randomRoomType()
     roomNumber = getAvailableRoom(roomType, checkinDate, checkoutDate)
     if not roomNumber:
-        print(f"No available room of type {roomType}")
+        # print(f"No available room of type {roomType}")
         return
     booked[roomType - 1] += 1
     bookings.append({
@@ -67,7 +67,7 @@ def bookRoom(checkinDate: str, checkoutDate: str, bookDateTime: str, status: int
         "roomNumber": roomNumber
     })
     bookingId += 1
-    print(f"Types: {booked}")
+    # print(f"Types: {booked}")
 
 def genName() -> str:
     return random.choice(names)
@@ -117,14 +117,14 @@ def checkDate(date: str):
                 orderService(book["id"], random.randint(1, 5), date)
                 serv += 1
         
-    print(f"""
-========================
-Date: {date}
-Occupied: {occupied}
-Arrival: {arrival}
-Departure: {departure}
-Orders: {serv}
-Types: {booked}""")
+#     print(f"""
+# ========================
+# Date: {date}
+# Occupied: {occupied}
+# Arrival: {arrival}
+# Departure: {departure}
+# Orders: {serv}
+# Types: {booked}""")
 
 def simulateOneDay(day: int, month: int):
     date = toDateString(day, month)

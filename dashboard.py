@@ -74,7 +74,8 @@ class Dashboard(QtWidgets.QWidget):
             dBut.setSizePolicy(butSP)
     
     def loadBookingInfo(self, bookingId):
-        print(bookingId)
+        # print(bookingId)
+        pass
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
