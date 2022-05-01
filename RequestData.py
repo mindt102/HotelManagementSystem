@@ -63,6 +63,7 @@ class RequestData:
             for order in orders:
                 if date in order["createdAt"]:
                     results.append(order)
+        print(results)
         return results       
 
     def createServiceOrder(orderData: dict):
