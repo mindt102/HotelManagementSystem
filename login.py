@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
+from RequestData import RequestData
 from const import *
 from main import MainWindow
 import login_qrc
@@ -14,11 +15,6 @@ class Login(QtWidgets.QWidget):
         # self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
     
     def authenticate(self):
-        user = {
-            "username": "abc",
-            "password": "123"
-
-        }
         username = self.username.text()
         password = self.password.text()
 
@@ -27,7 +23,8 @@ class Login(QtWidgets.QWidget):
 
         print(self.username.text())
         print(self.password.text())
-        if ( username == user["username"] and password == user["password"]):
+        res = RequestData.login(username=username, password=password)
+        if (not res["isError"]):
             self.close()
             widget = MainWindow()
             widget.show()

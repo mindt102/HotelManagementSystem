@@ -188,5 +188,23 @@ class RequestData:
                 booking["status"] = 3
                 print(booking)
                 return
+
+    def login(username: str, password: str) -> dict:
+        user = {
+            "username": "abc",
+            "password": "123"
+
+        }
+        if username == user["username"] and password == user["password"]:
+            return {
+                "isError": False,
+                "data": {
+                    "firstName": "Minh",
+                    "lastName": "Duong"
+                }
+            }
+        return {
+            "isError": True
+        }
 if __name__ == "__main__":
     print(RequestData.getServiceById(1))

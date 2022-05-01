@@ -3,7 +3,6 @@ from dashboard import Dashboard
 from booking import Booking
 from navbar import NavBar
 from revenue import Revenue
-from example import Example
 from checking import Checking
 from const import *
 import sys
