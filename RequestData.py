@@ -59,14 +59,20 @@ class RequestData:
         return results
 
     def getServiceOrdersByDate(date: str) -> list:
-        r = requests.get(f"{URL}/services/getByDate?date=2022-05-01")
+        r = requests.get(f"{URL}/services/getByDate?date={date}")
         return r.json()
 
     def createServiceOrder(orderData: dict):
-        print(orderData)
+        reqData = {
+            "serviceId":orderData['serviceId'],
+            'roomNumber': int(orderData['roomNumber']),
+            "note":orderData['note'],
+        }
+        requests.post(f"{URL}/services/create", json=reqData)
         return
 
     def finishServiceOrder(orderId: int):
+        requests.put(f"{URL}/services/finish/{str(orderId)}")
         return
 
     def getTodayOrdersByStatus(status: int) -> list:
