@@ -113,65 +113,65 @@ class RequestData:
         # return random.randint(8, 15)
 
     def getTotalCheckoutByDate(date: str) -> int:
-        # r = requests.get(f"{URL}/bookings/checkout/byDate/count?date={date}")
-        # return int(r.text)
-        return random.randint(8, 15)
+        r = requests.get(f"{URL}/bookings/checkout/byDate/count?date={date}")
+        return int(r.text)
+        # return random.randint(8, 15)
 
     def getTotalBookingByDate(date: str) -> int:
-        # r = requests.get(f"{URL}/bookings/byDate/count?date={date}")
-        # return int(r.text)
-        return random.randint(8, 15)
+        r = requests.get(f"{URL}/bookings/byDate/count?date={date}")
+        return int(r.text)
+        # return random.randint(8, 15)
 
     def getTotalRevenueByDate(date: str) -> int:
-        # r = requests.get(f"{URL}/revenue/booking?date={date}")
-        # return int(r.text)
-        return random.randint(800, 1500)
+        r = requests.get(f"{URL}/revenue/booking/total?date={date}")
+        return int(r.text)
+        # return random.randint(800, 1500)
 
     def getUpcomingArrivals() -> list:
-        # r = requests.get(f"{URL}/bookings/upcoming/arrivals")
-        # return int(r.json())
+        r = requests.get(f"{URL}/bookings/upcoming/arrivals")
+        return r.json()
         
-        with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
-            data = json.load(f)
-        return data
+        # with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
+        #     data = json.load(f)
+        # return data
 
     def getUpcomingDeparture() -> list:
-        # r = requests.get(f"{URL}/bookings/upcoming/departure")
-        # return int(r.text)
+        r = requests.get(f"{URL}/bookings/upcoming/departure")
+        return r.json()
         
-        with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
-            data = json.load(f)
-        return data
+        # with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
+        #     data = json.load(f)
+        # return data
 
     # Return a list of revenues from each booking that check out in a specific day
     def getRevenueByDate(date: str) -> list:
-        # r = requests.get(f"{URL}/revenue/booking?date={date}")
-        # return r.json()
-        bookingsByDate = []
-        with open(DATAPATH + "bookings.json", "r") as f:
-            bookings = json.load(f)
-            for booking in bookings:
-                if booking["checkoutDate"] == date and booking["status"] == 3:
-                    bookingsByDate.append(booking)
-        revenuesByDate = []
+        r = requests.get(f"{URL}/revenue/booking?date={date}")
+        return r.json()
+        # bookingsByDate = []
+        # with open(DATAPATH + "bookings.json", "r") as f:
+        #     bookings = json.load(f)
+        #     for booking in bookings:
+        #         if booking["checkoutDate"] == date and booking["status"] == 3:
+        #             bookingsByDate.append(booking)
+        # revenuesByDate = []
 
-        for booking in bookingsByDate:
-            revenue = {
-                "bookingId": booking["id"],
-                "clientName": booking["clientName"],
-                "roomNumber": booking["roomNumber"],
-                "roomFee": random.randint(300, 500),
-                "serviceFee": random.randint(100, 300),
-            }
-            revenue["totalBill"] = revenue["roomFee"] + revenue["serviceFee"]
-            revenuesByDate.append(revenue)
-        return revenuesByDate
+        # for booking in bookingsByDate:
+        #     revenue = {
+        #         "bookingId": booking["id"],
+        #         "clientName": booking["clientName"],
+        #         "roomNumber": booking["roomNumber"],
+        #         "roomFee": random.randint(300, 500),
+        #         "serviceFee": random.randint(100, 300),
+        #     }
+        #     revenue["totalBill"] = revenue["roomFee"] + revenue["serviceFee"]
+        #     revenuesByDate.append(revenue)
+        # return revenuesByDate
 
     def getRevenueByBookingId(bookingId: int) -> int:
-        # r = requests.get(f"{URL}/revenue/booking/{bookingId}")
-        # return int(r.text)
+        r = requests.get(f"{URL}/revenue/booking/{bookingId}")
+        return int(r.text)
         
-        return random.randint(400, 800)
+        # return random.randint(400, 800)
 
     # Return a list of booking based on status and date, sort by checkinTime or checkoutTime
     def getBookings(clientName: str = None, checkoutDate: str = None, checkinDate: str = None, status: int = None) -> list:

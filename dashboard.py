@@ -54,10 +54,10 @@ class Dashboard(QtWidgets.QWidget):
         for i in range(1, 6):
             infos = data[i - 1]
             
-            bookingId = infos["bookingId"]
+            bookingId = infos["id"]
             name = infos["clientName"]
-            checkinTime = datetime.datetime.fromisoformat(infos["checkinTime"].replace("Z", "+00:00")).strftime("%d %b")
-            checkoutTime = datetime.datetime.fromisoformat(infos["checkoutTime"].replace("Z", "+00:00")).strftime("%d %b")
+            checkinTime = datetime.datetime.fromisoformat(infos["checkinDate"]).strftime("%d %b")
+            checkoutTime = datetime.datetime.fromisoformat(infos["checkoutDate"]).strftime("%d %b")
             roomNum = infos["roomNumber"]
 
             dName = frame.findChild(QtWidgets.QLabel, prefix + f"Name_{i}")

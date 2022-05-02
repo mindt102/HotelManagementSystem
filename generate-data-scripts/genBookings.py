@@ -1,7 +1,10 @@
+from turtle import update
 from tqdm import trange
 from path import *
 import random
 import json
+
+CURR_TIME = "11:10:59"
 
 def getTypeIdFromRoomNumber(roomNumber: int) -> int:
     for room in rooms:
@@ -84,33 +87,71 @@ def genFirst50Bookings():
     # with open("first50bookings.json", "w") as f:
     #     json.dump(bookings, f)
 
-def orderService(bookingId: int, serviceId: int, date: str):
+def orderService(bookingId: int, serviceId: int, date: str, lastDay: bool = False):
     global orderId
-    orders.append({
-        "orderId": orderId,
-        "bookingId": bookingId,
-        "serviceId": serviceId,
-        "createdAt": f"{date}T{randomCheckinTime()}Z",
-        "updatedAt": f"{date}T{randomCheckoutTime()}Z"
-    })
+    if not lastDay:
+        orders.append({
+            "orderId": orderId,
+            "bookingId": bookingId,
+            "serviceId": serviceId,
+            "createdAt": f"{date}T{randomCheckinTime()}Z",
+            "updatedAt": f"{date}T{randomCheckoutTime()}Z",
+            "status": 2,
+            "note": ""
+        })
+    else:
+        timeA = randomCheckinTime()
+        timeB = randomCheckinTime()
+
+        createTime = min(timeA, timeB)
+        updateTime = max(timeA, timeB)
+
+        if updateTime < CURR_TIME:
+            status = 2
+        elif createTime < CURR_TIME < updateTime:
+            status = 1
+        else:
+            return
+        orders.append({
+            "orderId": orderId,
+            "bookingId": bookingId,
+            "serviceId": serviceId,
+            "createdAt": f"{date}T{createTime}Z",
+            "updatedAt": f"{date}T{updateTime}Z" if status == 2 else "",
+            "status": status,
+            "note": ""
+        })
     orderId += 1
 
-def checkDate(date: str):
+def checkDate(date: str, lastDay: bool = False):
     departure = 0
     arrival = 0
     occupied = 0
     serv = 0
     for book in bookings:
         if book["checkoutDate"] == date:
-            book["status"] = 3
-            book["checkoutTime"] = randomCheckoutTime()
-            departure += 1
-            booked[getTypeIdFromRoomNumber(book["roomNumber"]) - 1] -= 1
+            if not lastDay:
+                book["status"] = 3
+                book["checkoutTime"] = randomCheckoutTime()
+                departure += 1
+                booked[getTypeIdFromRoomNumber(book["roomNumber"]) - 1] -= 1
+            else:
+                checkoutTime = randomCheckinTime()
+                if checkoutTime < CURR_TIME:
+                    book["status"] = 3
+                    book["checkoutTime"] = randomCheckinTime()
+                    arrival += 1
         elif book["checkinDate"] == date:
-            book["status"] = 2
-            book["checkinTime"] = randomCheckinTime()
-            arrival += 1
-
+            if not lastDay:
+                book["status"] = 2
+                book["checkinTime"] = randomCheckinTime()
+                arrival += 1
+            else:
+                checkinTime = randomCheckinTime()
+                if checkinTime < CURR_TIME:
+                    book["status"] = 2
+                    book["checkinTime"] = randomCheckinTime()
+                    arrival += 1
         if book["status"] == 2:
             occupied += 1
             if random.randint(1, 10) <= 2:
@@ -127,6 +168,22 @@ def checkDate(date: str):
 # Types: {booked}""")
 
 def simulateOneDay(day: int, month: int):
+    date = toDateString(day, month)
+    checkDate(date, lastDay=True)
+    for _ in range(random.randint(10, 15)):
+        checkinDay, checkinMonth = fixDate(day+1, month)
+        checkinDate = toDateString(checkinDay, checkinMonth)
+
+        bookDay, bookMonth = fixDate(day - random.randint(-5, 5), month - 1)
+        bookDate = toDateString(bookDay, bookMonth)
+        bookDateTime = f"{bookDate}T{randomCheckinTime()}Z"
+
+        checkoutDay, checkoutMonth = fixDate(day + random.randint(2, 7), month)
+        checkoutDate = toDateString(checkoutDay, checkoutMonth)
+        
+        bookRoom(checkinDate, checkoutDate, bookDateTime)
+
+def simulateLastDay(day: int, month: int):
     date = toDateString(day, month)
     checkDate(date)
     for _ in range(random.randint(10, 15)):
@@ -163,12 +220,11 @@ def fixDate(day:int, month:int):
 def simulate(firstDay: int, firstMonth: int, duration: int):
     day = firstDay
     month = firstMonth
-    for _ in range(duration):
-        day += 1
-        day, month = fixDate(day, month)
-
+    for _ in range(duration-1):
         simulateOneDay(day, month)
-
+        day += 1
+        day, month = fixDate(day, month)    
+    simulateLastDay(day, month)
 if __name__ == "__main__":
     
     orders = []
@@ -187,10 +243,10 @@ if __name__ == "__main__":
         names = list(map(str.strip,f.readlines()))
     
     genFirst50Bookings()
-    simulate(15, 4, 16)
+    simulate(15, 4, 17)
 
-    with open(DATAPATH + "02-05-test-bookings.json", "w") as f:
+    with open(DATAPATH + "03-05-test-bookings.json", "w") as f:
         json.dump(bookings, f)
 
-    with open(DATAPATH + "02-05-test-serviceOrders.json", "w") as f:
+    with open(DATAPATH + "03-05-test-serviceOrders.json", "w") as f:
         json.dump(orders, f)
