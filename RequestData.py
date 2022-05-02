@@ -108,23 +108,23 @@ class RequestData:
         return r.json()['data']
 
     def getTotalCheckinByDate(date: str) -> int:
-        # r = requests.get(f"{URL}/bookings/checkin/byDate/count?date={date}")
-        # return int(r.text())
-        return random.randint(8, 15)
+        r = requests.get(f"{URL}/bookings/checkin/byDate/count?date={date}")
+        return int(r.text)
+        # return random.randint(8, 15)
 
     def getTotalCheckoutByDate(date: str) -> int:
         # r = requests.get(f"{URL}/bookings/checkout/byDate/count?date={date}")
-        # return int(r.text())
+        # return int(r.text)
         return random.randint(8, 15)
 
     def getTotalBookingByDate(date: str) -> int:
         # r = requests.get(f"{URL}/bookings/byDate/count?date={date}")
-        # return int(r.text())
+        # return int(r.text)
         return random.randint(8, 15)
 
     def getTotalRevenueByDate(date: str) -> int:
         # r = requests.get(f"{URL}/revenue/booking?date={date}")
-        # return int(r.text())
+        # return int(r.text)
         return random.randint(800, 1500)
 
     def getUpcomingArrivals() -> list:
@@ -137,7 +137,7 @@ class RequestData:
 
     def getUpcomingDeparture() -> list:
         # r = requests.get(f"{URL}/bookings/upcoming/departure")
-        # return int(r.text())
+        # return int(r.text)
         
         with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
             data = json.load(f)
@@ -169,7 +169,7 @@ class RequestData:
 
     def getRevenueByBookingId(bookingId: int) -> int:
         # r = requests.get(f"{URL}/revenue/booking/{bookingId}")
-        # return int(r.text())
+        # return int(r.text)
         
         return random.randint(400, 800)
 
