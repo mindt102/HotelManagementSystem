@@ -68,9 +68,6 @@ color: white;
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
@@ -134,9 +131,6 @@ padding: 12 10</string>
    </item>
    <item>
     <widget class="QFrame" name="frame_3">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
