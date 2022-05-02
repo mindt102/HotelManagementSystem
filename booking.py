@@ -9,6 +9,7 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         super(Booking, self).__init__(*args, **kwargs)
         loadUi("booking.ui", self)
         # self.roomSpinBoxes = []
+        self.services = RequestData.getServices()
         self.initTabWidget()
         self.initButtons()
         self.resetInputs()
@@ -163,7 +164,7 @@ class Booking(QtWidgets.QWidget, Ui_Form):
             serviceInfo = "None"
         else:
             for serviceId in roomData["promo"]:
-                sv = RequestData.getServiceById(serviceId)
+                sv = self.getServiceById(serviceId)
                 serviceInfo += sv["title"] + ", "   
             serviceInfo = serviceInfo[:-2]
         services.setText(_translate("Form", serviceInfo))
@@ -171,7 +172,10 @@ class Booking(QtWidgets.QWidget, Ui_Form):
         availroom.setText(_translate("Form", f"{RequestData.getAvailableRoomByTypeId(roomData['id'])} rooms"))
 
         self.roomTypeTabWidget.setTabText(self.roomTypeTabWidget.indexOf(roomWidget), _translate("Form", roomName))
-      
+    
+    def getServiceById(self, serviceId):
+        return self.services[serviceId - 1]
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

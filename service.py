@@ -9,11 +9,11 @@ class Services(QtWidgets.QWidget):
         loadUi("service.ui", self)
         
         self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
+        self.services = RequestData.getServices()
         self.initTabWidget()
         self.initBtns()
         self.initPendingTable()
         self.initHistoryTable()
-
         self.dateEdit.dateChanged.connect(self.reloadData)
 
 
@@ -65,7 +65,7 @@ class Services(QtWidgets.QWidget):
         self.pendingTable.setRowCount(len(self.pendingOrders))
         for i in range(len(self.pendingOrders)):
             order = self.pendingOrders[i]
-            serviceStr = RequestData.getServiceById(serviceId=order["serviceId"])["title"]
+            serviceStr = self.getServiceTitle(serviceId=order["serviceId"])
             orderTimeStr = order["createdAt"]
             statusStr = "Serving" if order["status"] == 1 else "Done"
             noteStr = order["note"]
@@ -104,7 +104,8 @@ class Services(QtWidgets.QWidget):
         self.historyTable.setRowCount(len(servicesByDate))
         for i in range(len(servicesByDate)):
             order = servicesByDate[i]
-            serviceStr = RequestData.getServiceById(serviceId=order["serviceId"])["title"]
+            # serviceStr = RequestData.getServiceById(serviceId=order["serviceId"])["title"]
+            serviceStr = self.getServiceTitle(serviceId=order["serviceId"])
             orderTimeStr = order["createdAt"].split("T")[1]
             # updateTimeStr = order["updatedAt"].split("T")[1]
             statusStr = "Serving" if order["status"] == 1 else "Done"
@@ -116,6 +117,9 @@ class Services(QtWidgets.QWidget):
             self.historyTable.setItem(row, 3, QtWidgets.QTableWidgetItem(statusStr))
             self.historyTable.setItem(row, 4, QtWidgets.QTableWidgetItem(noteStr))
             row += 1
+
+    def getServiceTitle(self, serviceId: int) -> str:
+        return self.services[serviceId - 1]["title"]
 
 
 if __name__ == "__main__":
