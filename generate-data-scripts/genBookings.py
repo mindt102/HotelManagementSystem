@@ -87,7 +87,7 @@ def genFirst50Bookings():
     # with open("first50bookings.json", "w") as f:
     #     json.dump(bookings, f)
 
-def orderService(bookingId: int, serviceId: int, date: str, lastDay: bool = False):
+def orderService(bookingId: int, serviceId: int, date: str, lastDay = False):
     global orderId
     if not lastDay:
         orders.append({
@@ -105,13 +105,13 @@ def orderService(bookingId: int, serviceId: int, date: str, lastDay: bool = Fals
 
         createTime = min(timeA, timeB)
         updateTime = max(timeA, timeB)
-
         if updateTime < CURR_TIME:
             status = 2
-        elif createTime < CURR_TIME < updateTime:
+        elif createTime < CURR_TIME:
             status = 1
         else:
             return
+        print(date, createTime, updateTime)
         orders.append({
             "orderId": orderId,
             "bookingId": bookingId,
@@ -154,10 +154,15 @@ def checkDate(date: str, lastDay: bool = False):
                     arrival += 1
         if book["status"] == 2:
             occupied += 1
-            if random.randint(1, 10) <= 2:
-                orderService(book["id"], random.randint(1, 5), date)
-                serv += 1
-        
+            if not lastDay:
+                if random.randint(1, 10) <= 2:
+                    orderService(book["id"], random.randint(1, 5), date, lastDay=lastDay)
+                    serv += 1
+            else:
+                if random.randint(1, 10) <= 4:
+                    orderService(book["id"], random.randint(1, 5), date, lastDay=lastDay)
+                    serv += 1
+
 #     print(f"""
 # ========================
 # Date: {date}
@@ -167,25 +172,9 @@ def checkDate(date: str, lastDay: bool = False):
 # Orders: {serv}
 # Types: {booked}""")
 
-def simulateOneDay(day: int, month: int):
+def simulateOneDay(day: int, month: int, lastDay= False):
     date = toDateString(day, month)
-    checkDate(date, lastDay=True)
-    for _ in range(random.randint(10, 15)):
-        checkinDay, checkinMonth = fixDate(day+1, month)
-        checkinDate = toDateString(checkinDay, checkinMonth)
-
-        bookDay, bookMonth = fixDate(day - random.randint(-5, 5), month - 1)
-        bookDate = toDateString(bookDay, bookMonth)
-        bookDateTime = f"{bookDate}T{randomCheckinTime()}Z"
-
-        checkoutDay, checkoutMonth = fixDate(day + random.randint(2, 7), month)
-        checkoutDate = toDateString(checkoutDay, checkoutMonth)
-        
-        bookRoom(checkinDate, checkoutDate, bookDateTime)
-
-def simulateLastDay(day: int, month: int):
-    date = toDateString(day, month)
-    checkDate(date)
+    checkDate(date, lastDay=lastDay)
     for _ in range(random.randint(10, 15)):
         checkinDay, checkinMonth = fixDate(day+1, month)
         checkinDate = toDateString(checkinDay, checkinMonth)
@@ -224,7 +213,8 @@ def simulate(firstDay: int, firstMonth: int, duration: int):
         simulateOneDay(day, month)
         day += 1
         day, month = fixDate(day, month)    
-    simulateLastDay(day, month)
+        print(day, month)
+    simulateOneDay(day, month, lastDay=True)
 if __name__ == "__main__":
     
     orders = []
@@ -243,7 +233,7 @@ if __name__ == "__main__":
         names = list(map(str.strip,f.readlines()))
     
     genFirst50Bookings()
-    simulate(15, 4, 17)
+    simulate(15, 4, 19) # 19 days from 15.04 to 03.05
 
     with open(DATAPATH + "03-05-test-bookings.json", "w") as f:
         json.dump(bookings, f)

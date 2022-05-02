@@ -40,18 +40,24 @@ class Revenue(QtWidgets.QWidget):
         self.data = RequestData.getRevenueByDate(self.date.toString("yyyy-MM-dd"))
         row = 0
         self.table_Revenue.setRowCount(len(self.data))
-        for i in range(len(self.data)):
+        for item in self.data:
             #self.table_Revenue.setItem(row, -1, QtWidgets.QTableWidgetItem(str(self.data[i]["booking id"])))
-            self.table_Revenue.setItem(row, 0, QtWidgets.QTableWidgetItem(self.data[i]["clientName"]))
-            self.table_Revenue.setItem(row, 1, QtWidgets.QTableWidgetItem(str(self.data[i]['roomNumber'])))
-            self.table_Revenue.setItem(row, 2, QtWidgets.QTableWidgetItem(str(self.data[i]['roomFee'])))
-            self.table_Revenue.setItem(row, 3, QtWidgets.QTableWidgetItem(str(self.data[i]['serviceFee'])))
-            self.table_Revenue.setItem(row, 4, QtWidgets.QTableWidgetItem(str(self.data[i]['totalBill'])))
+            self.table_Revenue.setItem(row, 0, QtWidgets.QTableWidgetItem(item["clientName"]))
+            self.table_Revenue.setItem(row, 1, QtWidgets.QTableWidgetItem(str(item['roomNumber'])))
+            self.table_Revenue.setItem(row, 2, QtWidgets.QTableWidgetItem(str(item['roomFee'])))
+            self.table_Revenue.setItem(row, 3, QtWidgets.QTableWidgetItem(str(item['serviceFee'])))
+            self.table_Revenue.setItem(row, 4, QtWidgets.QTableWidgetItem(str(item['totalBill'])))
+            
+            self.table_Revenue.item(row, 0).setData(QtCore.Qt.UserRole, item["bookingId"])
+            
             row = row + 1
         
     def getSelectedBookingId(self):
-        return self.data[self.table_Revenue.currentRow()]["bookingId"]
-
+        if (self.table_Revenue.currentRow() == -1):
+            return
+        selectedRow = self.table_Revenue.currentRow()
+        result = self.table_Revenue.item(selectedRow, 0).data(QtCore.Qt.UserRole)
+        return result
     #Event of button
     def showBookingDetails(self):
         bookingId = self.getSelectedBookingId()

@@ -226,4 +226,4 @@ class RequestData:
 
 
 if __name__ == "__main__":
-    print(RequestData.getServiceById(1))
+    print(RequestData.getUpcomingArrivals())

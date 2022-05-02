@@ -78,7 +78,7 @@
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <property name="iconSize">
       <size>
@@ -727,6 +727,11 @@ border-radius: 0;</string>
             </column>
             <column>
              <property name="text">
+              <string>Room Number</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
               <string>Status</string>
              </property>
             </column>
@@ -945,7 +950,7 @@ border-radius: 0;</string>
             </column>
             <column>
              <property name="text">
-              <string>Updated Time</string>
+              <string>Room Number</string>
              </property>
             </column>
             <column>

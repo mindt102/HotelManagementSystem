@@ -37,7 +37,10 @@ class Checking(QtWidgets.QWidget):
     def getSelectedBookingId(self):
         if (self.tableWidget.currentRow() == -1):
             return
-        return self.data[self.tableWidget.currentRow()]["id"]
+        selectedRow = self.tableWidget.currentRow()
+        result = self.tableWidget.item(selectedRow, 0).data(QtCore.Qt.UserRole)
+        return result
+        # return self.data[self.tableWidget.currentRow()]["id"]
 
     def updateStatus(self):
         bookingId = self.getSelectedBookingId()
@@ -65,8 +68,8 @@ class Checking(QtWidgets.QWidget):
             msg.exec_()
             return
         self.bookingDetails = BookingDetails(bookingId)
-        self.bookingDetails.show()
         self.bookingDetails.btn.clicked.connect(self.reloadTable)
+        self.bookingDetails.show()
     def initTables(self):
         self.dateStr = datetime.datetime.today().strftime("%Y-%m-%d")
         self.clientName = ""
@@ -83,12 +86,12 @@ class Checking(QtWidgets.QWidget):
         self.tableWidget.setRowCount(len(self.data))
         
         row = 0
-        for _ in range(len(self.data)):
-            for item in self.data:
-                for i in range(len(columns)):
-                    self.tableWidget.setItem(row, i, QtWidgets.QTableWidgetItem(str(item[columns[i]])))
-                row += 1
-
+        for item in self.data:
+            for i in range(len(columns)):
+                self.tableWidget.setItem(row, i, QtWidgets.QTableWidgetItem(str(item[columns[i]])))
+            self.tableWidget.item(row, 0).setData(QtCore.Qt.UserRole, item["id"])
+            row += 1
+            
     def reloadTable(self):
         if self.status == 1:
             self.data = RequestData.getBookings(clientName=self.clientName, checkinDate=self.dateStr, status=self.status)

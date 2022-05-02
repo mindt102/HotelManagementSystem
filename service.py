@@ -67,13 +67,17 @@ class Services(QtWidgets.QWidget):
             order = self.pendingOrders[i]
             serviceStr = self.getServiceTitle(serviceId=order["serviceId"])
             orderTimeStr = order["createdAt"]
+            roomNumStr = str(RequestData.getBookingById(order["bookingId"])["roomNumber"])
             statusStr = "Serving" if order["status"] == 1 else "Done"
             noteStr = order["note"]
 
             self.pendingTable.setItem(row, 0, QtWidgets.QTableWidgetItem(serviceStr))
             self.pendingTable.setItem(row, 1, QtWidgets.QTableWidgetItem(orderTimeStr))
-            self.pendingTable.setItem(row, 2, QtWidgets.QTableWidgetItem(statusStr))
-            self.pendingTable.setItem(row, 3, QtWidgets.QTableWidgetItem(noteStr))
+            self.pendingTable.setItem(row, 2, QtWidgets.QTableWidgetItem(roomNumStr))
+            self.pendingTable.setItem(row, 3, QtWidgets.QTableWidgetItem(statusStr))
+            self.pendingTable.setItem(row, 4, QtWidgets.QTableWidgetItem(noteStr))
+            self.pendingTable.item(row, 0).setData(QtCore.Qt.UserRole, order["orderId"])
+
             row += 1
 
     def getSelectedOrder(self) -> int:
@@ -85,8 +89,10 @@ class Services(QtWidgets.QWidget):
             msg.setWindowTitle("Error")
             msg.exec_()
             return -1
-        order = self.pendingOrders[selectedRow]
-        return order["orderId"]
+       
+        result = self.pendingTable.item(selectedRow, 0).data(QtCore.Qt.UserRole)
+        print(result)
+        return result
     
     def finishHandler(self):
         orderId = self.getSelectedOrder()
@@ -108,12 +114,13 @@ class Services(QtWidgets.QWidget):
             serviceStr = self.getServiceTitle(serviceId=order["serviceId"])
             orderTimeStr = order["createdAt"].split("T")[1]
             # updateTimeStr = order["updatedAt"].split("T")[1]
+            roomNumStr = str(RequestData.getBookingById(order["bookingId"])["roomNumber"])
             statusStr = "Serving" if order["status"] == 1 else "Done"
             noteStr = order["note"]
 
             self.historyTable.setItem(row, 0, QtWidgets.QTableWidgetItem(serviceStr))
             self.historyTable.setItem(row, 1, QtWidgets.QTableWidgetItem(orderTimeStr))
-            # self.historyTable.setItem(row, 2, QtWidgets.QTableWidgetItem(updateTimeStr))
+            self.historyTable.setItem(row, 2, QtWidgets.QTableWidgetItem(roomNumStr))
             self.historyTable.setItem(row, 3, QtWidgets.QTableWidgetItem(statusStr))
             self.historyTable.setItem(row, 4, QtWidgets.QTableWidgetItem(noteStr))
             row += 1
