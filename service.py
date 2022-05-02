@@ -105,14 +105,14 @@ class Services(QtWidgets.QWidget):
         for i in range(len(servicesByDate)):
             order = servicesByDate[i]
             serviceStr = RequestData.getServiceById(serviceId=order["serviceId"])["title"]
-            orderTimeStr = order["createdAt"][:-1].split("T")[1]
-            updateTimeStr = order["updatedAt"][:-1].split("T")[1]
+            orderTimeStr = order["createdAt"].split("T")[1]
+            # updateTimeStr = order["updatedAt"].split("T")[1]
             statusStr = "Serving" if order["status"] == 1 else "Done"
             noteStr = order["note"]
 
             self.historyTable.setItem(row, 0, QtWidgets.QTableWidgetItem(serviceStr))
             self.historyTable.setItem(row, 1, QtWidgets.QTableWidgetItem(orderTimeStr))
-            self.historyTable.setItem(row, 2, QtWidgets.QTableWidgetItem(updateTimeStr))
+            # self.historyTable.setItem(row, 2, QtWidgets.QTableWidgetItem(updateTimeStr))
             self.historyTable.setItem(row, 3, QtWidgets.QTableWidgetItem(statusStr))
             self.historyTable.setItem(row, 4, QtWidgets.QTableWidgetItem(noteStr))
             row += 1

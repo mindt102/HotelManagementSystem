@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from pip import main
 from dashboard import Dashboard 
 from booking import Booking
 from navbar import NavBar
@@ -6,6 +7,7 @@ from revenue import Revenue
 from checking import Checking
 from const import *
 import sys
+import datetime
 
 from service import Services
 
@@ -17,12 +19,9 @@ class MainWindow(QtWidgets.QWidget):
         self.initMainLayout()
         self.initStackedWidget()
         self.initNavBar()
+        self.initLogoutBtn()
 
         self.setFixedSize(CONTENT_WIDTH + NAVBAR_WIDTH, WINDOW_HEIGHT)
-
-        # self.page_2 = QtWidgets.QWidget()
-        # self.page_2.setObjectName("page_2")
-        # self.stackedWidget.addWidget(self.page_2)
 
         self.mainLayout.addWidget(self.stackedWidget)
     
@@ -72,9 +71,17 @@ class MainWindow(QtWidgets.QWidget):
         self.stackedWidget.currentChanged.connect(self.changeWidget)
 
     def changeWidget(self):
-        if self.stackedWidget.currentIndex() == 0:
+        currIndex = self.stackedWidget.currentIndex()
+        if currIndex == 0:
             self.dashboard.reload()
-
+        elif currIndex == 2:
+            self.checkin.reloadTable()
+        elif currIndex == 3:
+            self.checkout.reloadTable()
+        elif currIndex == 4:
+            self.revenue.calendarWidget.setSelectedDate(QtCore.QDate.currentDate())
+        elif currIndex == 5:
+            self.services.tabWidget.setCurrentIndex(0)
     def initDashboard(self):
         self.dashboard = Dashboard()
         self.dashboard.setObjectName("dashboard")
@@ -105,13 +112,17 @@ class MainWindow(QtWidgets.QWidget):
     def initServices(self):
         self.services = Services()
         self.services.setObjectName("services")
-        
+    
+    def initLogoutBtn(self):
+        self.close()
     
 if __name__ == "__main__":
     from login import Login
 
     app = QtWidgets.QApplication(sys.argv)
-    loginWidget = Login()
+    mainWindow = MainWindow()
+
+    loginWidget = Login(mainWindow=mainWindow)
     loginWidget.show()
 
     sys.exit(app.exec_())
