@@ -1,9 +1,9 @@
+from cgitb import text
+import re
 from const import *
-import random
 import json
 import requests
 import datetime
-
 
 class RequestData:
     # Room Type
@@ -53,13 +53,8 @@ class RequestData:
         return res.json()
 
     def getServiceOrdersByBookingId(bookingId: int) -> list:
-        results = []
-        with open(DATAPATH + "serviceOrders.json", "r", encoding="utf8") as f:
-            orders = json.load(f)
-            for order in orders:
-                if order["bookingId"] == bookingId:
-                    results.append(order)
-        return results
+        res = requests.get(f"{URL}/services/booking/{bookingId}")
+        return res.json()
 
     def getServiceOrdersByDate(date: str) -> list:
         r = requests.get(f"{URL}/services/getByDate?date={date}")
@@ -68,7 +63,7 @@ class RequestData:
     def createServiceOrder(orderData: dict):
         reqData = {
             "serviceId":orderData['serviceId'],
-            'roomNumber': int(orderData['roomNumber']),
+            "roomNumber": int(orderData['roomNumber']),
             "note":orderData['note'],
         }
         requests.post(f"{URL}/services/create", json=reqData)
@@ -101,6 +96,8 @@ class RequestData:
         if r.status_code == 200:
             bookingList = requests.get(f"{URL}/bookings").json()['data']
             bookingId = max(list(map(lambda x: x["id"], bookingList)))
+
+            # with open()
             return bookingId
 
     def getBookingById(bookingId: int) -> dict:
@@ -115,63 +112,31 @@ class RequestData:
     def getTotalCheckoutByDate(date: str) -> int:
         r = requests.get(f"{URL}/bookings/checkout/byDate/count?date={date}")
         return int(r.text)
-        # return random.randint(8, 15)
 
     def getTotalBookingByDate(date: str) -> int:
         r = requests.get(f"{URL}/bookings/byDate/count?date={date}")
         return int(r.text)
-        # return random.randint(8, 15)
 
     def getTotalRevenueByDate(date: str) -> int:
         r = requests.get(f"{URL}/revenue/booking/total?date={date}")
         return int(r.text)
-        # return random.randint(800, 1500)
 
     def getUpcomingArrivals() -> list:
         r = requests.get(f"{URL}/bookings/upcoming/arrivals")
         return r.json()
-        
-        # with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
-        #     data = json.load(f)
-        # return data
 
     def getUpcomingDeparture() -> list:
         r = requests.get(f"{URL}/bookings/upcoming/departure")
         return r.json()
-        
-        # with open(DATAPATH + "upcoming.json", "r", encoding="utf8") as f:
-        #     data = json.load(f)
-        # return data
 
     # Return a list of revenues from each booking that check out in a specific day
     def getRevenueByDate(date: str) -> list:
         r = requests.get(f"{URL}/revenue/booking?date={date}")
         return r.json()
-        # bookingsByDate = []
-        # with open(DATAPATH + "bookings.json", "r") as f:
-        #     bookings = json.load(f)
-        #     for booking in bookings:
-        #         if booking["checkoutDate"] == date and booking["status"] == 3:
-        #             bookingsByDate.append(booking)
-        # revenuesByDate = []
-
-        # for booking in bookingsByDate:
-        #     revenue = {
-        #         "bookingId": booking["id"],
-        #         "clientName": booking["clientName"],
-        #         "roomNumber": booking["roomNumber"],
-        #         "roomFee": random.randint(300, 500),
-        #         "serviceFee": random.randint(100, 300),
-        #     }
-        #     revenue["totalBill"] = revenue["roomFee"] + revenue["serviceFee"]
-        #     revenuesByDate.append(revenue)
-        # return revenuesByDate
 
     def getRevenueByBookingId(bookingId: int) -> int:
         r = requests.get(f"{URL}/revenue/booking/{bookingId}")
         return int(r.text)
-        
-        # return random.randint(400, 800)
 
     # Return a list of booking based on status and date, sort by checkinTime or checkoutTime
     def getBookings(clientName: str = None, checkoutDate: str = None, checkinDate: str = None, status: int = None) -> list:
@@ -208,10 +173,12 @@ class RequestData:
 
     def login(username: str, password: str) -> dict:
         user = {
-            "username": "abc",
-            "password": "123"
+            "username": username,
+            "password": password
 
         }
+        res = requests.post(f"{URL}/auth/login", json=user)
+        return res
         if username == user["username"] and password == user["password"]:
             return {
                 "isError": False,
@@ -226,4 +193,4 @@ class RequestData:
 
 
 if __name__ == "__main__":
-    print(RequestData.getUpcomingArrivals())
+    print(RequestData.login("mindt102", "123456aA@").json())

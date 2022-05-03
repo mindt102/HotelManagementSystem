@@ -11,7 +11,6 @@ class Checking(QtWidgets.QWidget):
         super(Checking, self).__init__(*args, **kwargs)
         loadUi("checking.ui", self)
         
-        self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
         self.status = status
         self.initTitle()
         self.initCheckButton()
@@ -46,15 +45,10 @@ class Checking(QtWidgets.QWidget):
         selectedRow = self.tableWidget.currentRow()
         result = self.tableWidget.item(selectedRow, 0).data(QtCore.Qt.UserRole)
         return result
-        # return self.data[self.tableWidget.currentRow()]["id"]
 
     def updateStatus(self):
         bookingId = self.getSelectedBookingId()
         self.showBookingDetails(bookingId)
-        # if self.status == 1:
-        #     RequestData.checkin(bookingId)
-        # elif self.status == 2:
-        #     RequestData.checkout(bookingId)
         self.reloadTable()
 
     def initSearchBtn(self):

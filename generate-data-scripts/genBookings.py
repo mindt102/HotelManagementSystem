@@ -87,12 +87,13 @@ def genFirst50Bookings():
     # with open("first50bookings.json", "w") as f:
     #     json.dump(bookings, f)
 
-def orderService(bookingId: int, serviceId: int, date: str, lastDay = False):
+def orderService(bookingId: int, serviceId: int, date: str, lastDay = False, roomNum=None):
     global orderId
     if not lastDay:
         orders.append({
             "orderId": orderId,
             "bookingId": bookingId,
+            # "roomNumber": roomNum,
             "serviceId": serviceId,
             "createdAt": f"{date}T{randomCheckinTime()}Z",
             "updatedAt": f"{date}T{randomCheckoutTime()}Z",
@@ -111,10 +112,10 @@ def orderService(bookingId: int, serviceId: int, date: str, lastDay = False):
             status = 1
         else:
             return
-        print(date, createTime, updateTime)
         orders.append({
             "orderId": orderId,
             "bookingId": bookingId,
+            # "roomNumber": roomNum,
             "serviceId": serviceId,
             "createdAt": f"{date}T{createTime}Z",
             "updatedAt": f"{date}T{updateTime}Z" if status == 2 else "",
@@ -156,11 +157,11 @@ def checkDate(date: str, lastDay: bool = False):
             occupied += 1
             if not lastDay:
                 if random.randint(1, 10) <= 2:
-                    orderService(book["id"], random.randint(1, 5), date, lastDay=lastDay)
+                    orderService(book["id"], random.randint(1, 5), date, lastDay=lastDay, roomNum=book["roomNumber"])
                     serv += 1
             else:
                 if random.randint(1, 10) <= 4:
-                    orderService(book["id"], random.randint(1, 5), date, lastDay=lastDay)
+                    orderService(book["id"], random.randint(1, 5), date, lastDay=lastDay, roomNum=book["roomNumber"])
                     serv += 1
 
 #     print(f"""
@@ -233,7 +234,7 @@ if __name__ == "__main__":
         names = list(map(str.strip,f.readlines()))
     
     genFirst50Bookings()
-    simulate(15, 4, 19) # 19 days from 15.04 to 03.05
+    simulate(15, 4, 20) # 19 days from 15.04 to 03.05
 
     with open(DATAPATH + "03-05-test-bookings.json", "w") as f:
         json.dump(bookings, f)

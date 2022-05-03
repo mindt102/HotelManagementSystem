@@ -11,9 +11,8 @@ class Login(QtWidgets.QWidget):
         loadUi("login.ui", self)
         self.setWindowTitle("Hotel Management System")
         self.loginBtn.clicked.connect(self.authenticate)
-        self.setFixedSize(935, 806)
+        self.setFixedSize(750, 700)
         self.mainWindow = mainWindow
-        # self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
     
     def authenticate(self):
         username = self.username.text()
@@ -23,7 +22,7 @@ class Login(QtWidgets.QWidget):
         self.password.setText("")
 
         res = RequestData.login(username=username, password=password)
-        if (not res["isError"]):
+        if ("message" not in res):
             self.close()
             self.mainWindow.show()
             self.mainWindow.navbar.signoutBtn.clicked.connect(self.signoutHandler)

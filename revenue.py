@@ -11,21 +11,18 @@ class Revenue(QtWidgets.QWidget):
     def __init__(self, *args, **kwargs):
         super(Revenue, self).__init__(*args, **kwargs)
         loadUi("revenue.ui", self)
-        self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
-        #set length of columns in table
-        self.table_Revenue.setColumnWidth(0,225)
-        self.table_Revenue.setColumnWidth(1,135)
-        self.table_Revenue.setColumnWidth(2,135)
-        self.table_Revenue.setColumnWidth(3,135)
-        self.table_Revenue.setColumnWidth(4,135)
 
+        self.initTable()
         self.reloadData()
 
         #Connect calendar to the function
         self.calendarWidget.selectionChanged.connect(self.reloadData)
         self.detailsBtn.clicked.connect(self.showBookingDetails)
 
-    
+    def initTable(self):
+        header = self.table_Revenue.horizontalHeader()       
+        header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
+
     def reloadData(self):
         _translate = QtCore.QCoreApplication.translate
 
@@ -34,14 +31,10 @@ class Revenue(QtWidgets.QWidget):
         self.loadData()
 
     def loadData(self):
-        # data = [{'booking id':'777' ,'name':"Cristiano Ronaldo",'room_num':201,'room_fee': 200, 'services_fee':200},
-        # {'booking id': '10','name': 'Lionel Messi', 'room_num':202,'room_fee':200,'services_fee':200},
-        # {'booking id': '9','name': 'Zlatan Imbrahimovic', 'room_num': 203, 'room_fee':400, 'services_fee': 450}]
         self.data = RequestData.getRevenueByDate(self.date.toString("yyyy-MM-dd"))
         row = 0
         self.table_Revenue.setRowCount(len(self.data))
         for item in self.data:
-            #self.table_Revenue.setItem(row, -1, QtWidgets.QTableWidgetItem(str(self.data[i]["booking id"])))
             self.table_Revenue.setItem(row, 0, QtWidgets.QTableWidgetItem(item["clientName"]))
             self.table_Revenue.setItem(row, 1, QtWidgets.QTableWidgetItem(str(item['roomNumber'])))
             self.table_Revenue.setItem(row, 2, QtWidgets.QTableWidgetItem(str(item['roomFee'])))
@@ -58,6 +51,7 @@ class Revenue(QtWidgets.QWidget):
         selectedRow = self.table_Revenue.currentRow()
         result = self.table_Revenue.item(selectedRow, 0).data(QtCore.Qt.UserRole)
         return result
+
     #Event of button
     def showBookingDetails(self):
         bookingId = self.getSelectedBookingId()

@@ -1,53 +1,47 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from pip import main
+from PyQt5 import QtCore, QtWidgets
 from dashboard import Dashboard 
+from checking import Checking
+from service import Services
+from revenue import Revenue
 from booking import Booking
 from navbar import NavBar
-from revenue import Revenue
-from checking import Checking
 from const import *
 import sys
-import datetime
-
-from service import Services
 
 class MainWindow(QtWidgets.QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setWindowTitle("Hotel Management System")
-
-        self.initMainLayout()
-        self.initStackedWidget()
+        self.setMinimumSize(CONTENT_WIDTH + NAVBAR_WIDTH, WINDOW_HEIGHT)
         self.initNavBar()
+        self.initStackedWidget()
+        self.initMainLayout()
+        self.initNavBarBtns()
         self.initLogoutBtn()
 
-        self.setFixedSize(CONTENT_WIDTH + NAVBAR_WIDTH, WINDOW_HEIGHT)
-
-        self.mainLayout.addWidget(self.stackedWidget)
-    
     def initMainLayout(self):
-        self.mainLayout = QtWidgets.QHBoxLayout(self)
+        self.mainLayout = QtWidgets.QGridLayout()
         self.mainLayout.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.mainLayout.setContentsMargins(0,0,0,0)
         self.mainLayout.setSpacing(0)
         self.mainLayout.setObjectName("mainLayout")
+        self.setLayout(self.mainLayout)
+        self.mainLayout.addWidget(self.navbar, 0, 0, 1, 2)
+        self.mainLayout.addWidget(self.stackedWidget, 0, 1, 1, 2)
 
     def initNavBar(self):
         self.navbar = NavBar()
-        self.mainLayout.addWidget(self.navbar)
-
+    
+    def initNavBarBtns(self):
         for i, btn in enumerate(self.navbar.findChildren(QtWidgets.QPushButton)):
             btn.clicked.connect(lambda t, i=i: self.loadPage(i))
 
     def loadPage(self, pageIndex):
-        # targetPage = self.stackedWidget.findChild(QtWidgets.QWidget,pageIndex)
         self.stackedWidget.setCurrentIndex(pageIndex)
 
 
     def initStackedWidget(self):
         self.stackedWidget = QtWidgets.QStackedWidget(self)
-
-        self.stackedWidget.setGeometry(QtCore.QRect(NAVBAR_WIDTH,0,CONTENT_WIDTH,WINDOW_HEIGHT))
         self.stackedWidget.setObjectName("stackedWidget")
 
         self.initDashboard()

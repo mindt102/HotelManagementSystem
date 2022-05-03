@@ -15,8 +15,6 @@ class BookingDetails(QtWidgets.QWidget):
         loadUi("bookingdetail.ui", self)
         self.loadData()
         self.initBtn()
-        
-        # self.loadService()
 
     def loadData(self):
         self.booking = RequestData.getBookingById(self.bookingId)
@@ -51,7 +49,6 @@ class BookingDetails(QtWidgets.QWidget):
         header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
 
         self.serviceTable.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-
 
         row = 0
         self.serviceTable.setRowCount(len(self.services))

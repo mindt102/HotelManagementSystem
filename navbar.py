@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 from const import *
 
@@ -7,7 +7,6 @@ class NavBar(QtWidgets.QWidget):
         super(NavBar, self).__init__(*args, **kwargs)
         loadUi("navbar.ui", self)
         self.setWindowTitle("Navbar")
-        self.setFixedSize(NAVBAR_WIDTH, WINDOW_HEIGHT)
         self.setButtonsHover()
 
     def setButtonsHover(self):
