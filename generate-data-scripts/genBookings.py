@@ -1,4 +1,3 @@
-from turtle import update
 from tqdm import trange
 from path import *
 import random
@@ -93,38 +92,36 @@ def orderService(bookingId: int, serviceId: int, date: str, lastDay = False, roo
         orders.append({
             "orderId": orderId,
             "bookingId": bookingId,
-            # "roomNumber": roomNum,
             "serviceId": serviceId,
             "createdAt": f"{date}T{randomCheckinTime()}Z",
-            "updatedAt": f"{date}T{randomCheckoutTime()}Z",
+            # "updatedAt": f"{date}T{randomCheckoutTime()}Z",
             "status": 2,
             "note": ""
         })
+        orderId += 1
     else:
-        timeA = randomCheckinTime()
-        timeB = randomCheckinTime()
+        # timeA = randomCheckinTime()
+        # timeB = randomCheckinTime()
 
-        createTime = min(timeA, timeB)
-        updateTime = max(timeA, timeB)
-        if updateTime < CURR_TIME:
-            status = 2
-        elif createTime < CURR_TIME:
-            status = 1
-        else:
-            return
-        orders.append({
-            "orderId": orderId,
-            "bookingId": bookingId,
-            # "roomNumber": roomNum,
-            "serviceId": serviceId,
-            "createdAt": f"{date}T{createTime}Z",
-            "updatedAt": f"{date}T{updateTime}Z" if status == 2 else "",
-            "status": status,
-            "note": ""
-        })
-    orderId += 1
+        createTime = randomCheckinTime()
+        # updateTime = max(timeA, timeB)
+        # if updateTime < CURR_TIME:
+        #     status = 2
+        if createTime < CURR_TIME:
+            status = random.randint(1,2)
+            orders.append({
+                "orderId": orderId,
+                "bookingId": bookingId,
+                # "roomNumber": roomNum,
+                "serviceId": serviceId,
+                "createdAt": f"{date}T{createTime}Z",
+                # "updatedAt": f"{date}T{updateTime}Z" if status == 2 else "",
+                "status": status,
+                "note": ""
+            })
+            orderId += 1
 
-def checkDate(date: str, lastDay: bool = False):
+def checkDate(date: str, lastDay=False):
     departure = 0
     arrival = 0
     occupied = 0
@@ -141,7 +138,7 @@ def checkDate(date: str, lastDay: bool = False):
                 if checkoutTime < CURR_TIME:
                     book["status"] = 3
                     book["checkoutTime"] = randomCheckinTime()
-                    arrival += 1
+                    departure += 1
         elif book["checkinDate"] == date:
             if not lastDay:
                 book["status"] = 2
@@ -173,7 +170,7 @@ def checkDate(date: str, lastDay: bool = False):
 # Orders: {serv}
 # Types: {booked}""")
 
-def simulateOneDay(day: int, month: int, lastDay= False):
+def simulateOneDay(day: int, month: int, lastDay=False):
     date = toDateString(day, month)
     checkDate(date, lastDay=lastDay)
     for _ in range(random.randint(10, 15)):
@@ -211,7 +208,7 @@ def simulate(firstDay: int, firstMonth: int, duration: int):
     day = firstDay
     month = firstMonth
     for _ in range(duration-1):
-        simulateOneDay(day, month)
+        simulateOneDay(day, month, lastDay=False)
         day += 1
         day, month = fixDate(day, month)    
         print(day, month)
@@ -236,8 +233,8 @@ if __name__ == "__main__":
     genFirst50Bookings()
     simulate(15, 4, 20) # 19 days from 15.04 to 03.05
 
-    with open(DATAPATH + "03-05-test-bookings.json", "w") as f:
+    with open(DATAPATH + "04-05-test-bookings.json", "w") as f:
         json.dump(bookings, f)
 
-    with open(DATAPATH + "03-05-test-serviceOrders.json", "w") as f:
+    with open(DATAPATH + "04-05-test-serviceOrders.json", "w") as f:
         json.dump(orders, f)

@@ -62,14 +62,14 @@ class Services(QtWidgets.QWidget):
         self.tabWidget.setCurrentIndex(1)
     
     def reloadPendingTable(self):
-        self.pendingOrders = RequestData.getTodayOrdersByStatus(2)
+        self.pendingOrders = RequestData.getTodayOrdersByStatus(1)
         row = 0
         self.pendingTable.setRowCount(len(self.pendingOrders))
         for i in range(len(self.pendingOrders)):
             order = self.pendingOrders[i]
             serviceStr = self.getServiceTitle(serviceId=order["serviceId"])
             orderTimeStr = order["createdAt"]
-            roomNumStr = order["roomNumber"]
+            roomNumStr = str(order["roomNumber"])
             statusStr = "Serving" if order["status"] == 1 else "Done"
             noteStr = order["note"]
 
@@ -113,8 +113,7 @@ class Services(QtWidgets.QWidget):
             order = servicesByDate[i]
             serviceStr = self.getServiceTitle(serviceId=order["serviceId"])
             orderTimeStr = order["createdAt"].split("T")[1]
-            # updateTimeStr = order["updatedAt"].split("T")[1]
-            roomNumStr = order["roomNumber"]
+            roomNumStr = str(order["roomNumber"])
             statusStr = "Serving" if order["status"] == 1 else "Done"
             noteStr = order["note"]
 

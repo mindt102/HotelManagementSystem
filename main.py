@@ -19,6 +19,10 @@ class MainWindow(QtWidgets.QWidget):
         self.initNavBarBtns()
         self.initLogoutBtn()
 
+    def loadUser(self, user):
+        self.user = user
+        _translate = QtCore.QCoreApplication.translate
+        self.navbar.userLabel.setText(_translate("MainWindow", f"""<html><head/><body><p><span style=" font-size:14pt; font-weight:600; color:#ffffff;">{user['firstName']} {user['lastName']}</span></p></body></html>"""))
     def initMainLayout(self):
         self.mainLayout = QtWidgets.QGridLayout()
         self.mainLayout.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)

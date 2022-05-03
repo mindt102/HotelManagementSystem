@@ -24,6 +24,7 @@ class Login(QtWidgets.QWidget):
         res = RequestData.login(username=username, password=password)
         if ("message" not in res):
             self.close()
+            self.mainWindow.loadUser(res)
             self.mainWindow.show()
             self.mainWindow.navbar.signoutBtn.clicked.connect(self.signoutHandler)
         else:

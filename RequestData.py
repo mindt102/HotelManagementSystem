@@ -74,14 +74,8 @@ class RequestData:
         return
 
     def getTodayOrdersByStatus(status: int) -> list:
-        todayDateString = datetime.datetime.today().strftime("%Y-%m-%d")
-        with open(DATAPATH + "serviceOrders.json", "r", encoding="utf8") as f:
-            orders = json.load(f)
-        result = []
-        for order in orders:
-            if todayDateString in order["createdAt"] and order["status"] == status:
-                result.append(order)
-        return result
+        r = requests.get(f"{URL}/services/getToday?status={status}")
+        return r.json()
 
     # Booking
     def createBooking(bookingData: dict) -> int:
@@ -178,19 +172,7 @@ class RequestData:
 
         }
         res = requests.post(f"{URL}/auth/login", json=user)
-        return res
-        if username == user["username"] and password == user["password"]:
-            return {
-                "isError": False,
-                "data": {
-                    "firstName": "Minh",
-                    "lastName": "Duong"
-                }
-            }
-        return {
-            "isError": True
-        }
-
+        return res.json()
 
 if __name__ == "__main__":
     print(RequestData.login("mindt102", "123456aA@").json())

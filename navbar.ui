@@ -94,9 +94,9 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="userLabel">
            <property name="styleSheet">
-            <string notr="true">text-align: left;</string>
+            <string notr="true">text-align: left;color: white;</string>
            </property>
            <property name="text">
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#ffffff;&quot;&gt;Minh Duong&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

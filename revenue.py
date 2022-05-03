@@ -37,9 +37,9 @@ class Revenue(QtWidgets.QWidget):
         for item in self.data:
             self.table_Revenue.setItem(row, 0, QtWidgets.QTableWidgetItem(item["clientName"]))
             self.table_Revenue.setItem(row, 1, QtWidgets.QTableWidgetItem(str(item['roomNumber'])))
-            self.table_Revenue.setItem(row, 2, QtWidgets.QTableWidgetItem(str(item['roomFee'])))
-            self.table_Revenue.setItem(row, 3, QtWidgets.QTableWidgetItem(str(item['serviceFee'])))
-            self.table_Revenue.setItem(row, 4, QtWidgets.QTableWidgetItem(str(item['totalBill'])))
+            self.table_Revenue.setItem(row, 2, QtWidgets.QTableWidgetItem(f"${item['roomFee']}"))
+            self.table_Revenue.setItem(row, 3, QtWidgets.QTableWidgetItem(f"${item['serviceFee']}"))
+            self.table_Revenue.setItem(row, 4, QtWidgets.QTableWidgetItem(f"${item['totalBill']}"))
             
             self.table_Revenue.item(row, 0).setData(QtCore.Qt.UserRole, item["bookingId"])
             
