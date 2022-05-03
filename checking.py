@@ -1,3 +1,4 @@
+from sqlite3 import DateFromTicks
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.uic import loadUi
 from bookingdetail import BookingDetails
@@ -13,13 +14,14 @@ class Checking(QtWidgets.QWidget):
         self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
         self.status = status
         self.initTitle()
-        self.initTables()
         self.initCheckButton()
         self.initSearchBtn()
+        self.initDateEdit()
+        self.initTables()
 
     def initTitle(self):
         _translate = QtCore.QCoreApplication.translate
-        statusStr = "CHECK IN TODAY" if self.status == 1 else "CHECK OUT TODAY"
+        statusStr = "Reservations" if self.status == 1 else "CURRENT GUESTS"
         self.pageTitleLabel.setText(_translate("Form", statusStr))
     
     def initCheckButton(self):
@@ -34,6 +36,10 @@ class Checking(QtWidgets.QWidget):
             self.checkBtn.setIcon(QtGui.QIcon('.\images\out-32.png'))
         self.checkBtn.clicked.connect(self.updateStatus)
 
+    def initDateEdit(self):
+        self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
+        self.dateEdit.dateChanged.connect(self.dateChangedHandler) 
+
     def getSelectedBookingId(self):
         if (self.tableWidget.currentRow() == -1):
             return
@@ -44,18 +50,18 @@ class Checking(QtWidgets.QWidget):
 
     def updateStatus(self):
         bookingId = self.getSelectedBookingId()
-        if self.status == 1:
-            RequestData.checkin(bookingId)
-        elif self.status == 2:
-            RequestData.checkout(bookingId)
-        self.reloadTable()
         self.showBookingDetails(bookingId)
+        # if self.status == 1:
+        #     RequestData.checkin(bookingId)
+        # elif self.status == 2:
+        #     RequestData.checkout(bookingId)
+        self.reloadTable()
 
     def initSearchBtn(self):
         self.searchBtn.clicked.connect(self.loadSearchResult)
     
     def loadSearchResult(self):
-        self.clientName = self.searchInput.text()
+        self.clientName = self.searchInput.text().title()
         self.reloadTable()
         self.searchInput.setText("")
 
@@ -70,6 +76,7 @@ class Checking(QtWidgets.QWidget):
         self.bookingDetails = BookingDetails(bookingId)
         self.bookingDetails.btn.clicked.connect(self.reloadTable)
         self.bookingDetails.show()
+    
     def initTables(self):
         self.dateStr = datetime.datetime.today().strftime("%Y-%m-%d")
         self.clientName = ""
@@ -99,6 +106,9 @@ class Checking(QtWidgets.QWidget):
             self.data = RequestData.getBookings(clientName=self.clientName, checkoutDate=self.dateStr, status=self.status)
         self.addDataToTable()
 
+    def dateChangedHandler(self):
+        self.dateStr = self.dateEdit.date().toString("yyyy-MM-dd")
+        self.reloadTable()
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

@@ -33,7 +33,7 @@ class Login(QtWidgets.QWidget):
             msg.setText("Invalid username or password")
             msg.setWindowTitle("Wrong Credentials")
             msg.exec_()
-    
+            self.username.setFocus()
     def signoutHandler(self):
         self.mainWindow.close()
         self.show()

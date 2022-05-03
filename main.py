@@ -75,11 +75,14 @@ class MainWindow(QtWidgets.QWidget):
         if currIndex == 0:
             self.dashboard.reload()
         elif currIndex == 2:
+            self.checkin.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
             self.checkin.reloadTable()
         elif currIndex == 3:
+            self.checkout.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
             self.checkout.reloadTable()
         elif currIndex == 4:
             self.revenue.calendarWidget.setSelectedDate(QtCore.QDate.currentDate())
+            self.revenue.reloadData()
         elif currIndex == 5:
             self.services.tabWidget.setCurrentIndex(0)
     def initDashboard(self):

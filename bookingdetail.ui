@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1476</width>
-    <height>920</height>
+    <height>973</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -81,7 +81,7 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <property name="spacing">
-       <number>40</number>
+       <number>20</number>
       </property>
       <item>
        <widget class="QFrame" name="frame_5">
@@ -353,19 +353,19 @@ background-color: white;</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <property name="spacing">
-             <number>45</number>
+             <number>30</number>
             </property>
             <property name="leftMargin">
              <number>40</number>
             </property>
             <property name="topMargin">
-             <number>50</number>
+             <number>40</number>
             </property>
             <property name="rightMargin">
              <number>40</number>
             </property>
             <property name="bottomMargin">
-             <number>50</number>
+             <number>40</number>
             </property>
             <item>
              <widget class="QFrame" name="checkinFrame_3">
@@ -491,6 +491,71 @@ background-color: white;
                  </property>
                  <property name="text">
                   <string>01/05/2022</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="checkinFrame_9">
+              <property name="styleSheet">
+               <string notr="true">border-width: 1;
+border-style: none;
+border-bottom: 2px solid rgba(105,118,132,255);
+border-left: 2px solid rgba(105,118,132,255);
+border-radius: 10;
+background-color: white;
+</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::Panel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Sunken</enum>
+              </property>
+              <property name="lineWidth">
+               <number>1</number>
+              </property>
+              <property name="midLineWidth">
+               <number>0</number>
+              </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_9">
+               <item>
+                <widget class="QLabel" name="label_10">
+                 <property name="maximumSize">
+                  <size>
+                   <width>56</width>
+                   <height>56</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-style:none;</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="pixmap">
+                  <pixmap>images/status-64.png</pixmap>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="statusLabel">
+                 <property name="styleSheet">
+                  <string notr="true">border-width: 1;
+border-style: none;
+font-size: 20px;
+border-bottom: 2px solid rgba(105,118,132,255);
+border-radius: 10;
+background-color: white;
+</string>
+                 </property>
+                 <property name="text">
+                  <string>Booked</string>
                  </property>
                 </widget>
                </item>

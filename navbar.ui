@@ -286,7 +286,7 @@ padding-left: 10;</string>
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>images/service-32.png</normaloff>images/service-32.png</iconset>
+        <normaloff>images/swimming-32.png</normaloff>images/swimming-32.png</iconset>
       </property>
       <property name="iconSize">
        <size>

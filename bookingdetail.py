@@ -28,11 +28,20 @@ class BookingDetails(QtWidgets.QWidget):
         self.clientCheckInLabel.setText(_translate("BookingDetails", f"{self.booking['checkinDate']}"))
         self.clientCheckOutLabel.setText(_translate("BookingDetails", f"{self.booking['checkoutDate']}"))
         roomTypeStr = RequestData.getRoomTypeByRoomNumber(self.booking["roomNumber"])['type']
-        self.bedTypeLabel.setText(_translate("BookingDetails", roomTypeStr))
-        if self.booking["status"] == 3:
-            self.billLabel.setText(_translate("BookingDetails", f"${RequestData.getRevenueByBookingId(self.booking['id'])}"))
-        else:
-            self.billLabel.setText(_translate("BookingDetails", ""))
+        roomNumStr = str(self.booking["roomNumber"])
+        
+        statusStr = "Booked"
+        billStr = ""
+        if self.booking["status"] == 2:
+            statusStr = "Checked In"
+            billStr = f"Current Bill: ${RequestData.getRevenueByBookingId(self.booking['id'])}"
+        elif self.booking["status"] == 3:
+            statusStr = "Checked Out"
+            billStr = f"Total: ${RequestData.getRevenueByBookingId(self.booking['id'])}"
+
+        self.bedTypeLabel.setText(_translate("BookingDetails", f"No. {roomNumStr} - {roomTypeStr}"))
+        self.statusLabel.setText(_translate("BookingDetails", statusStr))
+        self.billLabel.setText(_translate("BookingDetails", billStr))
         self.loadService()
 
     def loadService(self):
