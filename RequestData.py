@@ -66,7 +66,7 @@ class RequestData:
             "roomNumber": int(orderData['roomNumber']),
             "note":orderData['note'],
         }
-        requests.post(f"{URL}/services/create", json=reqData)
+        requests.post(f"{URL}/services/createOrder", json=reqData)
         return
 
     def finishServiceOrder(orderId: int):
