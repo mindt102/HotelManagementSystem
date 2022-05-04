@@ -14,7 +14,7 @@ class Dashboard(QtWidgets.QWidget):
         super(Dashboard, self).__init__(*args, **kwargs)
         loadUi("dashboard.ui", self)
         
-        self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
+        # self.setFixedSize(CONTENT_WIDTH, WINDOW_HEIGHT)
         
         self.setWindowTitle("Dashboard")
         self.initStatsFrame()

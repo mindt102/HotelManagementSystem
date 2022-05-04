@@ -8,7 +8,6 @@ class Booking(QtWidgets.QWidget, Ui_Form):
     def __init__(self, *args, **kwargs):
         super(Booking, self).__init__(*args, **kwargs)
         loadUi("booking.ui", self)
-        # self.roomSpinBoxes = []
         self.services = RequestData.getServices()
         self.initTabWidget()
         self.initButtons()

@@ -14,7 +14,7 @@ class Services(QtWidgets.QWidget):
         self.initBtns()
         self.initPendingTable()
         self.initHistoryTable()
-        self.dateEdit.dateChanged.connect(self.reloadData)
+        self.dateEdit.dateChanged.connect(self.reloadHistoryTable)
 
 
     def initBtns(self):
@@ -33,12 +33,14 @@ class Services(QtWidgets.QWidget):
         self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
         header = self.historyTable.horizontalHeader()       
         header.setSectionResizeMode(QtWidgets.QHeaderView.Stretch)
-        self.reloadData()
+        self.reloadHistoryTable()
 
     def tabWidgetChangedHandler(self):
         currentIndex = self.tabWidget.currentIndex()
         if currentIndex == 1:
             self.reloadPendingTable()
+        if currentIndex == 2:
+            self.reloadHistoryTable()
 
     def orderService(self):
         roomNum = self.roomNumInput.text()
@@ -60,14 +62,14 @@ class Services(QtWidgets.QWidget):
         self.tabWidget.setCurrentIndex(1)
     
     def reloadPendingTable(self):
-        self.pendingOrders = RequestData.getTodayOrdersByStatus(2)
+        self.pendingOrders = RequestData.getTodayOrdersByStatus(1)
         row = 0
         self.pendingTable.setRowCount(len(self.pendingOrders))
         for i in range(len(self.pendingOrders)):
             order = self.pendingOrders[i]
             serviceStr = self.getServiceTitle(serviceId=order["serviceId"])
             orderTimeStr = order["createdAt"]
-            roomNumStr = str(RequestData.getBookingById(order["bookingId"])["roomNumber"])
+            roomNumStr = str(order["roomNumber"])
             statusStr = "Serving" if order["status"] == 1 else "Done"
             noteStr = order["note"]
 
@@ -91,7 +93,6 @@ class Services(QtWidgets.QWidget):
             return -1
        
         result = self.pendingTable.item(selectedRow, 0).data(QtCore.Qt.UserRole)
-        print(result)
         return result
     
     def finishHandler(self):
@@ -102,7 +103,7 @@ class Services(QtWidgets.QWidget):
         RequestData.finishServiceOrder(orderId=orderId)
         self.tabWidget.setCurrentIndex(2)
 
-    def reloadData(self):
+    def reloadHistoryTable(self):
         date = self.dateEdit.date()
 
         servicesByDate = RequestData.getServiceOrdersByDate(date.toString("yyyy-MM-dd"))
@@ -110,11 +111,9 @@ class Services(QtWidgets.QWidget):
         self.historyTable.setRowCount(len(servicesByDate))
         for i in range(len(servicesByDate)):
             order = servicesByDate[i]
-            # serviceStr = RequestData.getServiceById(serviceId=order["serviceId"])["title"]
             serviceStr = self.getServiceTitle(serviceId=order["serviceId"])
             orderTimeStr = order["createdAt"].split("T")[1]
-            # updateTimeStr = order["updatedAt"].split("T")[1]
-            roomNumStr = str(RequestData.getBookingById(order["bookingId"])["roomNumber"])
+            roomNumStr = str(order["roomNumber"])
             statusStr = "Serving" if order["status"] == 1 else "Done"
             noteStr = order["note"]
 

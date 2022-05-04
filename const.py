@@ -3,3 +3,4 @@ WINDOW_HEIGHT=930
 NAVBAR_WIDTH=260
 DATAPATH = "./sample-data/"
 URL="http://3.1.202.109:3000"
+# URL="https://02e1-101-96-120-94.ap.ngrok.io"

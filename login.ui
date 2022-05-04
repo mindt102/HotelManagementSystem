@@ -7,13 +7,25 @@
     <x>0</x>
     <y>0</y>
     <width>748</width>
-    <height>697</height>
+    <height>705</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_9">
+   <property name="leftMargin">
+    <number>3</number>
+   </property>
+   <property name="topMargin">
+    <number>3</number>
+   </property>
+   <property name="rightMargin">
+    <number>3</number>
+   </property>
+   <property name="bottomMargin">
+    <number>3</number>
+   </property>
    <item row="0" column="0">
     <widget class="QFrame" name="frame">
      <property name="autoFillBackground">
@@ -162,10 +174,12 @@ padding: 5px 20px;</string>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-image: none;background-color: white;
+         <string notr="true">border-image: none;
+background-color: white;
 padding: 10px 50px;
-border-radius: 20px;
-border-style: none;</string>
+border-radius: 15px;
+border-style: none;
+color: #3f4773;</string>
         </property>
         <property name="text">
          <string>Log In</string>
